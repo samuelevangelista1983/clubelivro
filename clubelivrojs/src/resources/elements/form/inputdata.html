@@ -1,0 +1,8 @@
+<template>
+  <input class="form-control" value.bind="valor" show.bind="!obrigatorio"
+    maxlength="10" minlength="10" type="date"
+    pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+  <input class="form-control" value.bind="valor" show.bind="obrigatorio"
+    maxlength="10" minlength="10" type="date" required
+    pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+</template>

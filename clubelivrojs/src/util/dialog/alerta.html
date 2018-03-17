@@ -1,0 +1,12 @@
+<template>
+  <ux-dialog>
+    <ux-dialog-header class="dialog">
+      <span class="icon-exclamation-triangle">&nbsp;</span>
+      <span>Atenção</span>
+    </ux-dialog-header>
+    <ux-dialog-body>${mensagem}</ux-dialog-body>
+    <ux-dialog-footer>
+      <button class="btn btn-secondary" click.delegate="controller.close()">Fechar</button>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

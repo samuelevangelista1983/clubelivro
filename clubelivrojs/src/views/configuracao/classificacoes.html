@@ -1,0 +1,16 @@
+<template>
+  <table border="1">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nome</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="classificacao of classificacoes">
+        <td>${classificacao.id}</td>
+        <td>${classificacao.nome}</td>
+      </tr>
+    </tbody>
+  </table>
+</template>

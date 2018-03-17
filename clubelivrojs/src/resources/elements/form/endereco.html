@@ -1,0 +1,88 @@
+<template>
+  <spinner is-loading.bind="carregando" huge.bind="false"></spinner>
+  <div repeat.for="endereco of enderecos"> 
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label>Tipo</label>
+        <select class="form-control" value.bind="endereco.idTipo">
+          <option></option>
+          <option repeat.for="tipo of tipos" model.bind="tipo.id">${tipo.nome}</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <label>CEP</label>
+        <input autocomplete="off" class="form-control" maxlength="10" minlength="8" pattern="[0-9]{2}[\.]?[0-9]{3}[-]?[0-9]{3}" type="text" value.bind="endereco.cep | cepconverter">
+      </div>
+      <div class="col-sm-2">
+        <label>&nbsp;</label>
+        <button type="button" class="btn btn-primary form-control" click.delegate="onClickPesquisarEndereco($index)">
+          <span class="icon-search"></span>
+          <span>Pesquisar</span>
+        </button>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-link btn-lg form-control float-right" click.delegate="onClickDel($index)" show.bind="enderecos.length > 1" title="Remover endereço">
+          <span class="icon-trash-o"></span>
+        </button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm">
+        <label>Logradouro</label>
+        <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="endereco.logradouro">
+      </div>
+      <div class="col-sm-2">
+        <label>Número</label>
+        <input autocomplete="off" class="form-control" maxlength="15" type="text" value.bind="endereco.numero">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label>Complemento</label>
+        <input autocomplete="off" class="form-control" maxlength="45" type="text" value.bind="endereco.complemento">
+      </div>
+      <div class="col-sm">
+        <label>Bairro</label>
+        <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="endereco.bairro">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm">
+        <label>Município</label>
+        <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="endereco.municipio">
+      </div>
+      <div class="col-sm-2">
+        <label>Estado</label>
+        <select class="form-control" value.bind="endereco.uf">
+          <option></option>
+          <option repeat.for="uf of ufs" model.bind="uf">${uf}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm">
+        <label>Observação</label>
+        <textarea autocomplete="off" class="form-control" maxlength="255" rows="2" value.bind="endereco.obs"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-check form-check-inline col-sm-1">
+        <label class="form-check-label">
+          <input checked.bind="endereco.entrega" class="form-check-input" type="checkbox">Entrega
+        </label>
+      </div>
+      <div class="form-check form-check-inline col-sm-9">
+        <label class="form-check-label">
+          <input checked.bind="endereco.cobranca" class="form-check-input" type="checkbox">Cobrança
+        </label>
+      </div>
+      <div class="col-sm"></div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-link btn-lg form-control float-right" click.delegate="onClickAdd()" show.bind="$last" title="Adicionar endereço">
+          <span class="icon-plus"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,60 @@
+<template>
+  <spinner is-loading.bind="carregando" huge.bind="false"></spinner>
+  <div class="row">
+    <h3 class="col">Integrantes do Clube do Livro</h3>
+  </div>
+  <form>
+    <div class="form-group row">
+      <div class="col-sm-5">
+        <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.nome" placeholder="Digite um nome para pesquisa">
+      </div>
+      <label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
+      <div>
+        <select id="categoria" class="form-control" value.bind="pesquisa.categoria">
+          <option></option>
+          <option repeat.for="categoria of categorias" model.bind="categoria.id">${categoria.nome}</option>
+        </select>
+      </div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-secondary" click.delegate="onClickLimpar()">
+          <span class="icon-eraser"></span>
+          <span>Limpar</span>
+        </button>
+        <button type="button" class="btn btn-primary" click.delegate="onClickPesquisar()">
+          <span class="icon-filter"></span>
+          <span>Filtrar</span>
+        </button>
+        <button type="button" class="btn btn-primary" click.delegate="onClickIncluir()">
+          <span class="icon-plus"></span>
+          <span>Incluir</span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="table-responsive" show.bind="integrantes.length > 0">
+    <table class="table table-hover">
+      <thead>
+        <th>Nome</th>
+        <th class="col-sm-3">Categoria</th>
+        <th class="col-sm-2">Ativo</th>
+      </thead>
+      <tbody>
+        <tr repeat.for="item of integrantes">
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.pessoa.nome}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.classificacao.nome}</td>
+          <td>
+            <a class="item-grid" show.bind="item.ativo" click.delegate="onClickDesativar($index, item.id)">
+              <span class="icon-toggle-on"></span>
+            </a>
+            <a class="item-grid" show.bind="!item.ativo" click.delegate="onClickAtivar($index, item.id)">
+              <span class="icon-toggle-off"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-info alert-dismissable fade show" show.bind="mensagem.length > 0">
+    ${mensagem}
+  </div>
+</template>

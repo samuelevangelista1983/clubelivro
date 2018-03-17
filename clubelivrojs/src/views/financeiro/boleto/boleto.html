@@ -1,0 +1,79 @@
+<template>
+  <spinner is-loading.bind="carregando" huge.bind="false"></spinner>
+  <div class="row">
+      <h3 class="col">Boletos do Clube do Livro</h3>
+  </div>
+  <div class="alert alert-warning alert-dismissable fade show" show.bind="mensagem.length > 0">
+    ${mensagem}
+  </div>
+  <form>
+      <div class="form-group row">
+        <div class="col-sm-8">
+          <label>Sacado</label>
+          <input class="form-control"disabled type="text" value.bind="boleto.sacado.pessoa.nome">
+        </div>
+        <div class="col-sm-4">
+          <label>Data de emissão</label>
+          <input class="form-control" disabled type="text" value.bind="boleto.emissaoStr">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <label>Número documento</label>
+          <input class="form-control" disabled type="text" value.bind="boleto.valorNominalStr">
+        </div>
+        <div class="col-sm-4">
+          <label>Nosso número</label>
+          <input class="form-control" disabled type="text" value.bind="boleto.valorNominalStr">
+        </div>
+        <div class="col-sm-4">
+          <label>Valor nominal</label>
+          <input class="form-control" disabled type="text" value.bind="boleto.valorNominalStr">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <label>Data de vencimento</label>
+          <input class="form-control" disabled type="text" value.bind="boleto.vctoStr">
+        </div>
+        <div class="col-sm-4">
+          <label>Data de pagamento</label>
+          <input class="form-control" maxlength="10" minlength="10" type="text" input.delegate="onInputNascimento()" value.bind="boleto.vctoStr"
+              pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+        </div>
+        <div class="col-sm-4">
+          <label>Valor pago</label>
+          <input autocomplete="off" class="form-control" type="text" value.bind="boleto.valorNominalStr">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <label>Valor tarifa</label>
+          <input autocomplete="off" class="form-control" type="text" value.bind="boleto.valorNominalStr">
+        </div>
+        <div class="col-sm-4">
+          <label>Valor creditado</label>
+          <input autocomplete="off" class="form-control" type="text" value.bind="boleto.valorNominalStr">
+        </div>
+        <div class="col-sm-4">
+          <label>Data de efetivação de crédito</label>
+          <input class="form-control" maxlength="10" minlength="10" type="text" input.delegate="onInputNascimento()" value.bind="boleto.vctoStr"
+              pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <button type="button" class="btn btn-primary " click.delegate="onClickSalvar()">
+            <span class="icon-floppy-o"></span>
+            <span>Salvar</span>
+          </button>
+        </div>
+        <div class="col-sm">
+          <button type="button" class="btn btn-secondary" click.delegate="onClickCancelar()">
+            <span class="icon-reply"></span>
+            <span>Cancelar</span>
+          </button>
+        </div>
+      </div>
+  </form>
+</template>

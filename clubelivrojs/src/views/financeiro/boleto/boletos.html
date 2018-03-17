@@ -1,0 +1,68 @@
+<template>
+  <spinner is-loading.bind="carregando" huge.bind="false"></spinner>
+  <div class="row">
+    <h3 class="col">Boletos do Clube do Livro</h3>
+  </div>
+  <form>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.nome" placeholder="Digite um nome para pesquisa">
+      </div>
+      <label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
+      <div>
+        <select id="categoria" class="form-control" value.bind="pesquisa.categoria">
+          <option></option>
+          <option repeat.for="categoria of categorias" model.bind="categoria.id">${categoria.nome}</option>
+        </select>
+      </div>
+      <label for="situacao" class="col-sm-1 col-form-label">Situação</label>
+      <div>
+        <select id="situacao" class="form-control" value.bind="pesquisa.situacao">
+          <option></option>
+          <option repeat.for="situacao of situacoes" model.bind="situacao.id">${situacao.nome}</option>
+        </select>
+      </div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-secondary" click.delegate="onClickLimpar()">
+          <span class="icon-eraser"></span>
+          <span>Limpar</span>
+        </button>
+        <button type="button" class="btn btn-primary" click.delegate="onClickPesquisar()">
+          <span class="icon-filter"></span>
+          <span>Filtrar</span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="table-responsive" show.bind="boletos.length > 0">
+    <table class="table table-hover">
+      <thead>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>N&ordm; boleto</th>
+        <th>N&ordm; banco</th>
+        <th>Valor</th>
+        <th>Valor pago</th>
+        <th>Vcto</th>
+        <th>Situação</th>
+      </thead>
+      <tbody>
+        <tr repeat.for="item of boletos">
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.sacado.pessoa.nome}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.sacado.classificacao.nome}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.numeroBeneficiario}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.numeroBanco}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.valorNominalStr}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.valorPagoStr}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.vctoStr}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 0">Aberto</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 1">Baixado</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 2">Baixado manualmente</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-info alert-dismissable fade show" show.bind="mensagem.length > 0">
+    ${mensagem}
+  </div>
+</template>

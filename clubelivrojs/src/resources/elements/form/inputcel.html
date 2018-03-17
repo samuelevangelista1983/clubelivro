@@ -1,0 +1,44 @@
+<template>
+  <div class="form-group row" repeat.for="cel of cels">
+    <div class="col-sm-3">
+      <label>Telefone celular</label>
+      <div class="form-check form-check-inline col-sm-1">
+        <label class="form-check-label">
+          <input checked.bind="cel.whatsapp" class="form-check-input" type="checkbox">WhatsApp
+        </label>
+      </div>
+      <input autocomplete="off" class="form-control" value.bind="cel.numero | celconverter"
+        maxlength="13" minlength="11" type="tel" pattern="[1-9]{2}[\s]?9[0-9]{4}[-]?[0-9]{4}">
+    </div>
+    <div class="col-sm-7">
+      <label>Observação</label>
+      <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="cel.obs">
+    </div>
+    <div class="col-sm-1" show.bind="cels.length == 1 && $last">
+      <label>&nbsp;</lalbel>
+        <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar telefone celular">
+          <span class="icon-plus"></span>
+        </button>
+    </div>
+    <div class="col-sm-1" show.bind="cels.length == 1 && $last"></div>
+    <div class="col-sm-1" show.bind="cels.length > 1 && !$last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover telefone celular">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="cels.length > 1 && !$last"></div>
+    <div class="col-sm-1" show.bind="cels.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover telefone celular">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="cels.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar telefone celular">
+        <span class="icon-plus"></span>
+      </button>
+    </div>
+  </div>
+</template>

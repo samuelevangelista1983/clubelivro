@@ -1,0 +1,18 @@
+<template>
+  <ux-dialog>
+    <ux-dialog-header class="dialog">
+      <span class="icon-exclamation-triangle" if.bind="tipo == 'alerta'">&nbsp;</span>
+      <span if.bind="tipo == 'alerta'">Atenção</span>
+      <span class="icon-times-circle" if.bind="tipo == 'erro'">&nbsp;</span>
+      <span if.bind="tipo == 'erro'">Erro</span>
+      <span class="icon-exclamation-circle" if.bind="tipo == 'info'">&nbsp;</span>
+      <span if.bind="tipo == 'info'">Informação</span>
+      <span class="icon-check-circle" if.bind="tipo == 'sucesso'">&nbsp;</span>
+      <span if.bind="tipo == 'sucesso'">Sucesso</span>
+    </ux-dialog-header>
+    <ux-dialog-body>${mensagem}</ux-dialog-body>
+    <ux-dialog-footer>
+      <button class="btn btn-secondary" click.delegate="controller.close()">Fechar</button>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

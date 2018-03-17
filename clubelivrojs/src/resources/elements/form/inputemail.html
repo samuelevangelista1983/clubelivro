@@ -1,0 +1,38 @@
+<template>
+  <div class="form-group row" repeat.for="email of emails">
+    <div class="col-sm">
+      <label>e-mail</label>
+      <input autocomplete="off" class="form-control" maxlength="255" type="email" value.bind="email.mail">
+    </div>
+    <div class="col-sm">
+      <label>Observação</label>
+      <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="email.obs">
+    </div>
+    <div class="col-sm-1" show.bind="emails.length == 1 && $last">
+      <label>&nbsp;</lalbel>
+        <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar e-mail">
+          <span class="icon-plus"></span>
+        </button>
+    </div>
+    <div class="col-sm-1" show.bind="emails.length == 1 && $last"></div>
+    <div class="col-sm-1" show.bind="emails.length > 1 && !$last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover e-mail">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="emails.length > 1 && !$last"></div>
+    <div class="col-sm-1" show.bind="emails.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover e-mail">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="emails.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar e-mail">
+        <span class="icon-plus"></span>
+      </button>
+    </div>
+  </div>
+</template>

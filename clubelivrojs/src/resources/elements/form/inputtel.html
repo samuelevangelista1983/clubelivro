@@ -1,0 +1,39 @@
+<template>
+  <div class="form-group row" repeat.for="tel of tels">
+    <div class="col-sm-3">
+      <label>Telefone fixo</label>
+      <input autocomplete="off" class="form-control" value.bind="tel.numero | telconverter"
+        maxlength="12" minlength="10" type="text" pattern="[1-9]{2}[\s]?[2-5]{1}[0-9]{3}[-]?[0-9]{4}">
+    </div>
+    <div class="col-sm-7">
+      <label>Observação</label>
+      <input autocomplete="off" class="form-control" maxlength="255" type="text" value.bind="tel.obs">
+    </div>
+    <div class="col-sm-1" show.bind="tels.length == 1 && $last">
+      <label>&nbsp;</lalbel>
+        <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar telefone fixo">
+          <span class="icon-plus"></span>
+        </button>
+    </div>
+    <div class="col-sm-1" show.bind="tels.length == 1 && $last"></div>
+    <div class="col-sm-1" show.bind="tels.length > 1 && !$last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover telefone fixo">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="tels.length > 1 && !$last"></div>
+    <div class="col-sm-1" show.bind="tels.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickDel($index)" title="Remover telefone fixo">
+        <span class="icon-trash-o"></span>
+      </button>
+    </div>
+    <div class="col-sm-1" show.bind="tels.length > 1 && $last">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-link btn-lg form-control" click.delegate="onClickAdd()" title="Adicionar telefone fixo">
+        <span class="icon-plus"></span>
+      </button>
+    </div>
+  </div>
+</template>
