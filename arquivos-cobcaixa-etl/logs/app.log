@@ -1,0 +1,44 @@
+2018-02-17 14:57:34,251 | INFO | App.java 35 | Lendo parametros do arquivo de configuracoes...
+2018-02-17 14:57:34,261 | INFO | App.java 44 | Configurando objeto DataSource para conexao com banco de dados...
+2018-02-17 14:57:34,292 | INFO | App.java 46 | Configurando o MessageIDRepository...
+2018-02-17 14:57:34,390 | INFO | App.java 49 | Registrando os objetos DataSource e MessageIDRepository...
+2018-02-17 14:57:34,391 | INFO | App.java 53 | Instanciando o contexto de integracao...
+2018-02-17 14:57:34,868 | INFO | DefaultCamelContext.java 3003 | Apache Camel 2.19.2 (CamelContext: camel-1) is starting
+2018-02-17 14:57:34,870 | INFO | ManagedManagementStrategy.java 192 | JMX is enabled
+2018-02-17 14:57:35,076 | INFO | DefaultTypeConverter.java 56 | Loaded 192 type converters
+2018-02-17 14:57:35,107 | INFO | DefaultRuntimeEndpointRegistry.java 203 | Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+2018-02-17 14:57:35,415 | INFO | DefaultCamelContext.java 3291 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2018-02-17 14:57:35,420 | INFO | FileEndpoint.java 104 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2018-02-17 14:57:35,420 | INFO | FileEndpoint.java 110 | Using default memory based idempotent repository with cache max size: 1000
+2018-02-17 14:57:35,473 | INFO | FileEndpoint.java 104 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2018-02-17 14:57:35,473 | INFO | FileEndpoint.java 110 | Using default memory based idempotent repository with cache max size: 1000
+2018-02-17 14:57:35,791 | INFO | DefaultCamelContext.java 3832 | Route: route1 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/rem?delay=1000&noop=true
+2018-02-17 14:57:35,796 | INFO | DefaultCamelContext.java 3832 | Route: route2 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/ret?delay=1000&noop=true
+2018-02-17 14:57:35,821 | INFO | DefaultCamelContext.java 3832 | Route: route3 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/rem/dest?delay=1000&idempotent=true&idempotentKey=File%3A+%24%7Bfile%3Aabsolute.path%7D+-+size+%24%7Bfile%3Asize%7D&idempotentRepository=%23jdbcMessageIdRepository&noop=true
+2018-02-17 14:57:35,823 | INFO | DefaultCamelContext.java 3832 | Route: route4 started and consuming from: direct://consultarSacado
+2018-02-17 14:57:35,823 | INFO | DefaultCamelContext.java 3046 | Total 4 routes, of which 4 are started.
+2018-02-17 14:57:35,824 | INFO | DefaultCamelContext.java 3047 | Apache Camel 2.19.2 (CamelContext: camel-1) started in 0.956 seconds
+2018-02-17 15:06:21,696 | INFO | MainSupport.java 85 | Received hang up - stopping the main instance.
+2018-02-17 15:06:35,564 | INFO | App.java 35 | Lendo parametros do arquivo de configuracoes...
+2018-02-17 15:06:35,567 | INFO | App.java 44 | Configurando objeto DataSource para conexao com banco de dados...
+2018-02-17 15:06:35,589 | INFO | App.java 46 | Configurando o MessageIDRepository...
+2018-02-17 15:06:35,612 | INFO | App.java 49 | Registrando os objetos DataSource e MessageIDRepository...
+2018-02-17 15:06:35,613 | INFO | App.java 53 | Instanciando o contexto de integracao...
+2018-02-17 15:06:36,050 | INFO | DefaultCamelContext.java 3003 | Apache Camel 2.19.2 (CamelContext: camel-1) is starting
+2018-02-17 15:06:36,052 | INFO | ManagedManagementStrategy.java 192 | JMX is enabled
+2018-02-17 15:06:36,223 | INFO | DefaultTypeConverter.java 56 | Loaded 192 type converters
+2018-02-17 15:06:36,275 | INFO | DefaultRuntimeEndpointRegistry.java 203 | Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+2018-02-17 15:06:36,616 | INFO | DefaultCamelContext.java 3291 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2018-02-17 15:06:36,628 | INFO | FileEndpoint.java 104 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2018-02-17 15:06:36,628 | INFO | FileEndpoint.java 110 | Using default memory based idempotent repository with cache max size: 1000
+2018-02-17 15:06:36,666 | INFO | FileEndpoint.java 104 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2018-02-17 15:06:36,666 | INFO | FileEndpoint.java 110 | Using default memory based idempotent repository with cache max size: 1000
+2018-02-17 15:06:36,973 | INFO | DefaultCamelContext.java 3832 | Route: route1 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/rem?delay=1000&noop=true
+2018-02-17 15:06:36,984 | INFO | DefaultCamelContext.java 3832 | Route: route2 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/ret?delay=1000&noop=true
+2018-02-17 15:06:36,990 | INFO | DefaultCamelContext.java 3832 | Route: route3 started and consuming from: file:///home/samuel/projetos/caravana/editora/cobcaixa/rem/dest?delay=1000&idempotent=true&idempotentKey=File%3A+%24%7Bfile%3Aabsolute.path%7D+-+size+%24%7Bfile%3Asize%7D&idempotentRepository=%23jdbcMessageIdRepository&noop=true
+2018-02-17 15:06:36,992 | INFO | DefaultCamelContext.java 3832 | Route: route4 started and consuming from: direct://consultarSacado
+2018-02-17 15:06:36,992 | INFO | DefaultCamelContext.java 3046 | Total 4 routes, of which 4 are started.
+2018-02-17 15:06:36,993 | INFO | DefaultCamelContext.java 3047 | Apache Camel 2.19.2 (CamelContext: camel-1) started in 0.942 seconds
+2018-02-17 15:06:45,560 | INFO | MainSupport.java 85 | Received hang up - stopping the main instance.
+2018-02-17 15:06:45,562 | INFO | DefaultCamelContext.java 3312 | Apache Camel 2.19.2 (CamelContext: camel-1) is shutting down
+2018-02-17 15:06:45,566 | INFO | DefaultShutdownStrategy.java 195 | Starting to graceful shutdown 4 routes (timeout 300 seconds)
