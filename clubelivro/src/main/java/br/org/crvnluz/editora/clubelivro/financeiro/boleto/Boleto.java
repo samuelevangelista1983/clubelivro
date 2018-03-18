@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 
-import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
@@ -65,7 +64,7 @@ public class Boleto extends Persistente {
 	public void setNumeroBeneficiario(String numeroBeneficiario) {
 		this.numeroBeneficiario = numeroBeneficiario;
 	}
-
+/*
 	public String getEmissaoStr() {
 		String valor = null;
 		
@@ -75,7 +74,7 @@ public class Boleto extends Persistente {
 		
 		return valor;
 	}
-	
+	*/
 	public LocalDate getEmissao() {
 		return emissao;
 	}
@@ -83,7 +82,7 @@ public class Boleto extends Persistente {
 	public void setEmissao(LocalDate emissao) {
 		this.emissao = emissao;
 	}
-
+/*
 	public String getVctoStr() {
 		String valor = null;
 		
@@ -93,7 +92,7 @@ public class Boleto extends Persistente {
 		
 		return valor;
 	}
-	
+*/	
 	public LocalDate getVcto() {
 		return vcto;
 	}
@@ -120,7 +119,7 @@ public class Boleto extends Persistente {
 	public void setValorNomimal(BigDecimal valorNomimal) {
 		this.valorNomimal = valorNomimal;
 	}
-
+/*
 	public String getPgtoStr() {
 		String valor = null;
 		
@@ -130,7 +129,7 @@ public class Boleto extends Persistente {
 		
 		return valor;
 	}
-	
+	*/
 	public LocalDate getPgto() {
 		return pgto;
 	}
@@ -138,7 +137,7 @@ public class Boleto extends Persistente {
 	public void setPgto(LocalDate pgto) {
 		this.pgto = pgto;
 	}
-
+/*
 	public String getEfetivacaoCreditoStr() {
 		String valor = null;
 		
@@ -148,7 +147,7 @@ public class Boleto extends Persistente {
 		
 		return valor;
 	}
-	
+	*/
 	public LocalDate getEfetivacaoCredito() {
 		return efetivacaoCredito;
 	}

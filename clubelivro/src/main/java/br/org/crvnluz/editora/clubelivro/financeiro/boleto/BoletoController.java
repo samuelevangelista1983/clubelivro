@@ -1,6 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.financeiro.boleto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
 
 @RestController
@@ -92,39 +95,79 @@ public class BoletoController extends BaseController<Boleto> {
 		ResponseEntity response;
 		
 		try {
+			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
+			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
+			String numBoleto = map.get("numBoleto") != null ? map.get("numBoleto").toString() : null;
+			List<Boleto> list = new ArrayList<>();
+			
+			if (StringUtil.stringNaoNulaENaoVazia(nome) || StringUtil.stringNaoNulaENaoVazia(numBoleto)) {
+				list = dao.pesquisar(nome, numBoleto);
+			}
+			
+			response = new ResponseEntity(list, HttpStatus.OK);
+			
+		} catch (Throwable throwable) {
+			response = getInternalServerErrorResponse(throwable);
+		}
+		
+		return response;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@PostMapping("/boletos/pesquisa/avancada")
+	public ResponseEntity pesquisarBoletos(@RequestBody String request) {
+		ResponseEntity response;
+		
+		try {
+			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
+			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
 			/*
 			 * Categoria:
-			 * 1 - Estuddo
+			 * 1 - Estudo
 			 * 2 - Romance
 			 * 3 - Estudo e romance
 			 * 4 - Estudo e romance alternado
 			 */
-			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
-			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
-			Long idCategoria = StringUtil.stringNaoNulaENaoVazia(map.get("categoria").toString()) ? Long.valueOf(map.get("categoria").toString()) : null;
-			Long idSituacao = StringUtil.stringNaoNulaENaoVazia(map.get("situacao").toString()) ? Long.valueOf(map.get("situacao").toString()) : null;
+			Long idCategoria = map.get("categoria") != null && StringUtil.stringNaoNulaENaoVazia(map.get("categoria").toString()) ? Long.valueOf(map.get("categoria").toString()) : null;
+			/*
+			 * Situação:
+			 * 0 - Aberto
+			 * 1 - Baixado
+			 * 2 - Baixado manualmente
+			 */
+			Long idSituacao = map.get("situacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("situacao").toString()) ? Long.valueOf(map.get("situacao").toString()) : null;
+			/*
+			 * Tipo de ordenacao:
+			 * 0 - Ascendente
+			 * 1 - Descendente
+			 */
+			Long ordenacao = map.get("tipoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("tipoOrdenacao").toString()) ? Long.valueOf(map.get("tipoOrdenacao").toString()) : 0;
+			/*
+			 * Campo de ordenação:
+			 * 0 - Sacado
+			 * 1 - Número do boleto
+			 * 2 - Data de emissão
+			 * 3 - Data de vencimento
+			 */
+			Long campoOrdenacao = map.get("campoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("campoOrdenacao").toString()) ? Long.valueOf(map.get("campoOrdenacao").toString()) : 3;
+			LocalDate dtEmissaoInicial = map.get("dtEmissaoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoInicial").toString()) ? DataUtil.parserData(map.get("dtEmissaoInicial").toString()) : null;
+			LocalDate dtEmissaoFinal = map.get("dtEmissaoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoFinal").toString()) ? DataUtil.parserData(map.get("dtEmissaoFinal").toString()) : null;
+			LocalDate dtVctoInicial = map.get("dtVctoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoInicial").toString()) ? DataUtil.parserData(map.get("dtVctoInicial").toString()) : null;
+			LocalDate dtVctoFinal = map.get("dtVctoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoFinal").toString()) ? DataUtil.parserData(map.get("dtVctoFinal").toString()) : null;
 			List<Boleto> list = new ArrayList<>();
 			
-			if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria != null && idSituacao != null) {
-				list = dao.pesquisar(nome, idCategoria, idSituacao);
+			if (StringUtil.stringNaoNulaENaoVazia(nome) || idCategoria != null || idSituacao != null 
+					|| dtEmissaoInicial != null || dtEmissaoFinal != null || dtVctoInicial != null || dtVctoFinal != null) {
 				
-			} else if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria != null && idSituacao == null) {
-				list = dao.pesquisarNomeClassificacao(nome, idCategoria);
+				if (dtEmissaoInicial != null && dtEmissaoFinal != null && dtEmissaoInicial.isAfter(dtEmissaoFinal)) {
+					throw new ValidacaoException("A data de emissão inicial não pode ser posterior à data de emissão final");
+				}
 				
-			} else if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria == null && idSituacao != null) {
-				list = dao.pesquisarNomeSituacao(nome, idSituacao);
+				if (dtVctoInicial != null && dtVctoFinal != null && dtVctoInicial.isAfter(dtVctoFinal)) {
+					throw new ValidacaoException("A data de vencimento inicial não pode ser posterior à data de vencimento final");
+				}
 				
-			} else if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria == null && idSituacao == null) {
-				list = dao.pesquisarNome(nome);
-				
-			} else if (StringUtil.stringNulaOuVazia(nome) && idCategoria != null && idSituacao != null) {
-				list = dao.pesquisar(idCategoria, idSituacao);
-				
-			} else if (StringUtil.stringNulaOuVazia(nome) && idCategoria != null && idSituacao == null) {
-				list = dao.pesquisarClassificacao(idCategoria);
-				
-			} else if (StringUtil.stringNulaOuVazia(nome) && idCategoria == null && idSituacao != null) {
-				list = dao.pesquisarSituacao(idSituacao);
+				list = dao.pesquisar(nome, idCategoria, idSituacao, dtEmissaoInicial, dtEmissaoFinal, dtVctoInicial, dtVctoFinal, ordenacao, campoOrdenacao);
 			}
 			
 			response = new ResponseEntity(list, HttpStatus.OK);

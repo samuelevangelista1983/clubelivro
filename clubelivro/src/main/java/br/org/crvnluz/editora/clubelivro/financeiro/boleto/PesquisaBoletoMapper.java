@@ -11,7 +11,7 @@ import br.org.crvnluz.editora.clubelivro.configuracao.classificacao.Classificaca
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 
-public class FiltroBoletoMapper implements RowMapper<Boleto> {
+public class PesquisaBoletoMapper implements RowMapper<Boleto> {
 
 	@Override
 	public Boleto mapRow(ResultSet rs, int rowNum) throws SQLException {

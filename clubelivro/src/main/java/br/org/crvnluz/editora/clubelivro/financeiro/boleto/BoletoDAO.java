@@ -1,5 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.financeiro.boleto;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,15 +9,16 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.BaseDAO;
 
 @Repository
 public class BoletoDAO extends BaseDAO<Boleto> {
 	
-	private FiltroBoletoMapper filtroBoletoMapper;
+	private PesquisaBoletoMapper pesquisaBoletoMapper;
 	
 	public BoletoDAO() {
-		filtroBoletoMapper = new FiltroBoletoMapper();
+		pesquisaBoletoMapper = new PesquisaBoletoMapper();
 	}
 	
 	private String getSqlPesquisa() {
@@ -23,7 +26,7 @@ public class BoletoDAO extends BaseDAO<Boleto> {
 		sql.append("from clube_livro_boleto b ");
 		sql.append("inner join clube_livro_integrante i on i.id_pessoa = b.id_sacado ");
 		sql.append("inner join pessoa p on p.id = i.id_pessoa ");
-		sql.append("inner join clube_livro_classificacao c on c.id = i.id_classificacao where ");
+		sql.append("inner join clube_livro_classificacao c on c.id = i.id_classificacao where 1 = 1 ");
 		return sql.toString();
 	}
 	
@@ -57,54 +60,90 @@ public class BoletoDAO extends BaseDAO<Boleto> {
 
 	// MÉTODOS PÚBLICOS
 	
-	public List<Boleto> pesquisar(String nome, Long idClassificacao, Long idSituacao) {
+	public List<Boleto> pesquisar(String nome, String numBoleto) {
+		List<Object> params = new ArrayList<>(2);
 		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("c.id = ? and b.situacao = ? and p.nome like ? order by b.vcto");
-		StringBuilder like = new StringBuilder("%");
-		like.append(nome).append("%");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idClassificacao, idSituacao, like}, filtroBoletoMapper);
+		
+		if (StringUtil.stringNaoNulaENaoVazia(nome)) {
+			sql.append("and p.nome like ? ");
+			params.add(new StringBuilder("%").append(nome).append('%').toString());
+		}
+		
+		if (StringUtil.stringNaoNulaENaoVazia(numBoleto)) {
+			sql.append("and b.numero_beneficiario like ? ");
+			params.add(new StringBuilder("%").append(numBoleto).append('%').toString());
+		}
+		
+		sql.append("order by b.vcto");
+		return jdbcTemplate.query(sql.toString(), params.toArray(), pesquisaBoletoMapper);
 	}
 	
-	public List<Boleto> pesquisar(Long idClassificacao, Long idSituacao) {
+	public List<Boleto> pesquisar(String nome, Long idCategoria, Long idSituacao, LocalDate dtEmissaoInicial, LocalDate dtEmissaoFinal,
+									LocalDate dtVctoInicial, LocalDate dtVctoFinal, Long ordenacao, Long campoOrdenacao) {
+		
+		List<Object> params = new ArrayList<>(9);
 		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("c.id = ? and b.situacao = ? order by b.vcto");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idClassificacao, idSituacao}, filtroBoletoMapper);
+		
+		if (StringUtil.stringNaoNulaENaoVazia(nome)) {
+			sql.append("and p.nome like ? ");
+			params.add(new StringBuilder("%").append(nome).append('%').toString());
+		}
+		
+		if (idCategoria != null) {
+			sql.append("and i.id_classificacao = ? ");
+			params.add(idCategoria);
+		}
+		
+		if (idSituacao != null) {
+			sql.append("and b.situacao = ? ");
+			params.add(idSituacao);
+		}
+		
+		if (dtEmissaoInicial != null && dtEmissaoFinal != null) {
+			sql.append("and b.emissao between ? and ? ");
+			params.add(dtEmissaoInicial.toString());
+			params.add(dtEmissaoFinal.toString());
+			
+		} else if (dtEmissaoInicial != null && dtEmissaoFinal == null) {
+			sql.append("and b.emissao >= ? ");
+			params.add(dtEmissaoInicial.toString());
+			
+		} else if (dtEmissaoInicial == null && dtEmissaoFinal != null) {
+			sql.append("and b.emissao <= ? ");
+			params.add(dtEmissaoFinal.toString());
+		}
+		
+		if (dtVctoInicial != null && dtVctoFinal != null) {
+			sql.append("and b.vcto between ? and ? ");
+			params.add(dtVctoInicial.toString());
+			params.add(dtVctoFinal.toString());
+			
+		} else if (dtVctoInicial != null && dtVctoFinal == null) {
+			sql.append("and b.vcto >= ? ");
+			params.add(dtVctoInicial.toString());
+			
+		} else if (dtVctoInicial == null && dtVctoFinal != null) {
+			sql.append("and b.vcto <= ? ");
+			params.add(dtVctoFinal.toString());
+		}
+		
+		if (campoOrdenacao == 0) {
+			sql.append("order by p.nome ");
+			
+		} else if (campoOrdenacao == 1) {
+			sql.append("order by b.numero_beneficiario ");
+			
+		} else if (campoOrdenacao == 2) {
+			sql.append("order by b.emissao ");
+			
+		} else if (campoOrdenacao == 3) {
+			sql.append("order by b.vcto ");
+		}
+		
+		if (ordenacao == 1) {
+			sql.append("desc");
+		}
+		
+		return jdbcTemplate.query(sql.toString(), params.toArray(), pesquisaBoletoMapper);
 	}
-	
-	public List<Boleto> pesquisarNomeClassificacao(String nome, Long idClassificacao) {
-		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("c.id = ? and p.nome like ? order by b.vcto");
-		StringBuilder like = new StringBuilder("%");
-		like.append(nome).append("%");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idClassificacao, like}, filtroBoletoMapper);
-	}
-	
-	public List<Boleto> pesquisarNomeSituacao(String nome, Long idSituacao) {
-		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("b.situacao = ? and p.nome like ? order by b.vcto");
-		StringBuilder like = new StringBuilder("%");
-		like.append(nome).append("%");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idSituacao, like}, filtroBoletoMapper);
-	}
-	
-	public List<Boleto> pesquisarNome(String nome) {
-		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("p.nome like ? order by b.vcto");
-		StringBuilder like = new StringBuilder("%");
-		like.append(nome).append("%");
-		return jdbcTemplate.query(sql.toString(), new Object[] {like}, filtroBoletoMapper);
-	}
-
-	public List<Boleto> pesquisarClassificacao(Long idClassificacao) {
-		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("c.id = ? order by b.vcto");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idClassificacao}, filtroBoletoMapper);
-	}
-
-	public List<Boleto> pesquisarSituacao(Long idSituacao) {
-		StringBuilder sql = new StringBuilder(getSqlPesquisa());
-		sql.append("b.situacao = ? order by b.vcto");
-		return jdbcTemplate.query(sql.toString(), new Object[] {idSituacao}, filtroBoletoMapper);
-	}
-	
 }

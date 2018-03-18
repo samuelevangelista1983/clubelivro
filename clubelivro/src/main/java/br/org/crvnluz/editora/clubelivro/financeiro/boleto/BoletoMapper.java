@@ -18,8 +18,8 @@ public class BoletoMapper implements RowMapper<Boleto> {
 		Boleto boleto = new Boleto();
 		boleto.setId(rs.getLong("id"));
 		Integrante integrante = new Integrante();
-		integrante.setId(rs.getLong("id_integrante"));
-		integrante.setClassificacao(new Classificacao(rs.getLong("id_classificacao"), rs.getString("classificacao")));
+		integrante.setId(rs.getLong("id_sacado"));
+		//integrante.setClassificacao(new Classificacao(rs.getLong("id_classificacao"), rs.getString("classificacao")));
 		integrante.setPessoa(new Pessoa(rs.getLong("id_pessoa"), rs.getString("pessoa")));
 		boleto.setSacado(integrante);
 		String vcto = rs.getString("vcto");
@@ -37,7 +37,6 @@ public class BoletoMapper implements RowMapper<Boleto> {
 		boleto.setValorCreditado(rs.getBigDecimal("valor_creditado"));
 		boleto.setValorPago(rs.getBigDecimal("valor_pago"));
 		boleto.setValorTarifa(rs.getBigDecimal("valor_tarifa"));
-		
 		return boleto;
 	}
 
