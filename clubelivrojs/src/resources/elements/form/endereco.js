@@ -77,5 +77,5 @@ export class Endereco {
       this.dialog.open({viewModel:'util/dialog', model:{tipo:'alerta', msg:'É preciso informar um CEP'}});
     }
   }
-
+  
 }

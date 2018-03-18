@@ -5,22 +5,11 @@
   </div>
   <form>
     <div class="form-group row">
-      <div class="col-sm-3">
+      <div class="col-sm-5">
         <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.nome" placeholder="Digite um nome para pesquisa">
       </div>
-      <label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
-      <div>
-        <select id="categoria" class="form-control" value.bind="pesquisa.categoria">
-          <option></option>
-          <option repeat.for="categoria of categorias" model.bind="categoria.id">${categoria.nome}</option>
-        </select>
-      </div>
-      <label for="situacao" class="col-sm-1 col-form-label">Situação</label>
-      <div>
-        <select id="situacao" class="form-control" value.bind="pesquisa.situacao">
-          <option></option>
-          <option repeat.for="situacao of situacoes" model.bind="situacao.id">${situacao.nome}</option>
-        </select>
+      <div class="col-sm">
+        <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.numBoleto" placeholder="Digite um número de boleto para pesquisa">
       </div>
       <div class="col-sm">
         <button type="button" class="btn btn-secondary" click.delegate="onClickLimpar()">
@@ -31,9 +20,134 @@
           <span class="icon-filter"></span>
           <span>Filtrar</span>
         </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaAvancada">
+          <span class="icon-filter"></span>
+          <span>Avançado</span>
+        </button>
       </div>
     </div>
   </form>
+
+  <div class="modal fade" id="buscaAvancada" tabindex="-1" role="dialog" aria-labelledby="buscaAvancadaTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Filtro avançado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label for="nome">Sacado</label>
+                <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisaAvancada.nome">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label for="categoria">Categoria</label>
+                <select id="categoria" class="form-control" value.bind="pesquisaAvancada.categoria">
+                  <option></option>
+                  <option repeat.for="categoria of categorias" model.bind="categoria.id">${categoria.nome}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm">
+              <div>
+                <label for="situacao">Situação</label>
+                <select id="situacao" class="form-control" value.bind="pesquisaAvancada.situacao">
+                  <option></option>
+                  <option repeat.for="situacao of situacoes" model.bind="situacao.id">${situacao.nome}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <fieldset class="borda">
+                <legend class="texto-pequeno">Data de emissão</legend>
+                <div class="form-row">
+                  <div class="form-group col-sm">
+                    <div>
+                      <label for="inicial">Inicial</label>
+                      <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="pesquisaAvancada.dtEmissaoInicial | dateconverter"
+                        pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+                    </div>
+                  </div>
+                  <div class="form-group col-sm">
+                    <div>
+                      <label for="final">Final</label>
+                      <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="pesquisaAvancada.dtEmissaoFinal | dateconverter"
+                        pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+                      </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group col-sm">
+              <fieldset class="borda">
+                <legend class="texto-pequeno">Data de vencimento</legend>
+                <div class="form-row">
+                  <div class="form-group col-sm">
+                    <div>
+                      <label for="inicial">Inicial</label>
+                      <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="pesquisaAvancada.dtVctoInicial | dateconverter"
+                        pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+                    </div>
+                  </div>
+                  <div class="form-group col-sm">
+                    <div>
+                      <label for="final">Final</label>
+                      <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="pesquisaAvancada.dtVctoFinal | dateconverter"
+                        pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+                      </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <fieldset class="borda">
+            <legend class="texto-pequeno">Ordenação</legend>
+            <div class="form-row">
+              <div class="form-group col-sm">
+                <div>
+                  <label for="categoria">Tipo</label>
+                  <select id="categoria" class="form-control" value.bind="pesquisaAvancada.tipoOrdenacao">
+                    <option></option>
+                    <option repeat.for="tipo of tipos" model.bind="tipo.id">${tipo.nome}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-sm">
+                <div>
+                  <label for="categoria">Campo de ordenação</label>
+                  <select id="categoria" class="form-control" value.bind="pesquisaAvancada.campoOrdenacao">
+                    <option></option>
+                    <option repeat.for="campo of campos" model.bind="campo.id">${campo.nome}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <span class="icon-reply"></span>
+            <span>Cancelar</span>
+          </button>
+          <button type="button" class="btn btn-primary" click.delegate="onClickPesquisarFiltroAvancado()">
+            <span class="icon-filter"></span>
+            <span>Filtrar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="table-responsive" show.bind="boletos.length > 0">
     <table class="table table-hover">
       <thead>

@@ -31,6 +31,11 @@
   color: #5e5b5c;
 }
 
+.texto-pequeno {
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .botao {
   background-color: #f58634;
   color: #5e5b5c;
