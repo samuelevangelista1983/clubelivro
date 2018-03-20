@@ -10,7 +10,6 @@ export class Integrantes {
   categorias = [];
   pesquisa = {};
   mensagem = '';
-  incluido = false;
   carregando = false;
 
   constructor(httpClient, router) {
@@ -29,10 +28,6 @@ export class Integrantes {
         this.categorias = JSON.parse(data.response);
         this.carregando = false;
       });
-    
-    if (params && params.incluido) {
-      this.incluido = true;
-    }
   }
 
   initConfig() {

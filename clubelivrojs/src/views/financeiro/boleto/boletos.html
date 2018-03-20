@@ -168,7 +168,7 @@
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.numeroBanco}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.valorNominalStr}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.valorPagoStr}</td>
-          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.vctoStr}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.vcto | dateconverter}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 0">Aberto</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 1">Baixado</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 2">Baixado manualmente</td>

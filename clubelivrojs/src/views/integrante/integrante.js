@@ -17,7 +17,6 @@ export class Integrante {
   frequencias = [];
   enderecos = [];
   poderemoverendereco = false;
-  mensagem = '';
   carregando = false;
 
   constructor(httpClient, router, dialog) {
@@ -245,9 +244,8 @@ export class Integrante {
     this.http.post('/integrantes', JSON.stringify(this.entidade))
       .then(data => {
         this.initConfig();
-        this.mensagem = '';
         this.carregando = false;
-        this.router.navigateToRoute('integrantes', {incluido: true});
+        this.router.navigateToRoute('integrantes');
         this.dialog.open({viewModel:'util/dialog', model:{tipo:'sucesso', msg:'Integrante do Clube do Livro incluído com sucesso'}});
       })
       .catch(error => {
@@ -261,12 +259,16 @@ export class Integrante {
 
     if (this.entidade.dtCadastro.year) {
       let data = this.entidade.dtCadastro;
-      this.entidade.dtCadastro = moment(data.year + '-' + data.monthValue + '-' + data.dayOfMonth).format('DD/MM/YYYY');
+      let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
+      let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
+      this.entidade.dtCadastro = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
     }
     
     if (this.entidade.pessoa.nascimento != undefined && this.entidade.pessoa.nascimento.year) {
       let data = this.entidade.pessoa.nascimento;
-      this.entidade.pessoa.nascimento = moment(data.year + '-' + data.monthValue + '-' + data.dayOfMonth).format('DD/MM/YYYY');
+      let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
+      let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
+      this.entidade.pessoa.nascimento = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
 
     } else if (this.entidade.pessoa.nascimento != undefined && this.entidade.pessoa.nascimento == '') {
       this.entidade.pessoa.nascimento = null;

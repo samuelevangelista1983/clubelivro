@@ -7,7 +7,9 @@ export class DateconverterValueConverter {
       moment.locale('pt-BR');
 
       if (value.year) {
-        value = moment(value.year + '-' + value.monthValue + '-' + value.dayOfMonth).format('DD/MM/YYYY');
+        let mes = value.monthValue < 10 ? '0' + value.monthValue : value.monthValue;
+        let dia = value.dayOfMonth < 10 ? '0' + value.dayOfMonth : value.dayOfMonth;
+        value = moment(value.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
 
       } else if (value.length == 8 && value.search('/') == -1) {
         value = moment(value).format('DD/MM/YYYY');
