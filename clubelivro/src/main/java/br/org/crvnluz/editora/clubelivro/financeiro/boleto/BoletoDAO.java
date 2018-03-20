@@ -38,7 +38,7 @@ public class BoletoDAO extends BaseDAO<Boleto> {
 	@Override
 	protected Map<String, String> getMapCamposValores(Boleto boleto) {
 		Map<String, String> map = new HashMap<>();
-		map.put("id_pessoa", boleto.getSacado().getPessoa().getId().toString());
+		map.put("id_sacado", boleto.getSacado().getPessoa().getId().toString());
 		map.put("numero_banco", boleto.getNumeroBanco());
 		map.put("numero_beneficiario", boleto.getNumeroBeneficiario());
 		map.put("emissao", boleto.getEmissao().toString());
@@ -74,7 +74,7 @@ public class BoletoDAO extends BaseDAO<Boleto> {
 			params.add(new StringBuilder("%").append(numBoleto).append('%').toString());
 		}
 		
-		sql.append("order by b.vcto");
+		sql.append("order by b.vcto, p.nome");
 		return jdbcTemplate.query(sql.toString(), params.toArray(), pesquisaBoletoMapper);
 	}
 	
@@ -146,4 +146,12 @@ public class BoletoDAO extends BaseDAO<Boleto> {
 		
 		return jdbcTemplate.query(sql.toString(), params.toArray(), pesquisaBoletoMapper);
 	}
+	
+	@Override
+	public Boleto selectById(Long id) {
+		StringBuilder sql = new StringBuilder("select p.id as id_pessoa, p.nome as pessoa, b.* from clube_livro_boleto b ");
+		sql.append("inner join clube_livro_integrante i on i.id = b.id_sacado inner join pessoa p on p.id = i.id_pessoa where b.id = ").append(id);
+		return jdbcTemplate.queryForObject(sql.toString(), getMapper());
+	}
+	
 }

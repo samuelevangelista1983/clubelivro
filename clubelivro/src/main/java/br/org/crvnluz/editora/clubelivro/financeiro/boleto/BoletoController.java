@@ -54,11 +54,24 @@ public class BoletoController extends BaseController<Boleto> {
 	
 	@Override
 	protected Boleto salvar(Boleto boleto) {
-		return dao.save(boleto);
+		if (boleto.getId() != null) {
+			dao.update(boleto);
+			
+		} else {
+			dao.save(boleto);
+		}
+		
+		return boleto;
 	}
 	
 	@Override
-	protected void validarAtualizacao(Boleto boleto) {}
+	protected void validarAtualizacao(Boleto boleto) throws ValidacaoException {
+		if (boleto.getId() == null) {
+			throw new ValidacaoException("O boleto informado não possui um id, neste caso deve ser utilizado o método de inclusão");
+		}
+		
+		Boleto.validar(boleto);
+	}
 	
 	@Override
 	protected void validarInclusao(Boleto boleto) {

@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 
+import javax.validation.ValidationException;
+
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
@@ -31,6 +33,60 @@ public class Boleto extends Persistente {
 	}
 	
 	// MÉTODOS PÚBLICOS
+	
+	public static void validar(Boleto boleto) throws ValidationException {
+		LocalDate pgto = boleto.pgto;
+		
+		if (pgto != null && pgto.isBefore(boleto.getEmissao())) {
+			throw new ValidationException("A data de pagamento do boleto não pode ser anterior à data de emissão do mesmo");
+		}
+		
+		BigDecimal zero = new BigDecimal(0);
+		BigDecimal valorPago = boleto.valorPago;
+		
+		if (valorPago != null && valorPago.compareTo(zero) == -1) {
+			throw new ValidationException("O valor pago do boleto não pode ser um valor negativo");
+		}
+		
+		BigDecimal valorTarifa = boleto.valorTarifa;
+		
+		if (valorTarifa != null && valorTarifa.compareTo(zero) == -1) {
+			throw new ValidationException("O valor da tarifa do boleto não pode ser um valor negativo");
+		}
+		
+		BigDecimal valorCreditado = boleto.valorCreditado;
+		
+		if (valorCreditado != null && valorCreditado.compareTo(zero) == -1) {
+			throw new ValidationException("O valor creditado do boleto não pode ser um valor negativo");
+		}
+		
+		if (valorPago != null && valorTarifa != null && valorCreditado != null) {
+			if (valorCreditado.compareTo(valorPago.subtract(valorTarifa)) != 0) {
+				throw new ValidationException("O valor creditado do boleto deve ser igual ao valor do pagamento menos o valor da tarifa do mesmo");
+			}
+			
+		} else if (valorPago != null && valorTarifa == null && valorCreditado != null) {
+			throw new ValidationException("O valor da tarifa do boleto deve ser informado");
+			
+		} else if (valorPago != null && valorTarifa != null && valorCreditado == null) {
+			throw new ValidationException("O valor creditado do boleto deve ser informado");
+			
+		} else if (valorPago == null && valorTarifa != null && valorCreditado != null) {
+			throw new ValidationException("O valor pago do boleto deve ser informado");
+			
+		} else if (valorPago == null && valorTarifa == null && valorCreditado != null) {
+			throw new ValidationException("O valor pago e o valor da tarifa do boleto devem ser informados");
+			
+		} else if (valorPago == null && valorTarifa != null && valorCreditado == null) {
+			throw new ValidationException("O valor pago e o valor creditado do boleto devem ser informados");
+		}
+		
+		LocalDate efetivacaoCredito = boleto.efetivacaoCredito;
+		
+		if (efetivacaoCredito != null && efetivacaoCredito.isBefore(pgto)) {
+			throw new ValidationException("A data de efetivação do crédito do boleto não pode ser anterior à data de pagamento do mesmo");
+		}
+	}
 	
 	@Override
 	public String toString() {
