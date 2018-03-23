@@ -128,7 +128,7 @@ public class Pessoa extends Persistente {
 	
 	public void setNascimento(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			this.nascimento = DataUtil.parserData(data);
+			nascimento = DataUtil.parserData(data);
 		}
 	}
 	

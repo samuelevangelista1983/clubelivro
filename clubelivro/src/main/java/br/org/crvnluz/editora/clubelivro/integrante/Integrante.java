@@ -192,7 +192,7 @@ public class Integrante extends Persistente {
 	
 	public void setDtCadastro(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			this.dtCadastro = DataUtil.parserData(data);
+			dtCadastro = DataUtil.parserData(data);
 		}
 	}
 

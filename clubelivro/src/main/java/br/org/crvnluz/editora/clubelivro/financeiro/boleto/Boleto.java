@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 import javax.validation.ValidationException;
 
+import br.eti.sen.utilitarios.tempo.DataUtil;
+import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
@@ -120,17 +122,7 @@ public class Boleto extends Persistente {
 	public void setNumeroBeneficiario(String numeroBeneficiario) {
 		this.numeroBeneficiario = numeroBeneficiario;
 	}
-/*
-	public String getEmissaoStr() {
-		String valor = null;
-		
-		if (emissao != null) {
-			valor = DataUtil.formatarData(emissao);
-		}
-		
-		return valor;
-	}
-	*/
+	
 	public LocalDate getEmissao() {
 		return emissao;
 	}
@@ -138,17 +130,13 @@ public class Boleto extends Persistente {
 	public void setEmissao(LocalDate emissao) {
 		this.emissao = emissao;
 	}
-/*
-	public String getVctoStr() {
-		String valor = null;
-		
-		if (vcto != null) {
-			valor = DataUtil.formatarData(vcto);
+	
+	public void setEmissao(String data) {
+		if (StringUtil.stringNaoNulaENaoVazia(data)) {
+			emissao = DataUtil.parserData(data);
 		}
-		
-		return valor;
 	}
-*/	
+	
 	public LocalDate getVcto() {
 		return vcto;
 	}
@@ -156,7 +144,13 @@ public class Boleto extends Persistente {
 	public void setVcto(LocalDate vcto) {
 		this.vcto = vcto;
 	}
-
+	
+	public void setVcto(String data) {
+		if (StringUtil.stringNaoNulaENaoVazia(data)) {
+			vcto = DataUtil.parserData(data);
+		}
+	}
+	
 	public String getValorNominalStr() {
 		String valor = null;
 		
@@ -175,17 +169,7 @@ public class Boleto extends Persistente {
 	public void setValorNomimal(BigDecimal valorNomimal) {
 		this.valorNomimal = valorNomimal;
 	}
-/*
-	public String getPgtoStr() {
-		String valor = null;
-		
-		if (pgto != null) {
-			valor = DataUtil.formatarData(pgto);
-		}
-		
-		return valor;
-	}
-	*/
+	
 	public LocalDate getPgto() {
 		return pgto;
 	}
@@ -193,17 +177,13 @@ public class Boleto extends Persistente {
 	public void setPgto(LocalDate pgto) {
 		this.pgto = pgto;
 	}
-/*
-	public String getEfetivacaoCreditoStr() {
-		String valor = null;
-		
-		if (efetivacaoCredito != null) {
-			valor = DataUtil.formatarData(efetivacaoCredito);
+	
+	public void setPgto(String data) {
+		if (StringUtil.stringNaoNulaENaoVazia(data)) {
+			pgto = DataUtil.parserData(data);
 		}
-		
-		return valor;
 	}
-	*/
+	
 	public LocalDate getEfetivacaoCredito() {
 		return efetivacaoCredito;
 	}
@@ -211,7 +191,13 @@ public class Boleto extends Persistente {
 	public void setEfetivacaoCredito(LocalDate efetivacaoCredito) {
 		this.efetivacaoCredito = efetivacaoCredito;
 	}
-
+	
+	public void setEfetivacaoCredito(String data) {
+		if (StringUtil.stringNaoNulaENaoVazia(data)) {
+			efetivacaoCredito = DataUtil.parserData(data);
+		}
+	}
+	
 	public String getValorPagoStr() {
 		String valor = null;
 		

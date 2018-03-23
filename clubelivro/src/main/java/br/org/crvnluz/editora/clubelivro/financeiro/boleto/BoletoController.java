@@ -83,7 +83,9 @@ public class BoletoController extends BaseController<Boleto> {
 	@PostMapping("/boletos")
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public ResponseEntity<Serializable> adicionarBoleto(@RequestBody Boleto boleto) {
-		return criarOuAtualizar(boleto);
+		
+		throw new UnsupportedOperationException();
+		//return criarOuAtualizar(boleto);
 	}
 	
 	@PutMapping("/boletos")
