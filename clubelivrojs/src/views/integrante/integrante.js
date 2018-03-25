@@ -2,10 +2,10 @@ import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import environment from 'environment';
 import {Router} from 'aurelia-router';
-import moment from 'moment';
 import {DialogService} from 'aurelia-dialog';
+import {DateUtil} from 'util/dateutil';
 
-@inject(HttpClient, Router, DialogService)
+@inject(HttpClient, Router, DialogService, DateUtil)
 export class Integrante {
   
   entidade = {};
@@ -19,9 +19,10 @@ export class Integrante {
   poderemoverendereco = false;
   carregando = false;
 
-  constructor(httpClient, router, dialog) {
+  constructor(httpClient, router, dialog, dateutil) {
     this.router = router;
     this.dialog = dialog;
+    this.dateutil = dateutil;
     this.http = httpClient;
     this.http.configure((x) => {
       x.withBaseUrl(environment.endpoint)
@@ -173,7 +174,23 @@ export class Integrante {
     this.entidade.pessoa.documentos = [];
     this.entidade.pessoa.enderecos = [];
     this.entidade.pessoa.documentos.push(this.entidade.documento);
+    this.preencherContatos();
+    this.verificarPreenchimentoEnderecos();
+    this.preencherEnderecos();
+    this.http.post('/integrantes', JSON.stringify(this.entidade))
+      .then(data => {
+        this.initConfig();
+        this.carregando = false;
+        this.router.navigateToRoute('integrantes');
+        this.dialog.open({viewModel:'util/dialog', model:{tipo:'sucesso', msg:'Integrante do Clube do Livro incluído com sucesso'}});
+      })
+      .catch(error => {
+        this.carregando = false;
+        this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg: error.response}});
+      });
+  }
 
+  preencherContatos() {
     for (let tel of this.tels) {
       if (tel.numero != null && tel.numero != '') {
         this.entidade.pessoa.contatos.push({id: tel.id, idTipo: 1, observacao: tel.obs, valor: tel.numero});
@@ -195,7 +212,9 @@ export class Integrante {
         this.entidade.pessoa.contatos.push({id: email.id, idTipo: 4, observacao: email.obs, valor: email.mail});
       }
     }
+  }
 
+  preencherEnderecos() {
     for (let endereco of this.enderecos) {
       this.entidade.pessoa.enderecos.push({
         id: endereco.id,
@@ -240,35 +259,27 @@ export class Integrante {
         };
       }
     }
-    
-    this.http.post('/integrantes', JSON.stringify(this.entidade))
-      .then(data => {
-        this.initConfig();
-        this.carregando = false;
-        this.router.navigateToRoute('integrantes');
-        this.dialog.open({viewModel:'util/dialog', model:{tipo:'sucesso', msg:'Integrante do Clube do Livro incluído com sucesso'}});
-      })
-      .catch(error => {
-        this.carregando = false;
-        this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg: error.response}});
-      });
+  }
+
+  verificarPreenchimentoEnderecos() {
+    if (this.enderecos.length == 1) {
+      let endereco = this.enderecos[0];
+      
+      if (endereco.id == undefined && endereco.idTipo == '' && endereco.cep == undefined && endereco.logradouro == undefined
+          && endereco.numero == undefined && endereco.complemento == undefined && endereco.bairro == undefined 
+          && endereco.municipio == undefined && endereco.uf == '') {
+            this.enderecos = [];
+          }
+    }
   }
 
   configurarDatas() {
-    moment.locale('pt-BR');
-
     if (this.entidade.dtCadastro.year) {
-      let data = this.entidade.dtCadastro;
-      let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-      let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-      this.entidade.dtCadastro = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
+      this.entidade.dtCadastro = this.dateutil.formatarData(this.entidade.dtCadastro);
     }
     
     if (this.entidade.pessoa.nascimento != undefined && this.entidade.pessoa.nascimento.year) {
-      let data = this.entidade.pessoa.nascimento;
-      let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-      let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-      this.entidade.pessoa.nascimento = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
+      this.entidade.pessoa.nascimento = this.dateutil.formatarData(this.entidade.pessoa.nascimento);
 
     } else if (this.entidade.pessoa.nascimento != undefined && this.entidade.pessoa.nascimento == '') {
       this.entidade.pessoa.nascimento = null;

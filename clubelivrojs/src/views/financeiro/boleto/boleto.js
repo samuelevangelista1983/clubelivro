@@ -3,17 +3,20 @@ import {HttpClient} from 'aurelia-http-client';
 import environment from 'environment';
 import {Router} from 'aurelia-router';
 import {DialogService} from 'aurelia-dialog';
-import moment from 'moment';
+import {DateUtil} from 'util/dateutil';
+import {NumberUtil} from 'util/numberutil';
 
-@inject(HttpClient, Router, DialogService)
+@inject(HttpClient, Router, DialogService, DateUtil, NumberUtil)
 export class Boleto {
   
   boleto = {};
   carregando = false;
 
-  constructor(httpClient, router, dialog) {
+  constructor(httpClient, router, dialog, dateutil, numberutil) {
     this.router = router;
     this.dialog = dialog;
+    this.dateutil = dateutil;
+    this.numberutil = numberutil;
     this.http = httpClient;
     this.http.configure((x) => {
       x.withBaseUrl(environment.endpoint)
@@ -45,14 +48,38 @@ export class Boleto {
     this.boleto = {};
   }
 
+  onBlurValorCreditado() {
+    this.boleto.valorCreditadoStr = this.numberutil.formatarMoeda(this.boleto.valorCreditadoStr);
+  }
+
+  onBlurValorPgto() {
+    this.boleto.valorPagoStr = this.numberutil.formatarMoeda(this.boleto.valorPagoStr);
+/*
+    if (this.boleto.valorTarifaStr == undefined || this.boleto.valorTarifaStr == '') {
+      this.boleto.valorTarifaStr = this.numberutil.formatarMoeda('0');
+      this.boleto.valorCreditadoStr = this.boleto.valorPagoStr;
+
+    } else if (this.boleto.valorTarifaStr == 'R$ 0,00') {
+      this.boleto.valorCreditadoStr = this.boleto.valorPagoStr;
+
+    } else {
+      let pgto = this.numberutil.parseNumero(this.boleto.valorPagoStr);
+      let tarifa = this.numberutil.parseNumero(this.boleto.valorTarifaStr);
+      this.boleto.valorCreditadoStr = this.numberutil.formatarMoeda(pgto - tarifa);
+    }*/
+  }
+
+  onBlurValorTarifa() {
+    this.boleto.valorTarifaStr = this.numberutil.formatarMoeda(this.boleto.valorTarifaStr);
+  }
+
   onClickCancelar() {
     this.router.navigateToRoute('boletos');
   }
 
   onClickSalvar() {
     this.carregando = true;
-    console.log(this.boleto.emissao);
-    //this.configurarDatas();
+    this.configurarDatas();
     this.boleto.situacao = 2;
     this.http.post('/financeiro/boletos', JSON.stringify(this.boleto))
       .then(data => {
@@ -68,32 +95,18 @@ export class Boleto {
   }
 
   configurarDatas() {
-    moment.locale('pt-BR');
-    let data = this.boleto.emissao;
-    let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-    let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-    this.boleto.emissao = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
-    console.log(this.boleto.emissao);
-    data = this.boleto.vcto;
-    mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-    dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-    this.boleto.vcto = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
-
+    this.boleto.emissao = this.dateutil.formatarData(this.boleto.emissao);
+    this.boleto.vcto = this.dateutil.formatarData(this.boleto.vcto);
+    
     if (this.boleto.pgto != undefined && this.boleto.pgto != '') {
-      data = this.boleto.pgto;
-      mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-      dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-      this.boleto.pgto = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
+      this.boleto.pgto = this.dateutil.formatarData(this.boleto.pgto);
       
     } else {
       this.boleto.pgto = null;
     }
 
     if (this.boleto.efetivacaoCredito != undefined && this.boleto.efetivacaoCredito != '') {
-      data = this.boleto.efetivacaoCredito;
-      mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
-      dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
-      this.boleto.efetivacaoCredito = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');
+      this.boleto.efetivacaoCredito = this.dateutil.formatarData(this.boleto.efetivacaoCredito);
       
     } else {
       this.boleto.efetivacaoCredito = null;
