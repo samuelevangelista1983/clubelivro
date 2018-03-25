@@ -2,6 +2,7 @@ package br.org.crvnluz.editora.clubelivro.financeiro.boleto;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 
 import javax.validation.ValidationException;
@@ -14,6 +15,8 @@ import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 public class Boleto extends Persistente {
 	
 	private static final long serialVersionUID = -2848569869141842785L;
+	
+	private final NumberFormat format;
 	
 	private Integrante sacado;
 	private String numeroBanco;
@@ -31,6 +34,7 @@ public class Boleto extends Persistente {
 	// CONSTRUTORES PÚBLICOS
 	
 	public Boleto() {
+		format = NumberFormat.getCurrencyInstance();
 		situacao = 0;
 	}
 	
@@ -39,12 +43,21 @@ public class Boleto extends Persistente {
 	public static void validar(Boleto boleto) throws ValidationException {
 		LocalDate pgto = boleto.pgto;
 		
-		if (pgto != null && pgto.isBefore(boleto.getEmissao())) {
+		if (pgto == null) {
+			throw new ValidationException("A data de pagamento do boleto deve ser informada");
+		}
+		
+		if (pgto.isBefore(boleto.getEmissao())) {
 			throw new ValidationException("A data de pagamento do boleto não pode ser anterior à data de emissão do mesmo");
 		}
 		
-		BigDecimal zero = new BigDecimal(0);
 		BigDecimal valorPago = boleto.valorPago;
+		
+		if (valorPago == null) {
+			throw new ValidationException("O valor pago do boleto deve ser informado");
+		}
+		
+		BigDecimal zero = new BigDecimal(0);
 		
 		if (valorPago != null && valorPago.compareTo(zero) == -1) {
 			throw new ValidationException("O valor pago do boleto não pode ser um valor negativo");
@@ -62,25 +75,16 @@ public class Boleto extends Persistente {
 			throw new ValidationException("O valor creditado do boleto não pode ser um valor negativo");
 		}
 		
-		if (valorPago != null && valorTarifa != null && valorCreditado != null) {
+		if (valorTarifa != null && valorCreditado != null) {
 			if (valorCreditado.compareTo(valorPago.subtract(valorTarifa)) != 0) {
 				throw new ValidationException("O valor creditado do boleto deve ser igual ao valor do pagamento menos o valor da tarifa do mesmo");
 			}
 			
-		} else if (valorPago != null && valorTarifa == null && valorCreditado != null) {
+		} else if (valorTarifa == null && valorCreditado != null) {
 			throw new ValidationException("O valor da tarifa do boleto deve ser informado");
 			
-		} else if (valorPago != null && valorTarifa != null && valorCreditado == null) {
+		} else if (valorTarifa != null && valorCreditado == null) {
 			throw new ValidationException("O valor creditado do boleto deve ser informado");
-			
-		} else if (valorPago == null && valorTarifa != null && valorCreditado != null) {
-			throw new ValidationException("O valor pago do boleto deve ser informado");
-			
-		} else if (valorPago == null && valorTarifa == null && valorCreditado != null) {
-			throw new ValidationException("O valor pago e o valor da tarifa do boleto devem ser informados");
-			
-		} else if (valorPago == null && valorTarifa != null && valorCreditado == null) {
-			throw new ValidationException("O valor pago e o valor creditado do boleto devem ser informados");
 		}
 		
 		LocalDate efetivacaoCredito = boleto.efetivacaoCredito;
@@ -155,7 +159,6 @@ public class Boleto extends Persistente {
 		String valor = null;
 		
 		if (valorNomimal != null) {
-			NumberFormat format = NumberFormat.getCurrencyInstance();
 			valor = format.format(valorNomimal.doubleValue());
 		}
 		
@@ -202,7 +205,6 @@ public class Boleto extends Persistente {
 		String valor = null;
 		
 		if (valorPago != null) {
-			NumberFormat format = NumberFormat.getCurrencyInstance();
 			valor = format.format(valorPago.doubleValue());
 		} 
 		
@@ -216,12 +218,17 @@ public class Boleto extends Persistente {
 	public void setValorPago(BigDecimal valorPago) {
 		this.valorPago = valorPago;
 	}
-
+	
+	public void setValorPagoStr(String valor) throws ParseException {
+		if (StringUtil.stringNaoNulaENaoVazia(valor)) {
+			valorPago = new BigDecimal(format.parse(valor).doubleValue());
+		}
+	}
+	
 	public String getValorTarifaStr() {
 		String valor = null;
 		
 		if (valorTarifa != null) {
-			NumberFormat format = NumberFormat.getCurrencyInstance();
 			valor = format.format(valorTarifa.doubleValue());
 		}
 		
@@ -235,12 +242,17 @@ public class Boleto extends Persistente {
 	public void setValorTarifa(BigDecimal valorTarifa) {
 		this.valorTarifa = valorTarifa;
 	}
-
+	
+	public void setValorTarifaStr(String valor) throws ParseException {
+		if (StringUtil.stringNaoNulaENaoVazia(valor)) {
+			valorTarifa = new BigDecimal(format.parse(valor).doubleValue());
+		}
+	}
+	
 	public String getValorCreditadoStr() {
 		String valor = null;
 		
 		if (valorCreditado != null) {
-			NumberFormat format = NumberFormat.getCurrencyInstance();
 			valor = format.format(valorCreditado.doubleValue());
 		}
 		
@@ -251,6 +263,12 @@ public class Boleto extends Persistente {
 		return valorCreditado;
 	}
 
+	public void setValorCreditadoStr(String valor) throws ParseException {
+		if (StringUtil.stringNaoNulaENaoVazia(valor)) {
+			valorCreditado = new BigDecimal(format.parse(valor).doubleValue());
+		}
+	}
+	
 	public void setValorCreditado(BigDecimal valorCreditado) {
 		this.valorCreditado = valorCreditado;
 	}

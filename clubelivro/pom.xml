@@ -4,7 +4,7 @@
 
 	<groupId>br.org.crvnluz.editora</groupId>
 	<artifactId>clubelivro</artifactId>
-	<version>0.8</version>
+	<version>0.9</version>
 	<name>Clube do Livro</name>
 
 	<properties>
