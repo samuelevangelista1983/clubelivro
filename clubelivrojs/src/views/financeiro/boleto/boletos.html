@@ -152,18 +152,16 @@
     <table class="table table-hover">
       <thead>
         <th>Nome</th>
-        <th>Categoria</th>
         <th>N&ordm; boleto</th>
         <th>N&ordm; banco</th>
         <th>Valor</th>
         <th>Valor pago</th>
-        <th>Vcto</th>
+        <th>Vencimento</th>
         <th>Situação</th>
       </thead>
       <tbody>
         <tr repeat.for="item of boletos">
-          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.sacado.pessoa.nome}</td>
-          <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.sacado.classificacao.nome}</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="${item.sacado.classificacao.nome}">${item.sacado.pessoa.nome}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.numeroBeneficiario}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.numeroBanco}</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)">${item.valorNominalStr}</td>

@@ -1,5 +1,6 @@
 export function configure(config) {
   config.globalResources([
+    'resources/attributes/bootstraptooltip',
     'resources/elements/form/endereco',
     'resources/elements/form/inputcel',
     'resources/elements/form/inputcpf',
