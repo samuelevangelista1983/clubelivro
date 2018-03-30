@@ -3,8 +3,6 @@ package br.org.crvnluz.editora.clubelivro.infra.rest;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -32,7 +30,7 @@ public abstract class BaseController<T extends Persistente> {
 			response = new ResponseEntity<>(added, HttpStatus.OK);
 			
 		} catch (Throwable throwable) {
-			throwable.printStackTrace();
+			throwable.printStackTrace(); // TODO adicionar log
 			response = getInternalServerErrorResponse(throwable);
 		}
 		
@@ -58,10 +56,12 @@ public abstract class BaseController<T extends Persistente> {
 		
 		try {
 			T t = get(id);
-			response = new ResponseEntity<>(t, HttpStatus.OK);
 			
-		} catch (EntityNotFoundException ex) {
-			response = getNotFoundResponse();
+			if (t == null) {
+				response = getNotFoundResponse();
+			}
+			
+			response = new ResponseEntity<>(t, HttpStatus.OK);
 			
 		} catch (Throwable throwable) {
 			response = getInternalServerErrorResponse(throwable);

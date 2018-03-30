@@ -32,7 +32,7 @@ public class TipoContatoController extends BaseController<TipoContato> {
 	
 	@Override
 	protected TipoContato get(Long id) throws Exception {
-		return dao.findOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override

@@ -3,7 +3,6 @@ package br.org.crvnluz.editora.clubelivro.financeiro.mensalidade;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,36 +13,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.crvnluz.editora.clubelivro.financeiro.mensalidade.Mensalidade;
 import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
 
 @RestController
 @RequestMapping("/financeiro")
 public class MensalidadeController extends BaseController<Mensalidade> {
 	
-	@Autowired
-	private MensalidadeDAO dao;
 	
 	// MÉTODOS PROTEGIDOS
 	
 	@Override
 	protected void apagar(Long id) {
-		dao.delete(id);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected Mensalidade get(Long id) throws Exception {
-		return dao.getOne(id);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected List<Mensalidade> listar() throws Exception {
-		return dao.findAll();
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected Mensalidade salvar(Mensalidade mensalidade) {
-		return dao.save(mensalidade);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override

@@ -1,42 +1,16 @@
 package br.org.crvnluz.editora.clubelivro.configuracao.endereco;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 
-@Entity
-@Table(name = "tipo_endereco")
 public class TipoEndereco extends Persistente {
 	
 	private static final long serialVersionUID = -7421661452736520471L;
 	
-	@Column(nullable = false)
 	private String nome;
-	@Column(nullable = false)
-	private String ativo;
-	
-	// CONSTRUTORES PÚBLICOS
-	
-	public TipoEndereco() {}
-	
-	public TipoEndereco(Long id,String nome, String ativo) {
-		super(id);
-		this.nome = nome;
-		this.ativo = ativo;
-	}
+	private Boolean ativo;
 	
 	// MÉTODOS PÚBLICOS
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		return new TipoEndereco(id, nome, ativo);
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -70,13 +44,6 @@ public class TipoEndereco extends Persistente {
 		return "TipoEndereco [nome=" + nome + ", ativo=" + ativo + ", id=" + id + "]";
 	}
 	
-	@Override
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-	
 	public String getNome() {
 		return nome;
 	}
@@ -85,11 +52,11 @@ public class TipoEndereco extends Persistente {
 		this.nome = nome;
 	}
 	
-	public String getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 	
-	public void setAtivo(String ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 

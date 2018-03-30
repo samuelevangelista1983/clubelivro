@@ -32,7 +32,7 @@ public class TipoEnderecoController extends BaseController<TipoEndereco> {
 	
 	@Override
 	protected TipoEndereco get(Long id) throws Exception {
-		return dao.getOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override

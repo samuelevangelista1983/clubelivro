@@ -32,7 +32,7 @@ public class FormaEntregaController extends BaseController<FormaEntrega> {
 	
 	@Override
 	protected FormaEntrega get(Long id) throws Exception {
-		return dao.getOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override

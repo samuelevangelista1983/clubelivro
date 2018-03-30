@@ -3,7 +3,6 @@ package br.org.crvnluz.editora.clubelivro.financeiro.pagamento;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,36 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.crvnluz.editora.clubelivro.financeiro.pagamento.Pagamento;
 import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
 
 @RestController
 @RequestMapping("/financeiro")
 public class PagamentoController extends BaseController<Pagamento> {
 	
-	@Autowired
-	private PagamentoDAO dao;
-	
 	// MÉTODOS PROTEGIDOS
 	
 	@Override
 	protected void apagar(Long id) {
-		dao.delete(id);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected Pagamento get(Long id) throws Exception {
-		return dao.getOne(id);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected List<Pagamento> listar() throws Exception {
-		return dao.findAll();
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	protected Pagamento salvar(Pagamento pagamento) {
-		return dao.save(pagamento);
+		throw new UnsupportedOperationException();
 	}
 	
 	@Override

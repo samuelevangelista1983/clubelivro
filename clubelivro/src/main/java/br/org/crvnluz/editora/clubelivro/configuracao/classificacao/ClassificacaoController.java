@@ -32,8 +32,7 @@ public class ClassificacaoController extends BaseController<Classificacao> {
 	
 	@Override
 	protected Classificacao get(Long id) throws Exception {
-		Classificacao classificacao = dao.getOne(id);
-		return (Classificacao) classificacao.clone();
+		return dao.selectById(id);
 	}
 	
 	@Override

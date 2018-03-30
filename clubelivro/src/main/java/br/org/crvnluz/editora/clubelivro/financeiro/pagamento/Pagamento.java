@@ -3,38 +3,19 @@ package br.org.crvnluz.editora.clubelivro.financeiro.pagamento;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import br.org.crvnluz.editora.clubelivro.configuracao.formapgto.FormaPgto;
 import br.org.crvnluz.editora.clubelivro.financeiro.boleto.Boleto;
 import br.org.crvnluz.editora.clubelivro.financeiro.mensalidade.Mensalidade;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 
-@Entity
-@Table(name = "clube_livro_pgto")
 public class Pagamento extends Persistente {
 	
 	private static final long serialVersionUID = 8888603465785031583L;
 	
-	@OneToOne
-	@JoinColumn(name = "id_mensalidade", nullable = false)
 	private Mensalidade mensalidade;
-	@Column
 	private LocalDate data;
-	@Column(nullable = false)
 	private BigDecimal valor;
-	@OneToOne
-	@JoinColumn(name = "id_forma_pgto", nullable = false)
 	private FormaPgto formaPgto;
-	@OneToOne
-	@JoinColumn(name = "id_boleto", nullable = false)
 	private Boleto boleto;
 	
 	// CONSTRUTORES PÚBLICOS
@@ -67,8 +48,6 @@ public class Pagamento extends Persistente {
 	}
 	
 	@Override
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}

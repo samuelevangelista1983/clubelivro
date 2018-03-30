@@ -32,7 +32,7 @@ public class TipoDocumentoController extends BaseController<TipoDocumento> {
 	
 	@Override
 	protected TipoDocumento get(Long id) throws Exception {
-		return dao.getOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override

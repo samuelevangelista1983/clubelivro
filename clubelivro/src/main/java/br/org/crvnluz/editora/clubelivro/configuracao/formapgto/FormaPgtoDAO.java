@@ -1,7 +1,39 @@
 package br.org.crvnluz.editora.clubelivro.configuracao.formapgto;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public interface FormaPgtoDAO extends JpaRepository<FormaPgto, Long> {
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import br.org.crvnluz.editora.clubelivro.infra.persistencia.BaseDAO;
+
+@Repository
+public class FormaPgtoDAO extends BaseDAO<FormaPgto> {
+
+	@Override
+	protected RowMapper<FormaPgto> getMapper() {
+		return new FormaPgtoMapper();
+	}
+
+	@Override
+	protected Map<String, String> getMapCamposValores(FormaPgto formaPgto) {
+		Map<String, String> map = new HashMap<>();
+		map.put("nome", formaPgto.getNome());
+		map.put("custo", formaPgto.getCusto().toString());
+		return map;
+	}
+
+	@Override
+	protected String getNomeTabela() {
+		return "clube_livro_forma_pgto";
+	}
+
+	// MÉTODOS PÚBLICOS
+	
+	public List<FormaPgto> findAll() {
+		return selectAll("nome", true);
+	}
 
 }

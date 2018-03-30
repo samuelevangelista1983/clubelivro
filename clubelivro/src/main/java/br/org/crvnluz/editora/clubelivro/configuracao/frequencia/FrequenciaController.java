@@ -32,7 +32,7 @@ public class FrequenciaController extends BaseController<Frequencia> {
 	
 	@Override
 	protected Frequencia get(Long id) throws Exception {
-		return dao.getOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override

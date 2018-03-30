@@ -2,36 +2,18 @@ package br.org.crvnluz.editora.clubelivro.financeiro.mensalidade;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
-@Entity
-@Table(name = "clube_livro_mensalidade")
 public class Mensalidade extends Persistente {
 	
 	private static final long serialVersionUID = -2279537060141334299L;
 	
-	@OneToOne
-	@JoinColumn(name = "id_integrante", nullable = false)
 	private Integrante integrante;
-	@Column(nullable = false)
 	private Integer ano;
-	@Column(nullable = false)
 	private Integer mes;
-	@Column(nullable = false)
 	private BigDecimal valor;
-	@Column(name = "num_pgtos", nullable = false)
 	private Integer numPgtos;
-	@Column(nullable = false)
 	private Integer situacao; // 0 - aberta, 1 - quite
 	
 	// CONSTRUTORES PÚBLICOS
@@ -65,8 +47,6 @@ public class Mensalidade extends Persistente {
 	}
 	
 	@Override
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}

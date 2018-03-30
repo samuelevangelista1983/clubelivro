@@ -32,7 +32,7 @@ public class FormaPgtoController extends BaseController<FormaPgto> {
 	
 	@Override
 	protected FormaPgto get(Long id) throws Exception {
-		return dao.getOne(id);
+		return dao.selectById(id);
 	}
 	
 	@Override
