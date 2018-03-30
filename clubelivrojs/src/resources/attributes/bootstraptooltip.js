@@ -15,7 +15,7 @@ export class BootstraptooltipCustomAttribute {
   }
 
   unbind() {
-    $(this.element).tooltip('destroy');
+    $(this.element).tooltip('hide');
   }
 
   valueChanged(newValue, oldValue) {}
