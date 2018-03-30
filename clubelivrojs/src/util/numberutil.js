@@ -30,9 +30,8 @@ export class NumberUtil {
   }
 
   parseNumero(moeda) {
-    console.log(moeda);
-    let valor = moeda.splice(3);
-    return valor.replace(',', '\\.');
+    let valor = moeda.slice(3);
+    return valor.replace(',', '.');
   }
 
 }

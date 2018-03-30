@@ -48,29 +48,33 @@ export class Boleto {
     this.boleto = {};
   }
 
-  onBlurValorCreditado() {
-    this.boleto.valorCreditadoStr = this.numberutil.formatarMoeda(this.boleto.valorCreditadoStr);
+  calcularValorCreditado() {
+    let valorPago = 0;
+
+    if (this.boleto.valorPagoStr != undefined) {
+      valorPago = this.numberutil.parseNumero(this.boleto.valorPagoStr);
+      let valorTarifa = 0;
+
+      if (this.boleto.valorTarifaStr != undefined) {
+        valorTarifa = this.numberutil.parseNumero(this.boleto.valorTarifaStr);
+      }
+
+      let valorCredito = valorPago - valorTarifa;
+      this.boleto.valorCreditadoStr = this.numberutil.formatarMoeda(valorCredito);
+
+    } else {
+      this.boleto.valorCreditadoStr = null;
+    }
   }
 
   onBlurValorPgto() {
     this.boleto.valorPagoStr = this.numberutil.formatarMoeda(this.boleto.valorPagoStr);
-/*
-    if (this.boleto.valorTarifaStr == undefined || this.boleto.valorTarifaStr == '') {
-      this.boleto.valorTarifaStr = this.numberutil.formatarMoeda('0');
-      this.boleto.valorCreditadoStr = this.boleto.valorPagoStr;
-
-    } else if (this.boleto.valorTarifaStr == 'R$ 0,00') {
-      this.boleto.valorCreditadoStr = this.boleto.valorPagoStr;
-
-    } else {
-      let pgto = this.numberutil.parseNumero(this.boleto.valorPagoStr);
-      let tarifa = this.numberutil.parseNumero(this.boleto.valorTarifaStr);
-      this.boleto.valorCreditadoStr = this.numberutil.formatarMoeda(pgto - tarifa);
-    }*/
+    this.calcularValorCreditado();
   }
 
   onBlurValorTarifa() {
     this.boleto.valorTarifaStr = this.numberutil.formatarMoeda(this.boleto.valorTarifaStr);
+    this.calcularValorCreditado();
   }
 
   onClickCancelar() {
