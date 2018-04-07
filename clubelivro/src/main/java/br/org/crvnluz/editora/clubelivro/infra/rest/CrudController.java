@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 
-public abstract class BaseController<T extends Persistente> {
+public abstract class CrudController<T extends Persistente> extends BaseController {
 	
 	// MÉTODOS PROTEGIDOS
 	
@@ -38,18 +38,6 @@ public abstract class BaseController<T extends Persistente> {
 	}
 	
 	protected abstract T get(Long id) throws Exception;
-	
-	protected ResponseEntity<Serializable> getNotFoundResponse() {
-		return new ResponseEntity<Serializable>("Recurso não encontrado", HttpStatus.NOT_FOUND);
-	}
-	
-	protected ResponseEntity<Serializable> getInternalServerErrorResponse(Throwable t) {
-		return new ResponseEntity<Serializable>(t.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
-	protected ResponseEntity<Serializable> getUnprocessableEntityResponse(String mensagem) {
-		return new ResponseEntity<Serializable>(mensagem, HttpStatus.INTERNAL_SERVER_ERROR);
-	}
 	
 	protected ResponseEntity<Serializable> getRecurso(Long id) {
 		ResponseEntity<Serializable> response;

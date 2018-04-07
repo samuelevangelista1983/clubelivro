@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
-import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
+import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 import br.org.crvnluz.editora.clubelivro.integrante.contato.Contato;
 import br.org.crvnluz.editora.clubelivro.integrante.contato.ContatoDAO;
 import br.org.crvnluz.editora.clubelivro.integrante.documento.Documento;
@@ -35,7 +35,7 @@ import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 import br.org.crvnluz.editora.clubelivro.integrante.pessoa.PessoaDAO;
 
 @RestController
-public class IntegranteController extends BaseController<Integrante> {
+public class IntegranteController extends CrudController<Integrante> {
 	
 	@Autowired
 	private IntegranteDAO dao;

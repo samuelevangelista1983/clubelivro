@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import br.eti.sen.utilitarios.texto.StringUtil;
-import br.org.crvnluz.editora.clubelivro.infra.persistencia.BaseDAO;
+import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 
 @Repository
-public class BoletoDAO extends BaseDAO<Boleto> {
+public class BoletoDAO extends CrudDAO<Boleto> {
 	
 	private PesquisaBoletoMapper pesquisaBoletoMapper;
 	

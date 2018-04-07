@@ -7,11 +7,11 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import br.org.crvnluz.editora.clubelivro.infra.persistencia.BaseDAO;
+import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
 
 @Repository
-public class IntegranteDAO extends BaseDAO<Integrante> {
+public class IntegranteDAO extends CrudDAO<Integrante> {
 	
 	@Override
 	protected Map<String, String> getMapCamposValores(Integrante integrante) {

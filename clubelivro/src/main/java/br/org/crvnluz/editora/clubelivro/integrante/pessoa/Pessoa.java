@@ -2,7 +2,6 @@ package br.org.crvnluz.editora.clubelivro.integrante.pessoa;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
@@ -14,9 +13,10 @@ import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
 
 public class Pessoa extends Persistente {
 	
-	private static final long serialVersionUID = 7319668545026583205L;
+	private static final long serialVersionUID = 7297688793784541994L;
 	
 	private String nome;
+	private String nascimentoStr;
 	private LocalDate nascimento;
 	private List<Contato> contatos;
 	private List<Documento> documentos;
@@ -48,13 +48,16 @@ public class Pessoa extends Persistente {
 			throw new ValidacaoException("Os dados pessoais do integrante do Clube do Livro devem ser informados");
 		}
 		
-		LocalDate nascimento = pessoa.getNascimento();
-		
-		if (nascimento != null) {
-			String data = DataUtil.formatarData(nascimento);
-			String dataPattern = "^(?:(?:31(\\/)(?:0[13578]|1[02]))\\1|(?:(?:30)(\\/)(?:0[1,3-9]|1[0-2])\\2))\\d{4}$|^(?:[0-2]\\d)(\\/)(?:(?:0[1-9])|(?:1[0-2]))\\3\\d{4}$";
+		if (StringUtil.stringNaoNulaENaoVazia(pessoa.nascimentoStr)) {
+			LocalDate nascimento = pessoa.nascimento;
 			
-			if (!Pattern.matches(dataPattern, data)) {
+			if (nascimento == null) {
+				throw new ValidacaoException("A data de nascimento do integrante do Clube do Livro não é válida");
+			}
+			
+			String data = DataUtil.formatarData(nascimento);
+			
+			if (!pessoa.nascimentoStr.equals(data)) {
 				throw new ValidacaoException("A data de nascimento do integrante do Clube do Livro não é válida");
 			}
 			
@@ -63,11 +66,11 @@ public class Pessoa extends Persistente {
 			}
 		}
 		
-		if (StringUtil.stringNulaOuVazia(pessoa.getNome())) {
+		if (StringUtil.stringNulaOuVazia(pessoa.nome)) {
 			throw new ValidacaoException("O nome do integrante do Clube do Livro deve ser informado");
 		}
 		
-		List<Documento> documentos = pessoa.getDocumentos();
+		List<Documento> documentos = pessoa.documentos;
 		boolean possuiDocumento = false;
 		
 		if (documentos != null) {
@@ -89,7 +92,7 @@ public class Pessoa extends Persistente {
 			throw new ValidacaoException("O CPF do integrante do Clube do Livro deve ser informado");
 		}
 		
-		List<Endereco> enderecos = pessoa.getEnderecos();
+		List<Endereco> enderecos = pessoa.enderecos;
 		
 		if (enderecos != null) {
 			for (Endereco endereco: enderecos) {
@@ -99,7 +102,7 @@ public class Pessoa extends Persistente {
 			}
 		}
 		
-		List<Contato> contatos = pessoa.getContatos();
+		List<Contato> contatos = pessoa.contatos;
 		
 		if (contatos != null) {
 			for (Contato contato: contatos) {
@@ -128,7 +131,14 @@ public class Pessoa extends Persistente {
 	
 	public void setNascimento(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			nascimento = DataUtil.parserData(data);
+			nascimentoStr = data;
+			
+			try {
+				nascimento = DataUtil.parserData(data);
+				
+			} catch (Exception e) {
+				// TODO: registrar em log a falha em converter a String em LocalDate
+			}
 		}
 	}
 	

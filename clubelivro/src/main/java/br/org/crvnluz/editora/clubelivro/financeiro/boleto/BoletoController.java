@@ -26,11 +26,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
-import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
+import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
 @RestController
 @RequestMapping("/financeiro")
-public class BoletoController extends BaseController<Boleto> {
+public class BoletoController extends CrudController<Boleto> {
 	
 	@Autowired
 	private BoletoDAO dao;

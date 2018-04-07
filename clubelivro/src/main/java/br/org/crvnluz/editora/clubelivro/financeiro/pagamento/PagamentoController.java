@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
+import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
 @RestController
 @RequestMapping("/financeiro")
-public class PagamentoController extends BaseController<Pagamento> {
+public class PagamentoController extends CrudController<Pagamento> {
 	
 	// MÉTODOS PROTEGIDOS
 	

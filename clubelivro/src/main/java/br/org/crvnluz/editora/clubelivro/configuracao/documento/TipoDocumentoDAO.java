@@ -7,10 +7,10 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import br.org.crvnluz.editora.clubelivro.infra.persistencia.BaseDAO;
+import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 
 @Repository
-public class TipoDocumentoDAO extends BaseDAO<TipoDocumento> {
+public class TipoDocumentoDAO extends CrudDAO<TipoDocumento> {
 
 	@Override
 	protected RowMapper<TipoDocumento> getMapper() {

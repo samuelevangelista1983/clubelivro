@@ -1,7 +1,6 @@
 package br.org.crvnluz.editora.clubelivro.integrante;
 
 import java.time.LocalDate;
-import java.util.regex.Pattern;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
@@ -17,7 +16,7 @@ import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 
 public class Integrante extends Persistente {
 	
-	private static final long serialVersionUID = -3324709635172775416L;
+	private static final long serialVersionUID = -8812144233583972629L;
 	
 	private Pessoa pessoa;
 	private Documento documento;
@@ -31,6 +30,7 @@ public class Integrante extends Persistente {
 	private Boolean ativo;
 	private LocalDate dtCadastro;
 	private LocalDate dtDesativacao;
+	private String dtCadastroStr;
 	
 	// CONSTRUTORES PÚBLICOS
 	
@@ -48,17 +48,21 @@ public class Integrante extends Persistente {
 	}
 	
 	public static void validar(Integrante integrante) throws ValidacaoException {
-		LocalDate dtCadastro = integrante.getDtCadastro();
-		
-		if (dtCadastro == null) {
+		if (StringUtil.stringNaoNulaENaoVazia(integrante.dtCadastroStr)) {
+			LocalDate dtCadastro = integrante.dtCadastro;
+			
+			if (dtCadastro == null) {
+				throw new ValidacaoException("A data de cadastro do integrante do Clube do Livro não é válida");
+			}
+			
+			String data = DataUtil.formatarData(dtCadastro);
+			
+			if (!integrante.dtCadastroStr.equals(data)) {
+				throw new ValidacaoException("A data de cadastro do integrante do Clube do Livro não é válida");
+			}
+			
+		} else {
 			throw new ValidacaoException("A data de cadastro do integrante do Clube do Livro deve ser informada");
-		}
-		
-		String data = DataUtil.formatarData(dtCadastro);
-		String dataPattern = "^(?:(?:31(\\/)(?:0[13578]|1[02]))\\1|(?:(?:30)(\\/)(?:0[1,3-9]|1[0-2])\\2))\\d{4}$|^(?:[0-2]\\d)(\\/)(?:(?:0[1-9])|(?:1[0-2]))\\3\\d{4}$";
-		
-		if (!Pattern.matches(dataPattern, data)) {
-			throw new ValidacaoException("A data de cadastro do integrante do Clube do Livro não é válida");
 		}
 		
 		Pessoa.validar(integrante.getPessoa());
@@ -192,7 +196,14 @@ public class Integrante extends Persistente {
 	
 	public void setDtCadastro(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			dtCadastro = DataUtil.parserData(data);
+			dtCadastroStr = data;
+			
+			try {
+				dtCadastro = DataUtil.parserData(data);
+				
+			} catch (Exception e) {
+				// TODO: registrar em log a falha em converter a String em LocalDate
+			}
 		}
 	}
 

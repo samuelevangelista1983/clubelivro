@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
+import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
 @RestController
 @RequestMapping("/configuracao")
-public class ClassificacaoController extends BaseController<Classificacao> {
+public class ClassificacaoController extends CrudController<Classificacao> {
 	
 	@Autowired
 	private ClassificacaoDAO dao;

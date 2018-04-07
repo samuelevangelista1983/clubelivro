@@ -9,12 +9,13 @@ import javax.validation.ValidationException;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
 import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
 public class Boleto extends Persistente {
 	
-	private static final long serialVersionUID = -2848569869141842785L;
+	private static final long serialVersionUID = 4448917680820698968L;
 	
 	private final NumberFormat format;
 	
@@ -26,6 +27,8 @@ public class Boleto extends Persistente {
 	private BigDecimal valorNomimal;
 	private LocalDate pgto;
 	private LocalDate efetivacaoCredito;
+	private String efetivacaoCreditoStr;
+	private String pgtoStr;
 	private BigDecimal valorPago;
 	private BigDecimal valorTarifa;
 	private BigDecimal valorCreditado;
@@ -40,33 +43,44 @@ public class Boleto extends Persistente {
 	
 	// MÉTODOS PÚBLICOS
 	
-	public static void validar(Boleto boleto) throws ValidationException {
-		LocalDate pgto = boleto.pgto;
-		
-		if (pgto == null) {
-			throw new ValidationException("A data de pagamento do boleto deve ser informada");
-		}
-		
-		if (pgto.isBefore(boleto.getEmissao())) {
-			throw new ValidationException("A data de pagamento do boleto não pode ser anterior à data de emissão do mesmo");
+	public static void validar(Boleto boleto) throws ValidacaoException {
+		if (StringUtil.stringNaoNulaENaoVazia(boleto.pgtoStr)) {
+			LocalDate pgto = boleto.pgto;
+			
+			if (pgto == null) {
+				throw new ValidacaoException("A data de pagamento do boleto não é válida");
+			}
+			
+			String data = DataUtil.formatarData(pgto);
+			
+			if (!boleto.pgtoStr.equals(data)) {
+				throw new ValidacaoException("A data de pagamento do boleto não é válida");
+			}
+			
+			if (pgto.isBefore(boleto.getEmissao())) {
+				throw new ValidacaoException("A data de pagamento do boleto não pode ser anterior à data de emissão do mesmo");
+			}
+			
+		} else {
+			throw new ValidacaoException("A data de pagamento do boleto deve ser informada");
 		}
 		
 		BigDecimal valorPago = boleto.valorPago;
 		
 		if (valorPago == null) {
-			throw new ValidationException("O valor pago do boleto deve ser informado");
+			throw new ValidacaoException("O valor pago do boleto deve ser informado");
 		}
 		
 		BigDecimal zero = new BigDecimal(0);
 		
 		if (valorPago != null && valorPago.compareTo(zero) == -1) {
-			throw new ValidationException("O valor pago do boleto não pode ser um valor negativo");
+			throw new ValidacaoException("O valor pago do boleto não pode ser um valor negativo");
 		}
 		
 		BigDecimal valorTarifa = boleto.valorTarifa;
 		
 		if (valorTarifa != null && valorTarifa.compareTo(zero) == -1) {
-			throw new ValidationException("O valor da tarifa do boleto não pode ser um valor negativo");
+			throw new ValidacaoException("O valor da tarifa do boleto não pode ser um valor negativo");
 		}
 		
 		BigDecimal valorCreditado = boleto.valorCreditado;
@@ -77,20 +91,32 @@ public class Boleto extends Persistente {
 		
 		if (valorTarifa != null && valorCreditado != null) {
 			if (valorCreditado.compareTo(valorPago.subtract(valorTarifa)) != 0) {
-				throw new ValidationException("O valor creditado do boleto deve ser igual ao valor do pagamento menos o valor da tarifa do mesmo");
+				throw new ValidacaoException("O valor creditado do boleto deve ser igual ao valor do pagamento menos o valor da tarifa do mesmo");
 			}
 			
 		} else if (valorTarifa == null && valorCreditado != null) {
-			throw new ValidationException("O valor da tarifa do boleto deve ser informado");
+			throw new ValidacaoException("O valor da tarifa do boleto deve ser informado");
 			
 		} else if (valorTarifa != null && valorCreditado == null) {
-			throw new ValidationException("O valor creditado do boleto deve ser informado");
+			throw new ValidacaoException("O valor creditado do boleto deve ser informado");
 		}
 		
-		LocalDate efetivacaoCredito = boleto.efetivacaoCredito;
-		
-		if (efetivacaoCredito != null && efetivacaoCredito.isBefore(pgto)) {
-			throw new ValidationException("A data de efetivação do crédito do boleto não pode ser anterior à data de pagamento do mesmo");
+		if (StringUtil.stringNaoNulaENaoVazia(boleto.efetivacaoCreditoStr)) {
+			LocalDate efetivacaoCredito = boleto.efetivacaoCredito;
+			
+			if (efetivacaoCredito == null) {
+				throw new ValidacaoException("A data de efetivação do crédito do boleto não é válida");
+			}
+			
+			String data = DataUtil.formatarData(efetivacaoCredito);
+			
+			if (!boleto.efetivacaoCreditoStr.equals(data)) {
+				throw new ValidacaoException("A data de efetivação do crédito do boleto não é válida");
+			}
+			
+			if (efetivacaoCredito.isBefore(boleto.pgto)) {
+				throw new ValidacaoException("A data de efetivação do crédito do boleto não pode ser anterior à data de pagamento do mesmo");
+			}
 		}
 	}
 	
@@ -183,7 +209,14 @@ public class Boleto extends Persistente {
 	
 	public void setPgto(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			pgto = DataUtil.parserData(data);
+			pgtoStr = data;
+			
+			try {
+				pgto = DataUtil.parserData(data);
+				
+			} catch (Exception e) {
+				// TODO: registrar em log a falha em converter a String em LocalDate
+			}
 		}
 	}
 	
@@ -197,7 +230,14 @@ public class Boleto extends Persistente {
 	
 	public void setEfetivacaoCredito(String data) {
 		if (StringUtil.stringNaoNulaENaoVazia(data)) {
-			efetivacaoCredito = DataUtil.parserData(data);
+			efetivacaoCreditoStr = data;
+			
+			try {
+				efetivacaoCredito = DataUtil.parserData(data);
+				
+			} catch (Exception e) {
+				// TODO: registrar em log a falha em converter a String em LocalDate
+			}
 		}
 	}
 	

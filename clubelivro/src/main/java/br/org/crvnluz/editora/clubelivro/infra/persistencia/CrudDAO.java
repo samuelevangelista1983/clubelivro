@@ -5,18 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-public abstract class BaseDAO<T extends Persistente> {
-	
-	@Autowired
-	protected JdbcTemplate jdbcTemplate;
+public abstract class CrudDAO<T extends Persistente> extends BaseDAO {
 	
 	// MÉTODOS PROTEGIDOS
 	
