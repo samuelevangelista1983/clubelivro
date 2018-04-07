@@ -19,7 +19,8 @@ export class App {
       {route:['', 'integrantes'], name:'integrantes', moduleId:'views/integrante/integrantes', nav:true, title:'Integrantes'},
       {route:'integrante', name:'integrante', moduleId:'views/integrante/integrante', nav:false},
       {route:['boletos'], name:'boletos', moduleId:'views/financeiro/boleto/boletos', nav:true, title:'Boletos'},
-      {route:'boleto', name:'boleto', moduleId:'views/financeiro/boleto/boleto', nav:false},/*,
+      {route:'boleto', name:'boleto', moduleId:'views/financeiro/boleto/boleto', nav:false}/*,
+      {route:['fluxoreceita'], name:'fluxoreceita', moduleId:'views/relatorio/financeiro/fluxoreceita', nav:true, title:'Fluxo receita'},
       {route:'classificacoes', name:'classificacoes', moduleId:'views/configuracao/classificacoes'}*/
     ]);
     this.router = router;

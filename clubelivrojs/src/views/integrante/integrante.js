@@ -175,7 +175,6 @@ export class Integrante {
     this.entidade.pessoa.enderecos = [];
     this.entidade.pessoa.documentos.push(this.entidade.documento);
     this.preencherContatos();
-    this.verificarPreenchimentoEnderecos();
     this.preencherEnderecos();
     this.http.post('/integrantes', JSON.stringify(this.entidade))
       .then(data => {
@@ -261,18 +260,6 @@ export class Integrante {
     }
   }
 
-  verificarPreenchimentoEnderecos() {
-    if (this.enderecos.length == 1) {
-      let endereco = this.enderecos[0];
-      
-      if (endereco.id == undefined && endereco.idTipo == '' && endereco.cep == undefined && endereco.logradouro == undefined
-          && endereco.numero == undefined && endereco.complemento == undefined && endereco.bairro == undefined 
-          && endereco.municipio == undefined && endereco.uf == '') {
-            this.enderecos = [];
-          }
-    }
-  }
-
   configurarDatas() {
     if (this.entidade.dtCadastro.year) {
       this.entidade.dtCadastro = this.dateutil.formatarData(this.entidade.dtCadastro);
@@ -285,4 +272,5 @@ export class Integrante {
       this.entidade.pessoa.nascimento = null;
     }
   }
+
 }
