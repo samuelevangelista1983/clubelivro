@@ -33,6 +33,7 @@
           "node_modules/bluebird/js/browser/bluebird.core.js",
           "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird.js",
           "node_modules/popper.js/dist/umd/popper.min.js",
+          "node_modules/chart.js/dist/Chart.min.js",
           "node_modules/requirejs/require.js"
         ],
         "dependencies": [
@@ -88,12 +89,33 @@
             ]
           },
           "text",
-          "moment",
+          {
+            "name": "moment",
+            "path": "../node_modules/moment",
+            "main": "moment"
+          },
           "numeral",
           {
             "name": "aurelia-dialog",
             "path": "../node_modules/aurelia-dialog/dist/amd",
             "main": "aurelia-dialog"
+          },
+          {
+            "name": "chart.js",
+            "path": "../node_modules/chart.js/dist",
+            "main": "Chart.min.js"
+          },
+          {
+            "name": "aurelia-chart",
+            "path": "../node_modules/aurelia-chart/dist/amd",
+            "main": "index",
+            "deps": ["chart.js"],
+            "resources": [
+              "elements/chart-element.html",
+              "elements/chart-element.js",
+              "attributes/chart-attribute.js",
+              "observers/model-observer.js"
+            ]
           }
         ]
       }

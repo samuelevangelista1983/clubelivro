@@ -10,6 +10,7 @@ export function configure(aurelia) {
       config.settings.lock = true;
       config.settings.keyboard = true;
     })
+    .plugin("aurelia-chart")
     .globalResources('bootstrap/css/bootstrap.css');
 
   if (environment.debug) {

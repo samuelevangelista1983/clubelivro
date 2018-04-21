@@ -6,6 +6,26 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#/integrantes">Integrantes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/boletos">Boletos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Relatórios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item disabled" href="#/inadimplencia">Inadimplência</a>
+              <a class="dropdown-item disabled" href="#/fluxoreceita">Fluxo de receitas</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!--
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item" repeat.for="row of router.navigation">
             <a class="nav-link" href="${row.href}">${row.title}</a>
           </li>
@@ -16,6 +36,7 @@
           </li>	
         </ul>
       </div>
+      -->
     </nav>
   </div>
   <div class="container-fluid">

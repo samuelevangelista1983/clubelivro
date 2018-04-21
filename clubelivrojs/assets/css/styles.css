@@ -134,3 +134,6 @@
 .icon-sign-in:before {
   content: "\46";
 }
+.icon-refresh:before {
+  content: "\47";
+}

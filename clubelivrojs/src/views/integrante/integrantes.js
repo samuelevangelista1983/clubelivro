@@ -2,8 +2,9 @@ import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {Router} from 'aurelia-router';
 import environment from 'environment';
+import {DialogService} from 'aurelia-dialog';
 
-@inject(HttpClient, Router)
+@inject(HttpClient, Router, DialogService)
 export class Integrantes {
 
   integrantes = [];
@@ -12,8 +13,9 @@ export class Integrantes {
   mensagem = '';
   carregando = false;
 
-  constructor(httpClient, router) {
+  constructor(httpClient, router, dialog) {
     this.router = router;
+    this.dialog = dialog;
     this.http = httpClient;
     this.http.configure(x => {
       x.withBaseUrl(environment.endpoint)
@@ -91,8 +93,8 @@ export class Integrantes {
         this.carregando = false;
       })
       .catch(error => {
-        alert(error.response);
         this.carregando = false;
+        this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg: error.response}});
       });
   }
 }

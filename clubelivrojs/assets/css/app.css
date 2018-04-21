@@ -50,13 +50,6 @@
   color: white;
 }
 
-/*
-ux-dialog-overlay.active {
-  background-color: #e9eaec;
-  background-size: 5rem;
-  opacity: .75;
-}
-*/
 .page-loader, .container-loader {
   position: fixed;
   top: 0;
@@ -108,50 +101,3 @@ ux-dialog-overlay.active {
     transform: rotate(360deg);
   }
 }
-
-/*
-html, body {
-  height: 100%;
-  min-height: 100%;
-}
-.pagina {
-  font-family: sans-serif;
-  margin: 0.625em;
-}
-
-.cabecalho {
-  background-color: #f58634;
-  padding: 0.625em;
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 15%;
-  text-align: center;
-}
-
-.titulo {
-  width: 85%;
-  text-align: center;
-}
-
-.principal {
-  height: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: stretch;
-}
-.conteudo {
-  background-color: blueviolet;
-  padding: 0.625em;
-  width: 85%
-}
-
-.menu {
-  background-color: blue;
-  padding: 0.625em;
-  width: 15%;
-  height: 100%;
-}
-*/

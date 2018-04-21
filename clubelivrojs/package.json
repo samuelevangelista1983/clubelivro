@@ -10,8 +10,10 @@
   "dependencies": {
     "aurelia-animator-css": "^1.0.2",
     "aurelia-bootstrapper": "^2.1.1",
+    "aurelia-chart": "^0.2.7",
     "aurelia-dialog": "^1.0.0-rc.2.0.0",
     "bluebird": "^3.4.1",
+    "chart.js": "^2.7.2",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
     "requirejs": "^2.3.2",
