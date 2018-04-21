@@ -3,6 +3,7 @@ package br.org.crvnluz.editora.clubelivro.integrante.pessoa;
 import java.time.LocalDate;
 import java.util.List;
 
+import br.eti.sen.utilitarios.documento.CPF;
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
@@ -66,10 +67,6 @@ public class Pessoa extends Persistente {
 			}
 		}
 		
-		if (StringUtil.stringNulaOuVazia(pessoa.nome)) {
-			throw new ValidacaoException("O nome do integrante do Clube do Livro deve ser informado");
-		}
-		
 		List<Documento> documentos = pessoa.documentos;
 		boolean possuiDocumento = false;
 		
@@ -81,7 +78,7 @@ public class Pessoa extends Persistente {
 					String cpf = documento.getValor();
 					// TODO validar o CPF
 					
-					if (cpf.length() != 11) {
+					if (!CPF.validar(cpf)) {
 						throw new ValidacaoException("O CPF informado não é válido");
 					}
 				}
@@ -90,6 +87,10 @@ public class Pessoa extends Persistente {
 		
 		if (!possuiDocumento) {
 			throw new ValidacaoException("O CPF do integrante do Clube do Livro deve ser informado");
+		}
+		
+		if (StringUtil.stringNulaOuVazia(pessoa.nome)) {
+			throw new ValidacaoException("O nome do integrante do Clube do Livro deve ser informado");
 		}
 		
 		List<Endereco> enderecos = pessoa.enderecos;

@@ -1,0 +1,96 @@
+<template>
+  <spinner is-loading.bind="carregando" huge.bind="false"></spinner>
+  <div class="row">
+    <h3 class="col">Fluxo de receitas do Clube do Livro</h3>
+  </div>
+  <form>
+    <div class="form-group row">
+      <label class="col-sm col-form-label">${periodo}</label>
+      <div class="col-sm">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#filtro">
+          <span class="icon-sliders"></span>
+          <span>Alterar período</span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="modal fade" id="filtro" tabindex="-1" role="dialog" aria-labelledby="filtroTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Período</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <fieldset class="borda">
+                <legend class="texto-pequeno">Início</legend>
+                <div class="form-row">
+                  <div class="form-group col-sm">
+                    <div>
+                      <label>Mês</label>
+                      <select class="form-control" value.bind="pesquisa.mesInicio">
+                        <option></option>
+                        <option repeat.for="mes of meses" model.bind="mes.num">${mes.nome}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-sm">
+                    <div>
+                      <label>Ano</label>
+                      <input autocomplete="off" class="form-control" type="number" value.bind="pesquisa.anoInicio">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group col-sm">
+              <fieldset class="borda">
+                <legend class="texto-pequeno">Fim</legend>
+                <div class="form-row">
+                  <div class="form-group col-sm">
+                    <div>
+                      <label>Mês</label>
+                      <select class="form-control" value.bind="pesquisa.mesFim">
+                        <option></option>
+                        <option repeat.for="mes of meses" model.bind="mes.num">${mes.nome}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-sm">
+                    <div>
+                      <label>Ano</label>
+                      <input autocomplete="off" class="form-control" type="number" value.bind="pesquisa.anoFim">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <span class="icon-reply"></span>
+            <span>Cancelar</span>
+          </button>
+          <button type="button" class="btn btn-primary" click.delegate="onClickPesquisar()">
+            <span class="icon-refresh"></span>
+            <span>Atualizar gráfico</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-center chart-fluxo-receita">
+    <canvas ref="grafico" style="max-height: 80vh"></canvas>
+  </div>
+
+  <div class="alert alert-info alert-dismissable fade show" show.bind="mensagem.length > 0">
+    ${mensagem}
+  </div>
+</template>
