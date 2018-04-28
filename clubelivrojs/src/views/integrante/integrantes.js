@@ -9,7 +9,12 @@ export class Integrantes {
 
   integrantes = [];
   categorias = [];
+  formasEntrega = [];
+  formasPgto = [];
+  frequencias = [];
+  tipos = [];
   pesquisa = {};
+  pesquisaAvancada = {};
   mensagem = '';
   carregando = false;
 
@@ -25,15 +30,22 @@ export class Integrantes {
 
   attached(params) {
     this.carregando = true;
-    this.http.get('configuracao/classificacoes')
-      .then(data => {
-        this.categorias = JSON.parse(data.response);
-        this.carregando = false;
-      });
+    this.tipos = [
+      {id:0, nome:'Ascendente'},
+      {id:1, nome:'Descendente'},
+    ];
+    this.http.get('configuracao/classificacoes').then(data => this.categorias = JSON.parse(data.response));
+    this.http.get('configuracao/formasentrega').then(data => this.formasEntrega = JSON.parse(data.response));
+    this.http.get('configuracao/formaspgto').then(data => this.formasPgto = JSON.parse(data.response));
+    this.http.get('configuracao/frequencias').then(data => {
+      this.frequencias = JSON.parse(data.response);
+      this.carregando = false;
+    });
   }
 
   initConfig() {
     this.pesquisa = {};
+    this.pesquisaAvancada = {};
   }
 
   onClickAtivar(idx, id) {
@@ -93,6 +105,33 @@ export class Integrantes {
         this.carregando = false;
       })
       .catch(error => {
+        this.integrantes = [];
+        this.carregando = false;
+        this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg: error.response}});
+      });
+  }
+
+  onClickPesquisarFiltroAvancado() {
+    this.carregando = true;
+    this.http.post('integrantes/pesquisa/avancada', JSON.stringify(this.pesquisaAvancada))
+      .then(data => {
+        this.integrantes = JSON.parse(data.response);
+
+        if (this.integrantes.length > 0) {
+          this.mensagem = '';
+
+        } else {
+          this.mensagem = 'Não foram encontrados integrantes que satisfaçam a pesquisa';
+        }
+
+        $('#filtroAvancado').modal('hide');
+        this.initConfig();
+        this.carregando = false;
+      })
+      .catch(error => {
+        this.integrantes = [];
+        $('#filtroAvancado').modal('hide');
+        this.initConfig();
         this.carregando = false;
         this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg: error.response}});
       });

@@ -84,6 +84,7 @@ export class Boletos {
         this.carregando = false;
       })
       .catch(error => {
+        this.boletos = [];
         this.carregando = false;
         this.dialog.open({viewModel:'util/dialog', model:{tipo: 'erro', msg:error.response}});
       });

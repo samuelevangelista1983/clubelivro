@@ -76,7 +76,6 @@ public class Pessoa extends Persistente {
 				if (documento != null && StringUtil.stringNaoNulaENaoVazia(documento.getValor())) {
 					possuiDocumento = true;
 					String cpf = documento.getValor();
-					// TODO validar o CPF
 					
 					if (!CPF.validar(cpf)) {
 						throw new ValidacaoException("O CPF informado não é válido");

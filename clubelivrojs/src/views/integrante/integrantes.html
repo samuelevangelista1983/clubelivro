@@ -5,7 +5,7 @@
   </div>
   <form>
     <div class="form-group row">
-      <div class="col-sm-5">
+      <div class="col-sm-4">
         <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.nome" placeholder="Digite um nome para pesquisa">
       </div>
       <label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
@@ -24,6 +24,10 @@
           <span class="icon-filter"></span>
           <span>Filtrar</span>
         </button>
+        <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#filtroAvancado">
+          <span class="icon-filter"></span>
+          <span>Avançado</span>
+        </button>
         <button type="button" class="btn btn-primary" click.delegate="onClickIncluir()">
           <span class="icon-plus"></span>
           <span>Incluir</span>
@@ -31,6 +35,98 @@
       </div>
     </div>
   </form>
+
+  <div class="modal fade" id="filtroAvancado" tabindex="-1" role="dialog" aria-labelledby="filtroAvancadoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Filtro avançado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label>Nome</label>
+                <input autocomplete="off" type="text" class="form-control" value.bind="pesquisaAvancada.nome">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label>CPF</label>
+                <input autocomplete="off" class="form-control" maxlength="14" minlength="11" type="text" value.bind="pesquisaAvancada.cpf | cpfconverter"
+                  pattern="[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}">
+              </div>
+            </div>
+            <div class="form-group col-sm">
+              <div>
+                <label>Categoria</label>
+                <select class="form-control" value.bind="pesquisaAvancada.idCategoria">
+                  <option></option>
+                  <option repeat.for="categoria of categorias" model.bind="categoria.id">${categoria.nome}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label>Freqüência</label>
+                <select class="form-control" value.bind="pesquisaAvancada.idFrequencia">
+                  <option></option>
+                  <option repeat.for="frequencia of frequencias" model.bind="frequencia.id">${frequencia.nome}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm">
+              <div>
+                <label for="situacao">Entrega</label>
+                <select id="situacao" class="form-control" value.bind="pesquisaAvancada.idFormaEntrega">
+                  <option></option>
+                  <option repeat.for="formaEntrega of formasEntrega" model.bind="formaEntrega.id">${formaEntrega.nome}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <div>
+                <label>Pagamento</label>
+                <select class="form-control" value.bind="pesquisaAvancada.idFormaPgto">
+                  <option></option>
+                  <option repeat.for="formaPgto of formasPgto" model.bind="formaPgto.id">${formaPgto.nome}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm">
+              <div>
+                <label>Ordenação</label>
+                <select class="form-control" value.bind="pesquisaAvancada.tipoOrdenacao">
+                  <option></option>
+                  <option repeat.for="tipo of tipos" model.bind="tipo.id">${tipo.nome}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <span class="icon-reply"></span>
+            <span>Cancelar</span>
+          </button>
+          <button type="button" class="btn btn-primary" click.delegate="onClickPesquisarFiltroAvancado()">
+            <span class="icon-filter"></span>
+            <span>Filtrar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="table-responsive" show.bind="integrantes.length > 0">
     <table class="table table-hover">
       <thead>

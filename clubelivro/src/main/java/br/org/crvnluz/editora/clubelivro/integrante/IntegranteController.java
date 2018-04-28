@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.eti.sen.utilitarios.documento.CPF;
 import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
@@ -226,18 +227,6 @@ public class IntegranteController extends CrudController<Integrante> {
 	
 	@Override
 	protected List<Integrante> listar() throws Exception {
-		/*
-		List<Integrante> integrantes = dao.selectAll();
-		
-		for (Integrante integrante: integrantes) {
-			Pessoa pessoa = integrante.getPessoa();
-			pessoa.setDocumentos(documentoDao.selectByPessoa(pessoa.getId()));
-			pessoa.setContatos(contatoDao.selectByPessoa(pessoa.getId()));
-			pessoa.setEnderecos(enderecoDao.selectByPessoa(pessoa.getId()));
-		}
-		
-		return integrantes;
-		*/
 		throw new UnsupportedOperationException();
 	}
 	
@@ -425,6 +414,74 @@ public class IntegranteController extends CrudController<Integrante> {
 				
 			} else if (StringUtil.stringNulaOuVazia(nome) && idCategoria != null) {
 				list = dao.pesquisar(idCategoria);
+			}
+			
+			response = new ResponseEntity(list, HttpStatus.OK);
+			
+		} catch (Throwable throwable) {
+			response = getInternalServerErrorResponse(throwable);
+		}
+		
+		return response;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@PostMapping("/integrantes/pesquisa/avancada")
+	public ResponseEntity pesquisar(@RequestBody String request) {
+		ResponseEntity response;
+		
+		try {
+			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
+			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
+			String cpf = map.get("cpf") != null ? map.get("cpf").toString() : null;
+			
+			if (StringUtil.stringNaoNulaENaoVazia(cpf)) {
+				if (!CPF.validar(cpf)) {
+					throw new ValidacaoException("O CPF informado não é válido");
+				}
+			}
+			
+			/*
+			 * Categoria:
+			 * 1 - Estudo
+			 * 2 - Romance
+			 * 3 - Estudo e romance
+			 * 4 - Estudo e romance alternado
+			 */
+			Long idCategoria = map.get("idCategoria") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idCategoria").toString()) ? Long.valueOf(map.get("idCategoria").toString()) : null;
+			/*
+			 * Freqüência:
+			 * 1 - Mensal
+			 * 2 - Bimestral
+			 */
+			Long idFrequencia = map.get("idFrequencia") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFrequencia").toString()) ? Long.valueOf(map.get("idFrequencia").toString()) : null;
+			/*
+			 * Forma de entrega:
+			 * 1 - Correios
+			 * 2 - Presencial
+			 */
+			Long idFormaEntrega = map.get("idFormaEntrega") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaEntrega").toString()) ? Long.valueOf(map.get("idFormaEntrega").toString()) : null;
+			/*
+			 * Forma de pagamento:
+			 * 1 - Boleto
+			 * 2 - Cartão de débito
+			 * 3 - Cartão de crédito
+			 * 4 - Dinheiro
+			 * 5 - Cheque à vista
+			 */
+			Long idFormaPgto = map.get("idFormaPgto") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaPgto").toString()) ? Long.valueOf(map.get("idFormaPgto").toString()) : null;
+			/*
+			 * Tipo de ordenacao:
+			 * 0 - Ascendente
+			 * 1 - Descendente
+			 */
+			Long ordenacao = map.get("tipoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("tipoOrdenacao").toString()) ? Long.valueOf(map.get("tipoOrdenacao").toString()) : 0;
+			List<Integrante> list = new ArrayList<>();
+			
+			if (StringUtil.stringNaoNulaENaoVazia(nome) || StringUtil.stringNaoNulaENaoVazia(cpf) || idCategoria != null 
+					|| idFrequencia != null || idFormaEntrega != null || idFormaPgto != null) {
+				
+				list = dao.pesquisar(nome, cpf, idCategoria, idFrequencia, idFormaEntrega, idFormaPgto, ordenacao);
 			}
 			
 			response = new ResponseEntity(list, HttpStatus.OK);
