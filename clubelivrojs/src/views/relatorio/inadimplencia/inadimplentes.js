@@ -40,7 +40,7 @@ export class Integrantes {
 
   onClickPesquisar() {
     this.carregando = true;
-    this.http.post('/inadimplencia/pesquisa', JSON.stringify(this.pesquisa))
+    this.http.post('/inadimplentes/pesquisa', JSON.stringify(this.pesquisa))
       .then(data => {
         this.inadimplentes = JSON.parse(data.response);
 

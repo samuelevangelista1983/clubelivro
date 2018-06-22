@@ -13,7 +13,7 @@ export class DateUtil {
     let dataFormatada = data;
     moment.locale('pt-br');
 
-    if (data.year) {
+    if (data && data.year) {
       let mes = data.monthValue < 10 ? '0' + data.monthValue : data.monthValue;
       let dia = data.dayOfMonth < 10 ? '0' + data.dayOfMonth : data.dayOfMonth;
       dataFormatada = moment(data.year + '-' + mes + '-' + dia).format('DD/MM/YYYY');

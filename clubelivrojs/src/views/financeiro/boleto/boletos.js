@@ -43,7 +43,10 @@ export class Boletos {
     this.situacoes = [
       {id:0, nome:'Aberto'},
       {id:1, nome:'Baixado'},
-      {id:2, nome:'Baixado manualmente'}
+      {id:2, nome:'Baixado manualmente'},
+      {id:3, nome:'Cancelado'},
+      {id:4, nome:'Cancelado manualmente'},
+      {id:5, nome:'Erro processamento'},
     ];
     this.tipos = [
       {id:0, nome:'Ascendente'},
@@ -62,6 +65,10 @@ export class Boletos {
 
   onClickEditar(id) {
     this.router.navigateToRoute('boleto', {idBoleto: id});
+  }
+
+  onClickIncluir() {
+    this.router.navigateToRoute('boleto');
   }
 
   onClickLimpar() {

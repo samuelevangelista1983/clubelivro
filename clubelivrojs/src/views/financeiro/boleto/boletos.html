@@ -5,7 +5,7 @@
   </div>
   <form>
     <div class="form-group row">
-      <div class="col-sm-5">
+      <div class="col-sm-4">
         <input autocomplete="off" type="text" id="nome" class="form-control" value.bind="pesquisa.nome" placeholder="Digite um nome para pesquisa">
       </div>
       <div class="col-sm">
@@ -23,6 +23,10 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscaAvancada">
           <span class="icon-filter"></span>
           <span>Avançado</span>
+        </button>
+        <button type="button" class="btn btn-primary bg-light text-primary" click.delegate="onClickIncluir()">
+          <span class="icon-plus"></span>
+          <span>Incluir</span>
         </button>
       </div>
     </div>
@@ -170,6 +174,9 @@
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 0">Aberto</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 1">Baixado</td>
           <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 2">Baixado manualmente</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 3">Cancelado</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 4">Cancelado manualmente</td>
+          <td class="item-grid" click.delegate="onClickEditar(item.id)" show.bind="item.situacao == 5">Erro processamento</td>
         </tr>
       </tbody>
     </table>

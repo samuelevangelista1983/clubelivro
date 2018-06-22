@@ -12,6 +12,7 @@ export class Integrantes {
   formasEntrega = [];
   formasPgto = [];
   frequencias = [];
+  situacoes = [];
   tipos = [];
   pesquisa = {};
   pesquisaAvancada = {};
@@ -30,6 +31,10 @@ export class Integrantes {
 
   attached(params) {
     this.carregando = true;
+    this.situacoes = [
+      {id:1, nome:'Ativo'},
+      {id:0, nome:'Inativo'}
+    ];
     this.tipos = [
       {id:0, nome:'Ascendente'},
       {id:1, nome:'Descendente'},

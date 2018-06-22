@@ -4,100 +4,100 @@
     <h3 class="col">Integrantes do Clube do Livro</h3>
   </div>
   <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Básico</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Endereços</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contatos</a>
-        <a class="nav-item nav-link" id="nav-complemento-tab" data-toggle="tab" href="#nav-complemento" role="tab" aria-controls="nav-complemento" aria-selected="false">Complemento</a>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <br/>
-        <form>
-          <div class="form-group row">
-            <div class="col-sm-4">
-              <label>Data de cadastro</label>
-              <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" required value.bind="entidade.dtCadastro | dateconverter"
-                  pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
-            </div>
-            <div class="col-sm-4">
-              <label>Data de nascimento</label>
-              <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="entidade.pessoa.nascimento | dateconverter"
-                  pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
-            </div>
-            <div class="col-sm-4">
-              <label>CPF</label>
-              <input autocomplete="off" class="form-control" maxlength="14" minlength="11" type="text" value.bind="entidade.documento.valor | cpfconverter"
-                  pattern="[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}">
-            </div>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Básico</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Endereços</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contatos</a>
+      <a class="nav-item nav-link" id="nav-complemento-tab" data-toggle="tab" href="#nav-complemento" role="tab" aria-controls="nav-complemento" aria-selected="false">Complemento</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <br/>
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <label>Data de cadastro</label>
+            <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" required value.bind="entidade.dtCadastro | dateconverter"
+                pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
           </div>
-          <div class="form-group row">
-            <div class="col-sm">
-              <label for="nome">Nome</label>
-              <input autocomplete="off" class="form-control" id="nome" maxlength="255" required type="text" value.bind="entidade.pessoa.nome">
-            </div>
+          <div class="col-sm-4">
+            <label>Data de nascimento</label>
+            <input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" value.bind="entidade.pessoa.nascimento | dateconverter"
+                pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
           </div>
-        </form>
-      </div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="col-sm-4">
+            <label>CPF</label>
+            <input autocomplete="off" class="form-control" maxlength="14" minlength="11" type="text" value.bind="entidade.documento.valor | cpfconverter"
+                pattern="[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm">
+            <label for="nome">Nome</label>
+            <input autocomplete="off" class="form-control" id="nome" maxlength="255" required type="text" value.bind="entidade.pessoa.nome">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <br/>
+      <form>
+        <endereco enderecos.bind="enderecos"></endereco>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <br/>
+      <form>
+        <inputtel tels.bind="tels"></inputtel>
+        <inputcel cels.bind="cels"></inputcel>
+        <inputemail emails.bind="emails"></inputemail>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="nav-complemento" role="tabpanel" aria-labelledby="nav-complemento-tab">
+      <br/>
+      <form>
+        <fieldset class="borda">
+          <legend>Categorias</legend>
+          <div class="row">
+            <label class="radio-inline col-sm-3" repeat.for="classificacao of classificacoes">
+              <input type="radio" model.bind="classificacao.id" checked.bind="entidade.classificacao.id">&nbsp;${classificacao.nome}
+            </label>
+          </div>
+        </fieldset>
         <br/>
-        <form>
-          <endereco enderecos.bind="enderecos"></endereco>
-        </form>
-      </div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <fieldset class="borda">
+          <legend>Freqüência</legend>
+          <div class="row">
+            <label class="radio-inline col-sm-3" repeat.for="frequencia of frequencias">
+              <input type="radio" model.bind="frequencia.id" checked.bind="entidade.frequencia.id">&nbsp;${frequencia.nome}
+            </label>
+          </div>
+        </fieldset>
         <br/>
-        <form>
-          <inputtel tels.bind="tels"></inputtel>
-          <inputcel cels.bind="cels"></inputcel>
-          <inputemail emails.bind="emails"></inputemail>
-        </form>
-      </div>
-      <div class="tab-pane fade" id="nav-complemento" role="tabpanel" aria-labelledby="nav-complemento-tab">
+        <fieldset class="borda">
+          <legend>Entrega</legend>
+          <div class="row">
+            <label class="radio-inline col-sm-3" repeat.for="formaEntrega of formasEntrega">
+              <input type="radio" model.bind="formaEntrega.id" checked.bind="entidade.formaEntrega.id">&nbsp;${formaEntrega.nome}
+            </label>
+          </div>
+        </fieldset>
         <br/>
-        <form>
-          <fieldset class="borda">
-            <legend>Categorias</legend>
-            <div class="row">
-              <label class="radio-inline col-sm-3" repeat.for="classificacao of classificacoes">
-                <input type="radio" model.bind="classificacao.id" checked.bind="entidade.classificacao.id">&nbsp;${classificacao.nome}
-              </label>
-            </div>
-          </fieldset>
-          <br/>
-          <fieldset class="borda">
-            <legend>Freqüência</legend>
-            <div class="row">
-              <label class="radio-inline col-sm-3" repeat.for="frequencia of frequencias">
-                <input type="radio" model.bind="frequencia.id" checked.bind="entidade.frequencia.id">&nbsp;${frequencia.nome}
-              </label>
-            </div>
-          </fieldset>
-          <br/>
-          <fieldset class="borda">
-            <legend>Entrega</legend>
-            <div class="row">
-              <label class="radio-inline col-sm-3" repeat.for="formaEntrega of formasEntrega">
-                <input type="radio" model.bind="formaEntrega.id" checked.bind="entidade.formaEntrega.id">&nbsp;${formaEntrega.nome}
-              </label>
-            </div>
-          </fieldset>
-          <br/>
-          <fieldset class="borda">
-            <legend>Pagamento</legend>
-            <div class="row">
-              <label class="radio-inline col-sm-2" repeat.for="formaPgto of formasPgto">
-                <input type="radio" model.bind="formaPgto.id" checked.bind="entidade.formaPgtoPref.id">&nbsp;${formaPgto.nome}
-              </label>
-            </div>
-            <div class="col-sm">
-              <label>Dia de pagamento</label>
-              <input class="form-control col-sm-2" max="31" min="1" type="number" value.bind="entidade.diaPgtoPref">
-            </div>
-          </fieldset>
-        </form>
-      </div>
+        <fieldset class="borda">
+          <legend>Pagamento</legend>
+          <div class="row">
+            <label class="radio-inline col-sm-2" repeat.for="formaPgto of formasPgto">
+              <input type="radio" model.bind="formaPgto.id" checked.bind="entidade.formaPgtoPref.id">&nbsp;${formaPgto.nome}
+            </label>
+          </div>
+          <div class="col-sm">
+            <label>Dia de pagamento</label>
+            <input class="form-control col-sm-2" max="31" min="1" type="number" value.bind="entidade.diaPgtoPref">
+          </div>
+        </fieldset>
+      </form>
+    </div>
     </br>
     <div class="form-group row">
       <div class="col-sm-1">

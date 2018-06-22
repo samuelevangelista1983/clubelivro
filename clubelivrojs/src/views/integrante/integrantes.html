@@ -104,6 +104,17 @@
             </div>
             <div class="form-group col-sm">
               <div>
+                <label>Situação</label>
+                <select class="form-control" value.bind="pesquisaAvancada.situacao">
+                  <option></option>
+                  <option repeat.for="situacao of situacoes" model.bind="situacao.id">${situacao.nome}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <div>
                 <label>Ordenação</label>
                 <select class="form-control" value.bind="pesquisaAvancada.tipoOrdenacao">
                   <option></option>

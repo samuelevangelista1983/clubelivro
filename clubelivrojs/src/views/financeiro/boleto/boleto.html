@@ -7,31 +7,42 @@
       <div class="form-group row">
         <div class="col-sm-8">
           <label>Sacado</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.sacado.pessoa.nome">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.sacado.pessoa.nome">
+          <select class="form-control" show.bind="incluir" value.bind="boleto.sacado">
+            <option></option>
+            <option repeat.for="integrante of integrantes" model.bind="integrante">${integrante.pessoa.nome}</option>
+          </select>
         </div>
         <div class="col-sm-4">
           <label>Data de emissão</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.emissao | dateconverter">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.emissao | dateconverter">
+          <input class="form-control" type="text" maxlength="10" minlength="10" show.bind="incluir" value.bind="boleto.emissao | dateconverter"
+          pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-4">
           <label>Número do boleto</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.numeroBeneficiario">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.numeroBeneficiario">
+          <input class="form-control" type="text" show.bind="incluir" value.bind="boleto.numeroBeneficiario">
         </div>
         <div class="col-sm-4">
           <label>Número do banco</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.numeroBanco">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.numeroBanco">
+          <input class="form-control" type="text" maxlength="18" minlength="17" show.bind="incluir" value.bind="boleto.numeroBanco">
         </div>
         <div class="col-sm-4">
           <label>Valor nominal</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.valorNominalStr">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.valorNominalStr">
+          <input class="form-control" type="text" blur.trigger="onBlurValorNominal()" show.bind="incluir" value.bind="boleto.valorNominalStr">
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-4">
           <label>Data de vencimento</label>
-          <input class="form-control" disabled type="text" value.bind="boleto.vcto | dateconverter">
+          <input class="form-control" disabled type="text" show.bind="!incluir" value.bind="boleto.vcto | dateconverter">
+          <input class="form-control" type="text" maxlength="10" minlength="10" show.bind="incluir" value.bind="boleto.vcto | dateconverter"
+              pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0[1,3-9]|1[0-2])\2))(?:(?:19|20)\d{2})$|^(?:29(\/)(?:0?2)\3(?:(?:(?:19|20)(?:0[048]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\d|2[0-8])(\/)(?:(?:0[1-9])|(?:1[0-2]))\4(?:(?:19|20)\d{2})$">
         </div>
         <div class="col-sm-4">
           <label>Data de pagamento</label>
@@ -46,7 +57,7 @@
       <div class="form-group row">
         <div class="col-sm-4">
           <label>Valor tarifa</label>
-          <input autocomplete="off" class="form-control" blur.trigger="onBlurValorTarifa()" type="text" value.bind="boleto.valorTarifaStr">
+          <input autocomplete="off" class="form-control" disabled type="text" value.bind="boleto.valorTarifaStr">
         </div>
         <div class="col-sm-4">
           <label>Valor creditado</label>
@@ -69,6 +80,16 @@
           <button type="button" class="btn btn-secondary" click.delegate="onClickCancelar()">
             <span class="icon-reply"></span>
             <span>Cancelar</span>
+          </button>
+        </div>
+        <div class="col-sm-1" show.bind="boleto.situacao == 0 ">
+          <button type="button" class="btn btn-lg form-control" click.delegate="onClickDesativar(boleto.id)" title="Cancelar boleto">
+            <span class="icon-toggle-on"></span>
+          </button>
+        </div>
+        <div class="col-sm-1" show.bind="boleto.situacao == 4 ">
+          <button type="button" class="btn btn-lg form-control" click.delegate="onClickAtivar(boleto.id)" title="Reativar boleto">
+            <span class="icon-toggle-off"></span>
           </button>
         </div>
       </div>

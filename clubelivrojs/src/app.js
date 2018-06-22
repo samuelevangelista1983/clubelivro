@@ -15,8 +15,8 @@ export class App {
        Um padrão de rota deve ter pelo menos os atributos router e moduleId.
      */
     config.map([
-      /*{route:['', 'home'], name:'home', moduleId:'views/home', nav:true, title:'Painel de controle'},*/
-      {route:['', 'integrantes'], name:'integrantes', moduleId:'views/integrante/integrantes', nav:true, title:'Integrantes'},
+      {route:['', 'home'], name:'home', moduleId:'views/home', nav:true, title:'Home'},
+      {route:['integrantes'], name:'integrantes', moduleId:'views/integrante/integrantes', nav:true, title:'Integrantes'},
       {route:'integrante', name:'integrante', moduleId:'views/integrante/integrante', nav:false},
       {route:'boletos', name:'boletos', moduleId:'views/financeiro/boleto/boletos', nav:true, title:'Boletos'},
       {route:'boleto', name:'boleto', moduleId:'views/financeiro/boleto/boleto', nav:false},
