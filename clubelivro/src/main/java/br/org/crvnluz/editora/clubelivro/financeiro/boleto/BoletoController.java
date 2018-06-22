@@ -74,8 +74,16 @@ public class BoletoController extends CrudController<Boleto> {
 	}
 	
 	@Override
-	protected void validarInclusao(Boleto boleto) {
-		throw new UnsupportedOperationException();
+	protected void validarInclusao(Boleto boleto) throws ValidacaoException {
+		if (boleto.getId() != null) {
+			throw new ValidacaoException("O boleto informado possui um id, neste caso deve ser utilizado o método de atualização");
+		}
+		
+		Boleto.validar(boleto);
+		
+		if (dao.verificarExistenciaBoleto(boleto.getNumeroBeneficiario(), boleto.getNumeroBanco())) {
+			throw new ValidacaoException("Já existe boleto cadastrado com o número do banco e/ou o número do boleto informados");
+		}
 	}
 	
 	// MÉTODOS PÚBLICOS
@@ -86,10 +94,44 @@ public class BoletoController extends CrudController<Boleto> {
 		return criarOuAtualizar(boleto);
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@GetMapping("/boletos/ativar/{id}")
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public ResponseEntity<Serializable> ativarBoleto(@PathVariable("id") Long id) {
+		ResponseEntity response;
+		
+		try {
+			dao.atualizarSituacao(id, 0);
+			response = new ResponseEntity(true, HttpStatus.OK);
+			
+		} catch (Throwable throwable) {
+			response = getInternalServerErrorResponse(throwable);
+		}
+		
+		return response;
+	}
+	
 	@PutMapping("/boletos")
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public ResponseEntity<Serializable> atualizarBoleto(@RequestBody Boleto boleto) {
 		throw new UnsupportedOperationException();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@GetMapping("/boletos/cancelar/{id}")
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public ResponseEntity<Serializable> cancelarBoleto(@PathVariable("id") Long id) {
+		ResponseEntity response;
+		
+		try {
+			dao.atualizarSituacao(id, 4);
+			response = new ResponseEntity(true, HttpStatus.OK);
+			
+		} catch (Throwable throwable) {
+			response = getInternalServerErrorResponse(throwable);
+		}
+		
+		return response;
 	}
 	
 	@GetMapping("/boletos/{id}")
@@ -163,10 +205,50 @@ public class BoletoController extends CrudController<Boleto> {
 			 * 3 - Data de vencimento
 			 */
 			Long campoOrdenacao = map.get("campoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("campoOrdenacao").toString()) ? Long.valueOf(map.get("campoOrdenacao").toString()) : 3;
-			LocalDate dtEmissaoInicial = map.get("dtEmissaoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoInicial").toString()) ? DataUtil.parserData(map.get("dtEmissaoInicial").toString()) : null;
-			LocalDate dtEmissaoFinal = map.get("dtEmissaoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoFinal").toString()) ? DataUtil.parserData(map.get("dtEmissaoFinal").toString()) : null;
-			LocalDate dtVctoInicial = map.get("dtVctoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoInicial").toString()) ? DataUtil.parserData(map.get("dtVctoInicial").toString()) : null;
-			LocalDate dtVctoFinal = map.get("dtVctoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoFinal").toString()) ? DataUtil.parserData(map.get("dtVctoFinal").toString()) : null;
+			LocalDate dtEmissaoInicial = null;
+			
+			if (map.get("dtEmissaoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoInicial").toString())) {
+				try {
+					dtEmissaoInicial = DataUtil.parserData(map.get("dtEmissaoInicial").toString());
+					
+				} catch (Exception ex) {
+					throw new ValidacaoException("A data de emissão inicial não é válida");
+				}
+			}
+			
+			LocalDate dtEmissaoFinal = null;
+			
+			if (map.get("dtEmissaoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtEmissaoFinal").toString())) {
+				try {
+					dtEmissaoFinal = DataUtil.parserData(map.get("dtEmissaoFinal").toString());
+					
+				} catch (Exception ex) {
+					throw new ValidacaoException("A data de emissão final não é válida");
+				}
+			}
+			
+			LocalDate dtVctoInicial = null;
+			
+			if (map.get("dtVctoInicial") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoInicial").toString())) {
+				try {
+					dtVctoInicial = DataUtil.parserData(map.get("dtVctoInicial").toString());
+					
+				} catch (Exception ex) {
+					throw new ValidacaoException("A data de vencimento inicial não é válida");
+				}
+			}
+			
+			LocalDate dtVctoFinal = null;
+			
+			if (map.get("dtVctoFinal") != null && StringUtil.stringNaoNulaENaoVazia(map.get("dtVctoFinal").toString())) {
+				try {
+					dtVctoFinal = DataUtil.parserData(map.get("dtVctoFinal").toString());
+					
+				} catch (Exception ex) {
+					throw new ValidacaoException("A data de vencimento final não é válida");
+				}
+			}
+			
 			List<Boleto> list = new ArrayList<>();
 			
 			if (StringUtil.stringNaoNulaENaoVazia(nome) || idCategoria != null || idSituacao != null 
@@ -196,6 +278,19 @@ public class BoletoController extends CrudController<Boleto> {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public ResponseEntity<Serializable> removerBoleto(@PathVariable("id") Long id) {
 		throw new UnsupportedOperationException();
+		/*
+		ResponseEntity response;
+		
+		try {
+			dao.delete(id);
+			response = new ResponseEntity(true, HttpStatus.OK);
+			
+		} catch (Throwable throwable) {
+			response = getInternalServerErrorResponse(throwable);
+		}
+		
+		return response;
+		*/
 	}
 	
 }

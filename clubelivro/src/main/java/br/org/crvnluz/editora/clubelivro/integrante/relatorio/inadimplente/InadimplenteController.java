@@ -18,7 +18,7 @@ import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.rest.BaseController;
 
 @RestController
-@RequestMapping("/inadimplencia")
+@RequestMapping("/inadimplentes")
 public class InadimplenteController extends BaseController {
 	
 	@Autowired

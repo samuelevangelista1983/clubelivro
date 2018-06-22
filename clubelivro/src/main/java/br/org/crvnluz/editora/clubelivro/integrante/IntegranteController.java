@@ -227,7 +227,7 @@ public class IntegranteController extends CrudController<Integrante> {
 	
 	@Override
 	protected List<Integrante> listar() throws Exception {
-		throw new UnsupportedOperationException();
+		return dao.selectAll();
 	}
 	
 	@Override
@@ -384,8 +384,7 @@ public class IntegranteController extends CrudController<Integrante> {
 	
 	@GetMapping("/integrantes")
 	public ResponseEntity<?> getIntegrantes() {
-		//return listarTodos();
-		throw new UnsupportedOperationException();
+		return listarTodos();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -471,6 +470,12 @@ public class IntegranteController extends CrudController<Integrante> {
 			 */
 			Long idFormaPgto = map.get("idFormaPgto") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaPgto").toString()) ? Long.valueOf(map.get("idFormaPgto").toString()) : null;
 			/*
+			 * Situação:
+			 * 0 - Ativo
+			 * 1 - Inativo
+			 */
+			Long situacao = map.get("situacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("situacao").toString()) ? Long.valueOf(map.get("situacao").toString()) : null;
+			/*
 			 * Tipo de ordenacao:
 			 * 0 - Ascendente
 			 * 1 - Descendente
@@ -479,9 +484,9 @@ public class IntegranteController extends CrudController<Integrante> {
 			List<Integrante> list = new ArrayList<>();
 			
 			if (StringUtil.stringNaoNulaENaoVazia(nome) || StringUtil.stringNaoNulaENaoVazia(cpf) || idCategoria != null 
-					|| idFrequencia != null || idFormaEntrega != null || idFormaPgto != null) {
+					|| idFrequencia != null || idFormaEntrega != null || idFormaPgto != null || situacao != null) {
 				
-				list = dao.pesquisar(nome, cpf, idCategoria, idFrequencia, idFormaEntrega, idFormaPgto, ordenacao);
+				list = dao.pesquisar(nome, cpf, idCategoria, idFrequencia, idFormaEntrega, idFormaPgto, situacao, ordenacao);
 			}
 			
 			response = new ResponseEntity(list, HttpStatus.OK);

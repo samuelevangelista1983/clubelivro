@@ -17,9 +17,13 @@ public class BoletoDAO extends CrudDAO<Boleto> {
 	
 	private PesquisaBoletoMapper pesquisaBoletoMapper;
 	
+	// CONSTRUTORES PÚBLICOS
+	
 	public BoletoDAO() {
 		pesquisaBoletoMapper = new PesquisaBoletoMapper();
 	}
+	
+	// MÉTODOS PRIVADOS
 	
 	private String getSqlPesquisa() {
 		StringBuilder sql = new StringBuilder("select b.id, i.id as id_integrante, p.id as id_pessoa, p.nome as pessoa, c.id as id_classificacao, c.nome as classificacao, b.vcto, b.valor_nominal, b.valor_pago, b.situacao, b.numero_banco, b.numero_beneficiario ");
@@ -30,6 +34,8 @@ public class BoletoDAO extends CrudDAO<Boleto> {
 		return sql.toString();
 	}
 	
+	// MÉTODOS PROTEGIDOS
+	
 	@Override
 	protected RowMapper<Boleto> getMapper() {
 		return new BoletoMapper();
@@ -38,17 +44,17 @@ public class BoletoDAO extends CrudDAO<Boleto> {
 	@Override
 	protected Map<String, String> getMapCamposValores(Boleto boleto) {
 		Map<String, String> map = new HashMap<>();
-		map.put("id_sacado", boleto.getSacado().getPessoa().getId().toString());
+		map.put("id_sacado", boleto.getSacado().getId().toString());
 		map.put("numero_banco", boleto.getNumeroBanco());
 		map.put("numero_beneficiario", boleto.getNumeroBeneficiario());
 		map.put("emissao", boleto.getEmissao().toString());
 		map.put("vcto", boleto.getVcto().toString());
 		map.put("valor_nominal", boleto.getValorNomimal().toString());
-		map.put("pgto", boleto.getPgto().toString());
-		map.put("efet_credito", boleto.getEfetivacaoCredito().toString());
-		map.put("valor_pago", boleto.getValorPago().toString());
-		map.put("valor_tarifa", boleto.getValorTarifa().toString());
-		map.put("valor_creditado", boleto.getValorCreditado().toString());
+		map.put("pgto", boleto.getPgto() != null ? boleto.getPgto().toString() : null);
+		map.put("efet_credito", boleto.getEfetivacaoCredito() != null ? boleto.getEfetivacaoCredito().toString() : null);
+		map.put("valor_pago", boleto.getValorPago() != null ? boleto.getValorPago().toString() : null);
+		map.put("valor_tarifa", boleto.getValorTarifa() != null ? boleto.getValorTarifa().toString() : null);
+		map.put("valor_creditado", boleto.getValorCreditado() != null ? boleto.getValorCreditado().toString() : null);
 		map.put("situacao", boleto.getSituacao().toString());
 		return map;
 	}
@@ -59,6 +65,10 @@ public class BoletoDAO extends CrudDAO<Boleto> {
 	}
 
 	// MÉTODOS PÚBLICOS
+	
+	public void atualizarSituacao(Long id, int codigo) {
+		jdbcTemplate.update(new StringBuilder("update ").append(getNomeTabela()).append(" set situacao = ").append(codigo).append(" where id = ").append(id).toString());
+	}
 	
 	public List<Boleto> pesquisar(String nome, String numBoleto) {
 		List<Object> params = new ArrayList<>(2);
@@ -152,6 +162,12 @@ public class BoletoDAO extends CrudDAO<Boleto> {
 		StringBuilder sql = new StringBuilder("select p.id as id_pessoa, p.nome as pessoa, b.* from clube_livro_boleto b ");
 		sql.append("inner join clube_livro_integrante i on i.id = b.id_sacado inner join pessoa p on p.id = i.id_pessoa where b.id = ").append(id);
 		return jdbcTemplate.queryForObject(sql.toString(), getMapper());
+	}
+	
+	public boolean verificarExistenciaBoleto(String numeroBeneficiario, String numeroBanco) {
+		String sql = "select count(*) from clube_livro_boleto where numero_beneficiario = ? or numero_banco = ?";
+		Integer count = jdbcTemplate.queryForObject(sql, new Object[] {numeroBeneficiario, numeroBanco}, Integer.class);
+		return count > 0;
 	}
 	
 }

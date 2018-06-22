@@ -1,5 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.integrante;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
+import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 
 @Repository
 public class IntegranteDAO extends CrudDAO<Integrante> {
@@ -80,7 +83,7 @@ public class IntegranteDAO extends CrudDAO<Integrante> {
 		return jdbcTemplate.query(sql.toString(), new Object[] {idCategoria, like}, getMapper());
 	}
 	
-	public List<Integrante> pesquisar(String nome, String cpf, Long idCategoria, Long idFrequencia, Long idFormaEntrega, Long idFormaPgto, Long ordenacao) {
+	public List<Integrante> pesquisar(String nome, String cpf, Long idCategoria, Long idFrequencia, Long idFormaEntrega, Long idFormaPgto, Long situacao, Long ordenacao) {
 		List<Object> params = new ArrayList<>(9);
 		StringBuilder sql = new StringBuilder(getSQLPesquisa());
 		sql.append("inner join documento d on d.id = i.id_documento ");
@@ -118,6 +121,11 @@ public class IntegranteDAO extends CrudDAO<Integrante> {
 			params.add(idFormaPgto);
 		}
 		
+		if (situacao != null) {
+			sql.append("and i.ativo = ? ");
+			params.add(situacao);
+		}
+		
 		sql.append("order by p.nome");
 		
 		if (ordenacao == 1) {
@@ -128,11 +136,21 @@ public class IntegranteDAO extends CrudDAO<Integrante> {
 	}
 	
 	public List<Integrante> selectAll() {
-		StringBuilder sql = new StringBuilder(getSQLPesquisa());
-		sql.append("order by p.nome");
-		return jdbcTemplate.query(sql.toString(), getMapper());
+		String sql = "select i.id as id, id_pessoa, nome from clube_livro_integrante i inner join pessoa p on p.id = i.id_pessoa where i.ativo = true order by p.nome";
+		return jdbcTemplate.query(sql.toString(), new RowMapper<Integrante>() {
+			
+			@Override
+			public Integrante mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Integrante integrante = new Integrante();
+				integrante.setId(rs.getLong("id"));
+				Pessoa pessoa = new Pessoa(rs.getLong("id_pessoa"));
+				pessoa.setNome(rs.getString("nome"));
+				integrante.setPessoa(pessoa);
+				return integrante;
+			}
+		});
 	}
-
+	
 	@Override
 	public Integrante selectById(Long id) {
 		StringBuilder sql = new StringBuilder(getSQLPesquisa());
