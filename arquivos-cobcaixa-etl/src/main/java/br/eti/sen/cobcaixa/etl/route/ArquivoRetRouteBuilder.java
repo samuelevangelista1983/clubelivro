@@ -53,15 +53,19 @@ public class ArquivoRetRouteBuilder extends AbstractRouteBuilder {
 							Message in = ex.getIn();
 							in.setBody(Boleto.getComandoAtualizarBoleto(in.getBody(Boleto.class)));
 						})
-						.to("jdbc:dataSource")
+						.choice()
+							.when(body().isNotNull())
+								.to("jdbc:dataSource")
+							.endChoice()
 					.otherwise()
-						.marshal().json()
+						.marshal().json(true)
 						.to(failRoute);
 		
 		from("direct:consultarBoleto")
 			.process()
 			.exchange(ex -> ex.getIn().setBody(Boleto.getConsultaNumeroBanco(ex.getIn().getBody(Boleto.class))))
 			.to("jdbc:dataSource");
+		
 	}
 	
 }

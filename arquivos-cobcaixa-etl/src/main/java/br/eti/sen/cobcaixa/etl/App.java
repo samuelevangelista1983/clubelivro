@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.eti.sen.cobcaixa.etl.route.ArquivoRemRouteBuilder;
+import br.eti.sen.cobcaixa.etl.route.ArquivoRetRouteBuilder;
 import br.eti.sen.cobcaixa.etl.route.CopyRemRouteBuilder;
 import br.eti.sen.cobcaixa.etl.route.CopyRetRouteBuilder;
 
@@ -54,7 +55,8 @@ public class App {
 			CamelContext context = new DefaultCamelContext(registry);
 			context.addRoutes(new CopyRemRouteBuilder(srcDirRem, destDirRem, delayRem));
 			context.addRoutes(new CopyRetRouteBuilder(srcDirRet, destDirRet, delayRet));
-			context.addRoutes(new ArquivoRemRouteBuilder(destDirRem, 1000));
+			context.addRoutes(new ArquivoRemRouteBuilder(destDirRem, 5000));
+			context.addRoutes(new ArquivoRetRouteBuilder(destDirRet, 5000));
 			
 			Main main = new Main();
 			main.getCamelContexts().add(context);

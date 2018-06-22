@@ -20,7 +20,9 @@ public class ArquivoRetProcessor implements Processor {
 	// MÉTODOS PRIVADOS
 	
 	private void preencherDadosSegmentoT(Boleto boleto, String linha) throws ParseException {
-		boleto.setNumeroBanco(linha.substring(39, 57).trim());
+		boleto.setCodigoRetorno(linha.substring(15, 17));
+		boleto.setNumeroBanco(linha.substring(38, 58).trim());
+		boleto.setNossoNumero(linha.substring(58, 69));
 		boleto.setVcto(linha.substring(73, 81));
 		boleto.setValorNominal(linha.substring(81, 96));
 		boleto.setValorTarifa(linha.substring(198, 213));
@@ -32,7 +34,20 @@ public class ArquivoRetProcessor implements Processor {
 		boleto.setPgto(linha.substring(137, 145));
 		boleto.setEfetivacaoCredito(linha.substring(145, 153));
 	}
-	
+/*
+	private void exibirBoleto(Boleto boleto) {
+		System.out.println("Dados do boleto");
+		System.out.println("Número do banco:\t" + boleto.getNumeroBanco());
+		System.out.println("Número do boleto:\t" + boleto.getNossoNumero());
+		System.out.println("Valor nominal:\t" + boleto.getValorNominal());
+		System.out.println("Data de vencimento:\t" + boleto.getVcto());
+		System.out.println("Data de pagamento:\t" + boleto.getPgto());
+		System.out.println("Valor pago:\t" + boleto.getValorPago());
+		System.out.println("Valor tarifa:\t" + boleto.getValorTarifa());
+		System.out.println("Valor creditado:\t" + boleto.getValorCreditado());
+		System.out.println("Data de efetivação de crédito:\t" + boleto.getEfetivacaoCredito());
+	}
+	*/
 	// MÉTODOS PÚBLICOS
 	
 	@Override
@@ -53,22 +68,17 @@ public class ArquivoRetProcessor implements Processor {
 				char segmento = linha.charAt(13);
 				
 				if (segmento == 'T') {
-					if (boleto == null) {
-						boleto = new Boleto();
-					}
-					
+					boleto = new Boleto();
 					preencherDadosSegmentoT(boleto, linha);
 					
 				} else if (segmento == 'U') {
 					preencherDadosSegmentoU(boleto, linha);
-					boletos.add(boleto);
-					boleto = null;
+					
+					if (!boleto.getNossoNumero().trim().isEmpty()) {
+						boletos.add(boleto);
+					}
 				}
 				
-			} else if (tipoRegistro == '0') {
-				if (boleto == null) {
-					boleto = new Boleto();
-				}
 			}
 		}
 		

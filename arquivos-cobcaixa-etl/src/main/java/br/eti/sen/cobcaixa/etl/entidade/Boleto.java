@@ -3,6 +3,7 @@ package br.eti.sen.cobcaixa.etl.entidade;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Boleto {
@@ -16,11 +17,24 @@ public class Boleto {
 	private Date pgto;
 	private Long idSacado;
 	private String cpfSacado;
+	private String nomeSacado;
+	private String emailSacado;
+	private String telefoneSacado;
+	private String celularSacado;
+	private String logradouroSacado;
+	private String numeroSacado;
+	private String complementoSacado;
+	private String bairroSacado;
+	private String cidadeSacado;
+	private String ufSacado;
+	private String cepSacado;
+	private Long categoriaSacado;
 	private BigDecimal valorPago;
 	private BigDecimal valorTarifa;
 	private BigDecimal valorCreditado;
 	private Date efetivacaoCredito;
 	private int status; // 0 sacado encontrado, 1 sacado não encontrado
+	private String codigoRetorno; // 06 liquidado, 09 baixa
 	
 	// CONSTRUTORES PÚBLICOS
 	
@@ -42,15 +56,24 @@ public class Boleto {
 	// MÉTODOS PÚBLICOS
 	
 	public static String getComandoAtualizarBoleto(Boleto boleto) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		StringBuilder sql = new StringBuilder("update clube_livro_boleto set pgto = '");
-		sql.append(sdf.format(boleto.pgto)).append("', valor_pago = '");
-		sql.append(boleto.valorPago).append("', valor_tarifa = '");
-		sql.append(boleto.valorTarifa).append("', valor_creditado = '");
-		sql.append(boleto.valorCreditado).append("', efet_credito = '");
-		sql.append(sdf.format(boleto.efetivacaoCredito));
-		sql.append("' where id = ").append(boleto.id);
-		return sql.toString();
+		String update = null;
+		
+		if (boleto.codigoRetorno.equals("06")) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			StringBuilder sql = new StringBuilder("update clube_livro_boleto set pgto = '");
+			sql.append(sdf.format(boleto.pgto)).append("', valor_pago = '");
+			sql.append(boleto.valorPago).append("', valor_tarifa = '");
+			sql.append(boleto.valorTarifa).append("', valor_creditado = '");
+			sql.append(boleto.valorCreditado).append("', efet_credito = '");
+			sql.append(sdf.format(boleto.efetivacaoCredito));
+			sql.append("', situacao = 1 where id = ").append(boleto.id);
+			update = sql.toString();
+			
+		} else if (boleto.codigoRetorno.equals("09")) {
+			update = new StringBuilder("update clube_livro_boleto set situacao = 3 where id = ").append(boleto.id).toString();
+		}
+		
+		return update;
 	}
 	
 	public static String getComandoInserirBoleto(Boleto boleto) {
@@ -62,6 +85,76 @@ public class Boleto {
 		return sql.toString();
 	}
 	
+	public static String getComandoInserirDocumento(Boleto boleto, Long idPessoa) {
+		StringBuilder sql = new StringBuilder("insert into documento (id_pessoa, id_tipo, valor) values (");
+		sql.append(idPessoa).append(", 1, '").append(boleto.getCpfSacado()).append("')");
+		return sql.toString();
+	}
+
+	public static String getComandoInserirEmail(Boleto boleto, Long idPessoa) {
+		StringBuilder sql = new StringBuilder("insert into contato (id_pessoa, id_tipo, valor) values (");
+		sql.append(idPessoa).append(", 4, '").append(boleto.emailSacado).append("')");
+		return sql.toString();
+	}
+
+	public static String getComandoInserirEndereco(Boleto boleto, Long idPessoa) {
+		StringBuilder sql = new StringBuilder("insert into endereco (id_pessoa, id_tipo, cep, logradouro, numero, complemento, bairro, municipio, uf) values (");
+		sql.append(idPessoa).append(", 1, '").append(boleto.getCepSacado()).append("', '").append(boleto.getLogradouroSacado()).append("', '");
+		sql.append(boleto.getNumeroSacado()).append("', ");
+		
+		if (boleto.getComplementoSacado() != null) {
+			sql.append("'");
+		}
+		
+		sql.append(boleto.getComplementoSacado());
+		
+		if (boleto.getComplementoSacado() != null) {
+			sql.append("'");
+		}
+		
+		sql.append(", '").append(boleto.getBairroSacado()).append("', '");
+		sql.append(boleto.getCidadeSacado()).append("', '").append(boleto.getUfSacado()).append("')");
+		return sql.toString();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static String getComandoInserirIntegrante(Boleto boleto, Long idPessoa, Long idDocumento, Long idEndereco) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		StringBuilder sql = new StringBuilder("insert into clube_livro_integrante (id_entrega, id_frequencia, id_forma_pgto_pref, ativo, ");
+		sql.append("dt_cadastro, id_pessoa, id_documento, id_endereco_cobranca, id_endereco_entrega, id_classificacao, dia_pgto_pref) values (1, 1, 1, 1, '");
+		sql.append(sdf.format(new Date())).append("', ").append(idPessoa).append(", ").append(idDocumento).append(", ").append(idEndereco);
+		sql.append(", ").append(idEndereco).append(", ").append(boleto.getCategoriaSacado()).append(", ").append(boleto.getVcto().getDate()).append(")");
+		return sql.toString();
+	}
+	
+	public static String getComandoInserirPessoa(Boleto boleto) {
+		return new StringBuilder("insert into pessoa (nome) values ('").append(boleto.getNomeSacado()).append("')").toString();
+	}
+
+	public static String getComandoInserirTelefoneFixo(Boleto boleto, Long idPessoa) {
+		StringBuilder sql = new StringBuilder("insert into contato (id_pessoa, id_tipo, valor) values (");
+		sql.append(idPessoa).append(", 1, '").append(boleto.telefoneSacado).append("')");
+		return sql.toString();
+	}
+	
+	public static String getComandoInserirTelefoneCelular(Boleto boleto, Long idPessoa) {
+		StringBuilder sql = new StringBuilder("insert into contato (id_pessoa, id_tipo, valor) values (");
+		sql.append(idPessoa).append(", 3, '").append(boleto.celularSacado).append("')");
+		return sql.toString();
+	}
+	
+	public static String getConsultaIdDocumento(Long idPessoa) {
+		return new StringBuilder("select id from documento where id_pessoa = ").append(idPessoa).toString();
+	}
+	
+	public static String getConsultaIdEndereco(Long idPessoa) {
+		return new StringBuilder("select id from endereco where id_pessoa = ").append(idPessoa).toString();
+	}
+	
+	public static String getConsultaIdPessoa(Boleto boleto) {
+		return new StringBuilder("select id from pessoa where nome = '").append(boleto.getNomeSacado()).append("'").toString();
+	}
+	
 	public static String getConsultaIdSacado(Boleto boleto) {
 		StringBuilder sql = new StringBuilder("select i.id from clube_livro_integrante i inner join documento d on d.id = i.id_documento where d.valor = '");
 		sql.append(boleto.cpfSacado).append("'");
@@ -69,8 +162,8 @@ public class Boleto {
 	}
 	
 	public static String getConsultaNumeroBanco(Boleto boleto) {
-		StringBuilder sql = new StringBuilder("select id from clube_livro_boleto where numero_banco = '");
-		sql.append(boleto.numeroBanco).append("'");
+		StringBuilder sql = new StringBuilder("select id from clube_livro_boleto where numero_beneficiario = '");
+		sql.append(boleto.nossoNumero).append("'");
 		return sql.toString();
 	}
 	
@@ -82,7 +175,24 @@ public class Boleto {
 				+ ", valorCreditado=" + valorCreditado + ", efetivacaoCredito=" + efetivacaoCredito + ", status="
 				+ status + "]";
 	}
-
+	
+	public static boolean verificarAdicaoBoleto(Boleto boleto) {
+		Calendar marco = Calendar.getInstance();
+		marco.set(2018, 2, 1, 0, 0, 0); // 01/03/2018 00:00:00
+		boolean emitidoAposFevereiro = marco.getTime().before(boleto.getEmissao());
+		boolean retorno = emitidoAposFevereiro;
+		
+		if (!emitidoAposFevereiro) {
+			Calendar fevereiro = Calendar.getInstance();
+			fevereiro.set(2018, 1, 1, 0, 0, 0); // 01/02/2018 00:00:00
+			boolean emitidoEmFevereiro = fevereiro.getTime().before(boleto.getEmissao());
+			boolean vctoAposFevereiro = marco.getTime().before(boleto.getVcto());
+			retorno = emitidoEmFevereiro && vctoAposFevereiro;
+		}
+		
+		return retorno;
+	}
+	
 	public Date getEmissao() {
 		return emissao;
 	}
@@ -225,6 +335,110 @@ public class Boleto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNomeSacado() {
+		return nomeSacado;
+	}
+
+	public void setNomeSacado(String nomeSacado) {
+		this.nomeSacado = nomeSacado;
+	}
+
+	public String getEmailSacado() {
+		return emailSacado;
+	}
+
+	public void setEmailSacado(String emailSacado) {
+		this.emailSacado = emailSacado;
+	}
+
+	public String getCidadeSacado() {
+		return cidadeSacado;
+	}
+
+	public void setCidadeSacado(String cidadeSacado) {
+		this.cidadeSacado = cidadeSacado;
+	}
+
+	public String getUfSacado() {
+		return ufSacado;
+	}
+
+	public void setUfSacado(String ufSacado) {
+		this.ufSacado = ufSacado;
+	}
+
+	public String getCepSacado() {
+		return cepSacado;
+	}
+
+	public void setCepSacado(String cepSacado) {
+		this.cepSacado = cepSacado;
+	}
+
+	public String getTelefoneSacado() {
+		return telefoneSacado;
+	}
+
+	public void setTelefoneSacado(String telefoneSacado) {
+		this.telefoneSacado = telefoneSacado;
+	}
+
+	public Long getCategoriaSacado() {
+		return categoriaSacado;
+	}
+
+	public void setCategoriaSacado(Long categoriaSacado) {
+		this.categoriaSacado = categoriaSacado;
+	}
+
+	public String getCelularSacado() {
+		return celularSacado;
+	}
+
+	public void setCelularSacado(String celularSacado) {
+		this.celularSacado = celularSacado;
+	}
+
+	public String getLogradouroSacado() {
+		return logradouroSacado;
+	}
+
+	public void setLogradouroSacado(String logradouroSacado) {
+		this.logradouroSacado = logradouroSacado;
+	}
+
+	public String getNumeroSacado() {
+		return numeroSacado;
+	}
+
+	public void setNumeroSacado(String numeroSacado) {
+		this.numeroSacado = numeroSacado;
+	}
+
+	public String getComplementoSacado() {
+		return complementoSacado;
+	}
+
+	public void setComplementoSacado(String complementoSacado) {
+		this.complementoSacado = complementoSacado;
+	}
+
+	public String getBairroSacado() {
+		return bairroSacado;
+	}
+
+	public void setBairroSacado(String bairroSacado) {
+		this.bairroSacado = bairroSacado;
+	}
+
+	public String getCodigoRetorno() {
+		return codigoRetorno;
+	}
+
+	public void setCodigoRetorno(String codigoRetorno) {
+		this.codigoRetorno = codigoRetorno;
 	}
 	
 }
