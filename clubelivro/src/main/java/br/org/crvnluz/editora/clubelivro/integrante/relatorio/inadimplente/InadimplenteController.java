@@ -45,6 +45,7 @@ public class InadimplenteController extends BaseController {
 			response = new ResponseEntity(inadimplentes, HttpStatus.OK);
 			
 		} catch (Throwable throwable) {
+			throwable.printStackTrace();
 			response = getInternalServerErrorResponse(throwable);
 		}
 		

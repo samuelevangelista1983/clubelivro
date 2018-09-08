@@ -1,14 +1,15 @@
 package br.org.crvnluz.editora.clubelivro.infra.persistencia;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.FileCopyUtils;
 
 public class QueryLoader {
 	
 	public static String getConsulta(String arquivo) throws Exception {
-		Path path = Paths.get(QueryLoader.class.getClassLoader().getResource(arquivo).toURI());
-		return new String(Files.readAllBytes(path));
+		InputStream inputStream = new ClassPathResource("classpath:consultas/" + arquivo).getInputStream();
+		return new String(FileCopyUtils.copyToByteArray(inputStream));
 	}
 	
 }
