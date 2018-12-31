@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.sen</groupId>
 	<artifactId>arquivos-cobcaixa-copy</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
 	<name>Arquivos CobCaixa Copy</name>
 	<description>Copia os arquivos REM e RET gerados pelo programa CobCaixa da Caixa Econômica Federal</description>
 	<properties>

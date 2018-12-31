@@ -5,7 +5,7 @@
 			<PatternLayout pattern="%d | %p | %F %L | %m%n" />
 		</Console>
 
-		<!--RollingRandomAccessFile name="logFile" fileName="logs/app.log" filePattern="logs/$${date:yyyy-MM}/etl-cobcaixa-%d{MM-dd-yyyy}-%i.log.gz"> 
+		<RollingRandomAccessFile name="logFile" fileName="logs/cobcaixa-copy.log" filePattern="logs/$${date:yyyy-MM}/cobcaixa-copy-%d{MM-dd-yyyy}-%i.log.gz"> 
 			<PatternLayout>
 				<Pattern>%d | %p | %F %L | %m%n</Pattern>
 			</PatternLayout> 
@@ -13,24 +13,18 @@
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="20 MB" />
 			</Policies>
-		</RollingRandomAccessFile -->
-
-		<!--SMTP name="logMail" subject="Log de erro etl-cobcaixa" from="etl-cobcaixa@gmail.com" to="samuelevangelista@gmail.com" 
-			smtpHost="localhost" smtpPort="25" smtpUsername="" smtpPassword="">
-		</SMTP-->
+		</RollingRandomAccessFile>
 
 		<Async name="Async">
 			<AppenderRef ref="STDOUT" />
-			<!--AppenderRef ref="logFile" / -->
-			<!--AppenderRef ref="logMail" / -->
+			<AppenderRef ref="logFile" />
 		</Async>
 	</Appenders>
 
 	<Loggers>
 		<Root level="info">
 			<AppenderRef ref="STDOUT" />
-			<!--AppenderRef ref="logFile" / -->
-			<!--AppenderRef ref="logMail" / -->
+			<AppenderRef ref="logFile" />
 		</Root>
 	</Loggers>
 </Configuration>
