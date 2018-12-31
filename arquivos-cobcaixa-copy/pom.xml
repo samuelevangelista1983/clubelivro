@@ -5,7 +5,8 @@
 	<artifactId>arquivos-cobcaixa-copy</artifactId>
 	<version>2.0</version>
 	<name>Arquivos CobCaixa Copy</name>
-	<description>Copia os arquivos REM e RET gerados pelo programa CobCaixa da Caixa Econômica Federal</description>
+	<description>Copia os arquivos REM e RET gerados pelo programa CobCaixa da Caixa Econômica Federal.
+Este programa utiliza o ApacheCamel para realizar as cópias dos arquivos assim que os mesmos são criados.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
