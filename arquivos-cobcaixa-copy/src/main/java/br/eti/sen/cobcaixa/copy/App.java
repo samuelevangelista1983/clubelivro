@@ -25,29 +25,31 @@ public class App {
 			List<String> linhas = Files.readAllLines(arquivo.toPath());
 			
 			for (String linha : linhas) {
-				if (!linha.contains("=")) {
-					ConfiguracaoException configuracaoException = new ConfiguracaoException("Para definir o valor de uma configuração deve ser utilizado o separado \"=\"");
-					logger.error("Erro de sintaxe na definição das configurações", configuracaoException);
-					throw configuracaoException;
-				}
-				
-				String[] configuracao = linha.split("=");
-				
-				switch (configuracao[0]) {
-					case "diretorio.origem.arquivo.remessa":
-						srcDirRem = configuracao[1];
-						break;
-					case "diretorio.destino.arquivo.remessa":
-						destDirRem = configuracao[1];
-						break;
-					case "diretorio.origem.arquivo.retorno":
-						srcDirRet = configuracao[1];
-						break;
-					case "diretorio.destino.arquivo.retorno":
-						destDirRet = configuracao[1];
-						break;
-					default:
-						logger.info(String.format("Chave de configuração %s inválida", configuracao[0]));
+				if (!linha.isEmpty() && !linha.startsWith("#")) {
+					if (!linha.contains("=")) {
+						ConfiguracaoException configuracaoException = new ConfiguracaoException("Para definir o valor de uma configuração deve ser utilizado o separado \"=\"");
+						logger.error("Erro de sintaxe na definição das configurações", configuracaoException);
+						throw configuracaoException;
+					}
+					
+					String[] configuracao = linha.split("=");
+					
+					switch (configuracao[0]) {
+						case "diretorio.origem.arquivo.remessa":
+							srcDirRem = configuracao[1];
+							break;
+						case "diretorio.destino.arquivo.remessa":
+							destDirRem = configuracao[1];
+							break;
+						case "diretorio.origem.arquivo.retorno":
+							srcDirRet = configuracao[1];
+							break;
+						case "diretorio.destino.arquivo.retorno":
+							destDirRet = configuracao[1];
+							break;
+						default:
+							logger.info(String.format("Chave de configuração %s inválida", configuracao[0]));
+					}
 				}
 			}
 			
@@ -59,7 +61,7 @@ public class App {
 		}
 	}
 	
-	private void executar() throws Throwable {
+	private void executar() throws Exception {
 		try {
 			CamelContext context = new DefaultCamelContext();
 			context.addRoutes(new RemRouteBuilder(srcDirRem, destDirRem));
@@ -68,9 +70,9 @@ public class App {
 			main.getCamelContexts().add(context);
 			main.run();
 			
-		} catch (Throwable throwable) {
-			logger.error("Falha ao copiar os arquivos de remessa e/ou de retorno", throwable);
-			throw throwable;
+		} catch (Exception exception) {
+			logger.error("Falha ao copiar os arquivos de remessa e/ou de retorno", exception);
+			throw exception;
 		}
 	}
 	
@@ -133,7 +135,7 @@ public class App {
 		}
 	}
 	
-	public static void main(String[] args) throws Throwable {
+	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
 			System.out.println("Para utilizar este programa é necessário informar o caminho de um arquivo de configuração com as seguintes configurações:");
 			System.out.println();
