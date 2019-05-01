@@ -183,14 +183,21 @@ public class Boleto {
 		boolean retorno = emitidoAposFevereiro;
 		
 		if (!emitidoAposFevereiro) {
-			Calendar fevereiro = Calendar.getInstance();
-			fevereiro.set(2018, 1, 1, 0, 0, 0); // 01/02/2018 00:00:00
-			boolean emitidoEmFevereiro = fevereiro.getTime().before(boleto.getEmissao());
+			//Calendar fevereiro = Calendar.getInstance();
+			//fevereiro.set(2018, 1, 1, 0, 0, 0); // 01/02/2018 00:00:00
+			//boolean emitidoEmFevereiro = fevereiro.getTime().before(boleto.getEmissao());
 			boolean vctoAposFevereiro = marco.getTime().before(boleto.getVcto());
-			retorno = emitidoEmFevereiro && vctoAposFevereiro;
+			retorno = /*emitidoEmFevereiro &&*/ vctoAposFevereiro;
 		}
 		
 		return retorno;
+	}
+	
+	public static void main(String[] a) throws ParseException {
+		Boleto boleto = new Boleto();
+		boleto.setEmissao("27022018");
+		boleto.setVcto("01032018");
+		System.out.println(Boleto.verificarAdicaoBoleto(boleto));
 	}
 	
 	public Date getEmissao() {
