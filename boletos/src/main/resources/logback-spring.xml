@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="LOG_HOME" value="./logs" />
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/boletos.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+			</Pattern>
+		</encoder>
+	
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${LOG_HOME}/backuplog/boletos.%d{yyyy-MM-dd}.%i.logs</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
+	<root level="info">
+		<appender-ref ref="fileAppender" />
+		<appender-ref ref="consoleAppender" />
+	</root>
+	
+</configuration>
