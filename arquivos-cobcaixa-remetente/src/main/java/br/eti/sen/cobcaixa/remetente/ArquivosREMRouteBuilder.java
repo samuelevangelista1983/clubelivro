@@ -4,8 +4,8 @@ import org.apache.camel.LoggingLevel;
 
 public class ArquivosREMRouteBuilder extends AbstractFileRouteBuilder {
 
-	public ArquivosREMRouteBuilder(String diretorio, int delay, int redeliveryDelay, int maximumRedeliveries) {
-		super(diretorio, delay, redeliveryDelay, maximumRedeliveries);
+	public ArquivosREMRouteBuilder(String diretorio, String destRoute, int delay, int redeliveryDelay, int maximumRedeliveries) {
+		super(diretorio, destRoute, delay, redeliveryDelay, maximumRedeliveries);
 	}
 
 	@Override
@@ -16,9 +16,9 @@ public class ArquivosREMRouteBuilder extends AbstractFileRouteBuilder {
 			.maximumRedeliveries(maximumRedeliveries)
 			.onExceptionOccurred(new LogExceptionProcessor());
 		
-		from(route)
+		from(srcRoute)
 			.process(new ArquivosProcessor())
-			.to("jms:topic:crvn.cobcaixa.arquivos.rem");
+			.to(destRoute);
 
 	}
 

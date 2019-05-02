@@ -17,11 +17,13 @@ import org.slf4j.LoggerFactory;
 
 public class App {
 
-private final Logger logger = LoggerFactory.getLogger(App.class);
+	private final Logger logger = LoggerFactory.getLogger(App.class);
 	
 	private int delay;
 	private String srcDirRem;
 	private String srcDirRet;
+	private String destRem;
+	private String destRet;
 	private String activeMQAddress;
 	private int redeliveryDelay;
 	private int maximumRedeliveries;
@@ -80,6 +82,12 @@ private final Logger logger = LoggerFactory.getLogger(App.class);
 							}
 							
 							break;
+						case "activemq.topic.arquivos.rem":
+							destRem = configuracao[1];
+							break;
+						case "activemq.topic.arquivos.ret":
+							destRet = configuracao[1];
+							break;
 						default:
 							logger.info(String.format("Chave de configuração %s inválida", configuracao[0]));
 					}
@@ -99,8 +107,8 @@ private final Logger logger = LoggerFactory.getLogger(App.class);
 			CamelContext context = new DefaultCamelContext();
 			ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(activeMQAddress);
 			context.addComponent("jms", JmsComponent.jmsComponent(connectionFactory));
-			context.addRoutes(new ArquivosREMRouteBuilder(srcDirRem, delay, redeliveryDelay, maximumRedeliveries));
-			context.addRoutes(new ArquivosRETRouteBuilder(srcDirRet, delay, redeliveryDelay, maximumRedeliveries));
+			context.addRoutes(new ArquivosREMRouteBuilder(srcDirRem, destRem, delay, redeliveryDelay, maximumRedeliveries));
+			context.addRoutes(new ArquivosRETRouteBuilder(srcDirRet, destRet, delay, redeliveryDelay, maximumRedeliveries));
 			
 			Main main = new Main();
 			main.getCamelContexts().add(context);
