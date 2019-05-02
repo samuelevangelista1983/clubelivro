@@ -5,16 +5,18 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
+
 public class ContatoMapper implements RowMapper<Contato> {
 
 	@Override
 	public Contato mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Contato contato = new Contato();
-		contato.setId(rs.getLong("id"));
+		/*contato.setId(rs.getLong("id"));
 		contato.setIdPessoa(rs.getLong("id_pessoa"));
 		contato.setObservacao(rs.getString("observacao"));
 		contato.setValor(rs.getString("valor"));
-		contato.setIdTipo(rs.getLong("id_tipo"));
+		contato.setIdTipo(rs.getLong("id_tipo"));*/
 		return contato;
 	}
 

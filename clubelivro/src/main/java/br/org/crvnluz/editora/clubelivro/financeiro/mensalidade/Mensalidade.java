@@ -2,8 +2,8 @@ package br.org.crvnluz.editora.clubelivro.financeiro.mensalidade;
 
 import java.math.BigDecimal;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
-import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
 public class Mensalidade extends Persistente {
 	

@@ -11,13 +11,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
-import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
-import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 
-@Repository
-public class IntegranteDAO extends CrudDAO<Integrante> {
-	
+//@Repository
+public class IntegranteDAO /*extends CrudDAO<Integrante> */{
+	/*
 	private String getSQLPesquisa() {
 		StringBuilder sql = new StringBuilder("select * from clube_livro_integrante i ");
 		sql.append("inner join pessoa p on p.id = i.id_pessoa ");
@@ -157,5 +158,5 @@ public class IntegranteDAO extends CrudDAO<Integrante> {
 		sql.append("and i.id = ?");
 		return jdbcTemplate.queryForObject(sql.toString(), new Object[] {id}, getMapper());
 	}
-
+*/
 }

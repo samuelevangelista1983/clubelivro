@@ -24,20 +24,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.eti.sen.utilitarios.documento.CPF;
 import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Documento;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
-import br.org.crvnluz.editora.clubelivro.integrante.contato.Contato;
 import br.org.crvnluz.editora.clubelivro.integrante.contato.ContatoDAO;
-import br.org.crvnluz.editora.clubelivro.integrante.documento.Documento;
 import br.org.crvnluz.editora.clubelivro.integrante.documento.DocumentoDAO;
-import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
 import br.org.crvnluz.editora.clubelivro.integrante.endereco.EnderecoDAO;
-import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
 import br.org.crvnluz.editora.clubelivro.integrante.pessoa.PessoaDAO;
 
-@RestController
-public class IntegranteController extends CrudController<Integrante> {
-	
+//@RestController
+public class IntegranteController /*extends CrudController<Integrante>*/ {
+	/*
 	@Autowired
 	private IntegranteDAO dao;
 	@Autowired
@@ -386,7 +387,8 @@ public class IntegranteController extends CrudController<Integrante> {
 	public ResponseEntity<?> getIntegrantes() {
 		return listarTodos();
 	}
-	
+	*/
+	/*
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostMapping("/integrantes/pesquisa")
 	public ResponseEntity getIntegrantes(@RequestBody String request) {
@@ -399,7 +401,7 @@ public class IntegranteController extends CrudController<Integrante> {
 			 * 2 - Romance
 			 * 3 - Estudo e romance
 			 * 4 - Estudo e romance alternado
-			 */
+			 *
 			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
 			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
 			Long idCategoria = StringUtil.stringNaoNulaENaoVazia(map.get("categoria").toString()) ? Long.valueOf(map.get("categoria").toString()) : null;
@@ -446,19 +448,19 @@ public class IntegranteController extends CrudController<Integrante> {
 			 * 2 - Romance
 			 * 3 - Estudo e romance
 			 * 4 - Estudo e romance alternado
-			 */
+			 *
 			Long idCategoria = map.get("idCategoria") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idCategoria").toString()) ? Long.valueOf(map.get("idCategoria").toString()) : null;
 			/*
 			 * Freqüência:
 			 * 1 - Mensal
 			 * 2 - Bimestral
-			 */
+			 *
 			Long idFrequencia = map.get("idFrequencia") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFrequencia").toString()) ? Long.valueOf(map.get("idFrequencia").toString()) : null;
 			/*
 			 * Forma de entrega:
 			 * 1 - Correios
 			 * 2 - Presencial
-			 */
+			 *
 			Long idFormaEntrega = map.get("idFormaEntrega") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaEntrega").toString()) ? Long.valueOf(map.get("idFormaEntrega").toString()) : null;
 			/*
 			 * Forma de pagamento:
@@ -467,19 +469,19 @@ public class IntegranteController extends CrudController<Integrante> {
 			 * 3 - Cartão de crédito
 			 * 4 - Dinheiro
 			 * 5 - Cheque à vista
-			 */
+			 *
 			Long idFormaPgto = map.get("idFormaPgto") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaPgto").toString()) ? Long.valueOf(map.get("idFormaPgto").toString()) : null;
 			/*
 			 * Situação:
 			 * 0 - Ativo
 			 * 1 - Inativo
-			 */
+			 *
 			Long situacao = map.get("situacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("situacao").toString()) ? Long.valueOf(map.get("situacao").toString()) : null;
 			/*
 			 * Tipo de ordenacao:
 			 * 0 - Ascendente
 			 * 1 - Descendente
-			 */
+			 *
 			Long ordenacao = map.get("tipoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("tipoOrdenacao").toString()) ? Long.valueOf(map.get("tipoOrdenacao").toString()) : 0;
 			List<Integrante> list = new ArrayList<>();
 			
@@ -503,5 +505,5 @@ public class IntegranteController extends CrudController<Integrante> {
 	public ResponseEntity<Serializable> removerIntegrante(@PathVariable("id") Long id) {
 		throw new UnsupportedOperationException();
 	}
-	
+	*/
 }

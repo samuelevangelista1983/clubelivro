@@ -7,16 +7,16 @@ import org.springframework.jdbc.core.RowMapper;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
-import br.org.crvnluz.editora.clubelivro.configuracao.classificacao.Classificacao;
-import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
-import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Categoria;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 
 public class PesquisaBoletoMapper implements RowMapper<Boleto> {
 
 	@Override
 	public Boleto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Boleto boleto = new Boleto();
-		boleto.setId(rs.getLong("id"));
+		/*boleto.setId(rs.getLong("id"));
 		Integrante integrante = new Integrante();
 		integrante.setId(rs.getLong("id_integrante"));
 		integrante.setClassificacao(new Classificacao(rs.getLong("id_classificacao"), rs.getString("classificacao")));
@@ -28,7 +28,7 @@ public class PesquisaBoletoMapper implements RowMapper<Boleto> {
 		boleto.setSituacao(rs.getInt("situacao"));
 		boleto.setNumeroBanco(rs.getString("numero_banco"));
 		boleto.setNumeroBeneficiario(rs.getString("numero_beneficiario"));
-		boleto.setValorPago(rs.getBigDecimal("valor_pago"));
+		boleto.setValorPago(rs.getBigDecimal("valor_pago"));*/
 		return boleto;
 	}
 

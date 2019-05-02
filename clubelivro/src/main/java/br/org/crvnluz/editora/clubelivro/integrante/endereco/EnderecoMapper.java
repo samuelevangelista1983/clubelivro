@@ -5,12 +5,14 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
+
 public class EnderecoMapper implements RowMapper<Endereco> {
 
 	@Override
 	public Endereco mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Endereco endereco = new Endereco();
-		endereco.setId(rs.getLong("id"));
+		/*endereco.setId(rs.getLong("id"));
 		endereco.setIdPessoa(rs.getLong("id_pessoa"));
 		endereco.setIdTipo(rs.getLong("id_tipo"));
 		endereco.setCep(rs.getString("cep"));
@@ -20,7 +22,7 @@ public class EnderecoMapper implements RowMapper<Endereco> {
 		endereco.setBairro(rs.getString("bairro"));
 		endereco.setMunicipio(rs.getString("municipio"));
 		endereco.setUf(rs.getString("uf"));
-		endereco.setObservacao(rs.getString("observacao"));
+		endereco.setObservacao(rs.getString("observacao"));*/
 		return endereco;
 	}
 

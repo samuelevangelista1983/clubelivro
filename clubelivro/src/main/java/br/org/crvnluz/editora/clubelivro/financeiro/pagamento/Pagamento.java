@@ -3,7 +3,7 @@ package br.org.crvnluz.editora.clubelivro.financeiro.pagamento;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import br.org.crvnluz.editora.clubelivro.configuracao.formapgto.FormaPgto;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaPgto;
 import br.org.crvnluz.editora.clubelivro.financeiro.boleto.Boleto;
 import br.org.crvnluz.editora.clubelivro.financeiro.mensalidade.Mensalidade;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;

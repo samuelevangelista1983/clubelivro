@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaEntrega;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
-@RestController
-@RequestMapping("/configuracao")
-public class FormaEntregaController extends CrudController<FormaEntrega> {
-	
+//@RestController
+//@RequestMapping("/configuracao")
+public class FormaEntregaController /*extends CrudController<FormaEntrega>*/ {
+	/*
 	@Autowired
 	private FormaEntregaDAO dao;
 	
@@ -77,5 +78,5 @@ public class FormaEntregaController extends CrudController<FormaEntrega> {
 	public ResponseEntity<Serializable> removerFormaEntrega(@PathVariable("id") Long id) {
 		return remover(id);
 	}
-	
+	*/
 }

@@ -7,15 +7,15 @@ import org.springframework.jdbc.core.RowMapper;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
-import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
-import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 
 public class BoletoMapper implements RowMapper<Boleto> {
 
 	@Override
 	public Boleto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Boleto boleto = new Boleto();
-		boleto.setId(rs.getLong("id"));
+		/*boleto.setId(rs.getLong("id"));
 		Integrante integrante = new Integrante();
 		integrante.setId(rs.getLong("id_sacado"));
 		integrante.setPessoa(new Pessoa(rs.getLong("id_pessoa"), rs.getString("pessoa")));
@@ -34,7 +34,7 @@ public class BoletoMapper implements RowMapper<Boleto> {
 		boleto.setPgto(StringUtil.stringNaoNulaENaoVazia(pgto) ? DataUtil.parserData(pgto, "yyyy-MM-dd") : null);
 		boleto.setValorCreditado(rs.getBigDecimal("valor_creditado"));
 		boleto.setValorPago(rs.getBigDecimal("valor_pago"));
-		boleto.setValorTarifa(rs.getBigDecimal("valor_tarifa"));
+		boleto.setValorTarifa(rs.getBigDecimal("valor_tarifa"));*/
 		return boleto;
 	}
 

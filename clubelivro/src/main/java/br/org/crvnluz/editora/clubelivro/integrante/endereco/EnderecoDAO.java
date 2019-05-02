@@ -7,11 +7,12 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 
-@Repository
-public class EnderecoDAO extends CrudDAO<Endereco> {
-
+//@Repository
+public class EnderecoDAO /*extends CrudDAO<Endereco>*/ {
+/*
 	@Override
 	protected Map<String, String> getMapCamposValores(Endereco endereco) {
 		Map<String, String> map = new HashMap<>();
@@ -44,5 +45,5 @@ public class EnderecoDAO extends CrudDAO<Endereco> {
 	
 	public List<Endereco> selectByPessoa(Long idPessoa) {
 		return selectByCampo("id_pessoa", idPessoa.toString());
-	}
+	}*/
 }

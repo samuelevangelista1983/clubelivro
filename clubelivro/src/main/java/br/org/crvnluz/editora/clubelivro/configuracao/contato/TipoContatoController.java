@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.TipoContato;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
-@RestController
-@RequestMapping("/configuracao")
-public class TipoContatoController extends CrudController<TipoContato> {
-	
+//@RestController
+//@RequestMapping("/configuracao")
+public class TipoContatoController /*extends CrudController<TipoContato>*/ {
+	/*
 	@Autowired
 	private TipoContatoDAO dao;
 	
@@ -77,5 +78,5 @@ public class TipoContatoController extends CrudController<TipoContato> {
 	public ResponseEntity<Serializable> removerTipoContato(@PathVariable("id") Long id) {
 		return remover(id);
 	}
-	
+	*/
 }

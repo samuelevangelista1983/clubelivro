@@ -7,11 +7,12 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 
-@Repository
-public class PessoaDAO extends CrudDAO<Pessoa> {
-
+//@Repository
+public class PessoaDAO /*extends CrudDAO<Pessoa>*/ {
+/*
 	@Override
 	protected Map<String, String> getMapCamposValores(Pessoa pessoa) {
 		Map<String, String> map = new HashMap<>();
@@ -55,5 +56,5 @@ public class PessoaDAO extends CrudDAO<Pessoa> {
 		String sql = "select count(*) from pessoa inner join documento on id_pessoa = pessoa.id where valor = ? and pessoa.id <> ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, new Object[] {valor, id});
 	}
-
+*/
 }

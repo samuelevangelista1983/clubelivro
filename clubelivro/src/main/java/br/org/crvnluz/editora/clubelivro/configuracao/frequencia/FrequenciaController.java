@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Frequencia;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
-@RestController
-@RequestMapping("/configuracao")
-public class FrequenciaController extends CrudController<Frequencia> {
-	
+//@RestController
+//@RequestMapping("/configuracao")
+public class FrequenciaController /*0extends CrudController<Frequencia>*/ {
+	/*
 	@Autowired
 	private FrequenciaDAO dao;
 	
@@ -77,5 +78,5 @@ public class FrequenciaController extends CrudController<Frequencia> {
 	public ResponseEntity<Serializable> removerFrequencia(@PathVariable("id") Long id) {
 		return remover(id);
 	}
-	
+	*/
 }

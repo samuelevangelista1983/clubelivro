@@ -6,20 +6,21 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
-import br.org.crvnluz.editora.clubelivro.configuracao.classificacao.Classificacao;
-import br.org.crvnluz.editora.clubelivro.configuracao.entrega.FormaEntrega;
-import br.org.crvnluz.editora.clubelivro.configuracao.formapgto.FormaPgto;
-import br.org.crvnluz.editora.clubelivro.configuracao.frequencia.Frequencia;
-import br.org.crvnluz.editora.clubelivro.integrante.documento.Documento;
-import br.org.crvnluz.editora.clubelivro.integrante.endereco.Endereco;
-import br.org.crvnluz.editora.clubelivro.integrante.pessoa.Pessoa;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Categoria;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaEntrega;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaPgto;
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Frequencia;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Documento;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Pessoa;
 
 public class IntegranteMapper implements RowMapper<Integrante> {
 
 	@Override
 	public Integrante mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Integrante integrante = new Integrante();
-		integrante.setId(rs.getLong("id"));
+		/*integrante.setId(rs.getLong("id"));
 		Pessoa pessoa = new Pessoa(rs.getLong("id_pessoa"));
 		pessoa.setNome(rs.getString("nome"));
 		String nascimento = rs.getString("nascimento");
@@ -40,7 +41,7 @@ public class IntegranteMapper implements RowMapper<Integrante> {
 		String dtInativo = rs.getString("dt_inativo");
 		integrante.setDtDesativacao(dtInativo != null ? DataUtil.parserData(dtInativo, "yyyy-MM-dd") : null);
 		String dtCadastro = rs.getString("dt_cadastro");
-		integrante.setDtCadastro(dtCadastro != null ? DataUtil.parserData(dtCadastro, "yyyy-MM-dd") : null);
+		integrante.setDtCadastro(dtCadastro != null ? DataUtil.parserData(dtCadastro, "yyyy-MM-dd") : null);*/
 		return integrante;
 	}
 

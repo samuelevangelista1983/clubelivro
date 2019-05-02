@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.eti.sen.endereco.EnderecoNaoEncontradoException;
 import br.eti.sen.endereco.Localizador;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
-@RestController
-@RequestMapping("/endereco")
-public class EnderecoService extends CrudController<Endereco> {
-	
+//@RestController
+//@RequestMapping("/endereco")
+public class EnderecoService /*extends CrudController<Endereco>*/ {
+	/*
 	@Override
 	protected void apagar(Long id) {
 		throw new UnsupportedOperationException();
@@ -64,5 +65,5 @@ public class EnderecoService extends CrudController<Endereco> {
 		
 		return response;
 	}
-
+*/
 }

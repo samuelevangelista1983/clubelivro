@@ -7,11 +7,12 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.CrudDAO;
 
-@Repository
-public class ContatoDAO extends CrudDAO<Contato> {
-
+//@Repository
+public class ContatoDAO /*extends CrudDAO<Contato>*/ {
+/*
 	@Override
 	protected Map<String, String> getMapCamposValores(Contato contato) {
 		Map<String, String> map = new HashMap<>();
@@ -38,5 +39,5 @@ public class ContatoDAO extends CrudDAO<Contato> {
 	
 	public List<Contato> selectByPessoa(Long idPessoa) {
 		return selectByCampo("id_pessoa", idPessoa.toString());
-	}
+	}*/
 }

@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Categoria;
 import br.org.crvnluz.editora.clubelivro.infra.rest.CrudController;
 
-@RestController
-@RequestMapping("/configuracao")
-public class ClassificacaoController extends CrudController<Classificacao> {
-	
+//@RestController
+//@RequestMapping("/configuracao")
+public class ClassificacaoController /*extends CrudController<Classificacao>*/ {
+	/*
 	@Autowired
 	private ClassificacaoDAO dao;
 	
@@ -77,5 +78,5 @@ public class ClassificacaoController extends CrudController<Classificacao> {
 	public ResponseEntity<Serializable> removerClassificacao(@PathVariable("id") Long id) {
 		return remover(id);
 	}
-	
+	*/
 }

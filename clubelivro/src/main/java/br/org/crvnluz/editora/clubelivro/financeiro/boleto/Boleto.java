@@ -9,9 +9,9 @@ import javax.validation.ValidationException;
 
 import br.eti.sen.utilitarios.tempo.DataUtil;
 import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
-import br.org.crvnluz.editora.clubelivro.integrante.Integrante;
 
 public class Boleto extends Persistente {
 	
