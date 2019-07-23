@@ -41,22 +41,22 @@ public class CadastroPessoaReceptor implements SessionAwareMessageListener<Messa
 							msgRetorno.setOperacao(operacao);
 							
 							if (operacao.equals(Mensagem.ADICIONAR)) {
-								logger.info(String.format("Adição dos dados da pessoa %s", pessoa));
 								// Implementa a adição de um novo registro no cadastro
 								Pessoa pessoaAdicionada = service.adicionar(pessoa);
 								msgRetorno.setPessoa(pessoaAdicionada);
+								logger.info("Pessoa adicionada");
 								
 							} else if (operacao.equals(Mensagem.ATUALIZAR)) {
-								logger.info(String.format("Atualização dos dados da pessoa %s", pessoa));
 								// Implementa a atualização de um registro do cadastro
 								Pessoa pessoaAtualizada = service.atualizar(pessoa);
 								msgRetorno.setPessoa(pessoaAtualizada);
+								logger.info("Pessoa atualizada");
 								
 							} else if (operacao.equals(Mensagem.REMOVER)) {
-								logger.info(String.format("Remoção dos dados da pessoa %s", pessoa));
 								// Implementa a lógica de remoção de um registro no cadastro
 								service.remover(pessoa);
 								msgRetorno.setPessoa(pessoa);
+								logger.info("Pessoa removida");
 							}
 							
 							escritor.escreverMensagem(msgRetorno);

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,9 +37,9 @@ public class Integrante implements Serializable, Cloneable {
 	private String nome;
 	private String cpf;
 	private LocalDate nascimento;
-	@OneToMany(mappedBy = "integrante")
+	@OneToMany(mappedBy = "integrante", cascade = CascadeType.ALL)
 	private List<Contato> contatos;
-	@OneToMany(mappedBy = "integrante")
+	@OneToMany(mappedBy = "integrante", cascade = CascadeType.ALL)
 	private List<Endereco> enderecos;
 	@ManyToOne
 	@JoinColumn(name = "id_categoria", nullable = false)
@@ -69,8 +70,8 @@ public class Integrante implements Serializable, Cloneable {
 		}
 		
 		if (!contatos.contains(contato)) {
-			contato.setIntegrante(this);
 			contatos.add(contato);
+			contato.setIntegrante(this);
 		}
 	}
 	
@@ -80,8 +81,8 @@ public class Integrante implements Serializable, Cloneable {
 		}
 		
 		if (!enderecos.contains(endereco)) {
-			endereco.setIntegrante(this);
 			enderecos.add(endereco);
+			endereco.setIntegrante(this);
 		}
 	}
 	

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.org.caravanadeluz</groupId>
 	<artifactId>cadastro-pessoas</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>Cadastro de pessoas</name>
 	<description>Este projeto tem por objetivo cadastrar os dados de todas as pessoas que tenham alguma relação coma a Fraternidade Espírita Caravana de Luz diretamente ou indiretamente.</description>
 

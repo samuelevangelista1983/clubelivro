@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,13 +17,13 @@ import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 @Entity
 public class Contato implements Serializable, Cloneable {
 	
-	private static final long serialVersionUID = -8353384709611010050L;
+	private static final long serialVersionUID = -93417784368925266L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_integrante", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_integrante")
 	private Integrante integrante;
 	@ManyToOne
 	@JoinColumn(name = "id_tipo", nullable = false)
@@ -57,7 +56,6 @@ public class Contato implements Serializable, Cloneable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((integrante == null) ? 0 : integrante.hashCode());
 		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
@@ -76,13 +74,6 @@ public class Contato implements Serializable, Cloneable {
 			return false;
 		}
 		Contato other = (Contato) obj;
-		if (integrante == null) {
-			if (other.integrante != null) {
-				return false;
-			}
-		} else if (!integrante.equals(other.integrante)) {
-			return false;
-		}
 		if (observacao == null) {
 			if (other.observacao != null) {
 				return false;
@@ -109,8 +100,7 @@ public class Contato implements Serializable, Cloneable {
 	
 	@Override
 	public String toString() {
-		return String.format("Contato [id=%s, integrante=%s, tipo=%s, valor=%s, observacao=%s]", id, integrante, tipo,
-				valor, observacao);
+		return String.format("Contato [id=%s, tipo=%s, valor=%s, observacao=%s]", id, tipo, valor, observacao);
 	}
 	
 	public static void validar(Contato contato) throws ValidacaoException {

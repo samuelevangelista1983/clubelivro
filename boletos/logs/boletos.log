@@ -1,0 +1,954 @@
+2019-07-21 16:08:57 - Starting App on ajax with PID 5042 (/home/samuel/workspaces/github/clubelivro/boletos/target/classes started by samuel in /home/samuel/workspaces/github/clubelivro/boletos)
+2019-07-21 16:08:57 - No active profile set, falling back to default profiles: default
+2019-07-21 16:08:58 - HikariPool-1 - Starting...
+2019-07-21 16:08:58 - HikariPool-1 - Start completed.
+2019-07-21 16:09:00 - Started App in 4.334 seconds (JVM running for 5.316)
+2019-07-21 16:11:17 - Starting App on ajax with PID 5282 (/home/samuel/workspaces/github/clubelivro/boletos/target/classes started by samuel in /home/samuel/workspaces/github/clubelivro/boletos)
+2019-07-21 16:11:17 - No active profile set, falling back to default profiles: default
+2019-07-21 16:11:18 - HikariPool-1 - Starting...
+2019-07-21 16:11:18 - HikariPool-1 - Start completed.
+2019-07-21 16:11:21 - Started App in 4.625 seconds (JVM running for 5.148)
+2019-07-21 16:14:04 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:1
+2019-07-21 16:14:04 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:1 recebida com sucesso
+2019-07-21 16:14:04 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:2
+2019-07-21 16:14:04 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:2 recebida com sucesso
+2019-07-21 16:14:04 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:3
+2019-07-21 16:14:05 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:3 recebida com sucesso
+2019-07-21 16:14:05 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:4
+2019-07-21 16:14:05 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:4 recebida com sucesso
+2019-07-21 16:14:05 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:5
+2019-07-21 16:14:05 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:5 recebida com sucesso
+2019-07-21 16:14:05 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:6
+2019-07-21 16:14:05 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:6 recebida com sucesso
+2019-07-21 16:14:05 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:7
+2019-07-21 16:14:05 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:7 recebida com sucesso
+2019-07-21 16:14:05 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:8
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:8 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:9
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:9 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:10
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:10 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:11
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:11 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:12
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:12 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:13
+2019-07-21 16:14:06 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:13 recebida com sucesso
+2019-07-21 16:14:06 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:14
+2019-07-21 16:14:07 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:14 recebida com sucesso
+2019-07-21 16:14:07 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:15
+2019-07-21 16:14:07 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:15 recebida com sucesso
+2019-07-21 16:14:07 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:16
+2019-07-21 16:14:07 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:16 recebida com sucesso
+2019-07-21 16:14:07 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:17
+2019-07-21 16:14:07 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:17 recebida com sucesso
+2019-07-21 16:14:07 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:18
+2019-07-21 16:14:08 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:18 recebida com sucesso
+2019-07-21 16:14:08 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:19
+2019-07-21 16:14:08 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:19 recebida com sucesso
+2019-07-21 16:14:08 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:20
+2019-07-21 16:14:08 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:20 recebida com sucesso
+2019-07-21 16:14:08 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:21
+2019-07-21 16:14:08 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:21 recebida com sucesso
+2019-07-21 16:14:08 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:22
+2019-07-21 16:14:08 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:22 recebida com sucesso
+2019-07-21 16:14:08 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:23
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:23 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:24
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:24 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:25
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:25 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:26
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:26 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:27
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:27 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:28
+2019-07-21 16:14:09 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:28 recebida com sucesso
+2019-07-21 16:14:09 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:29
+2019-07-21 16:14:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:29 recebida com sucesso
+2019-07-21 16:14:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:30
+2019-07-21 16:14:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:30 recebida com sucesso
+2019-07-21 16:14:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:31
+2019-07-21 16:14:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:31 recebida com sucesso
+2019-07-21 16:14:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:32
+2019-07-21 16:14:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:32 recebida com sucesso
+2019-07-21 16:14:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:33
+2019-07-21 16:14:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:33 recebida com sucesso
+2019-07-21 16:14:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:34
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:34 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:35
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:35 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:36
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:36 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:37
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:37 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:38
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:38 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:39
+2019-07-21 16:14:11 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:39 recebida com sucesso
+2019-07-21 16:14:11 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:40
+2019-07-21 16:14:12 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:40 recebida com sucesso
+2019-07-21 16:14:12 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:41
+2019-07-21 16:14:12 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:41 recebida com sucesso
+2019-07-21 16:14:12 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:42
+2019-07-21 16:14:12 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:42 recebida com sucesso
+2019-07-21 16:14:12 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:43
+2019-07-21 16:14:13 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:43 recebida com sucesso
+2019-07-21 16:14:13 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:44
+2019-07-21 16:14:13 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:44 recebida com sucesso
+2019-07-21 16:14:13 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:45
+2019-07-21 16:14:13 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:45 recebida com sucesso
+2019-07-21 16:14:13 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:46
+2019-07-21 16:14:13 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:46 recebida com sucesso
+2019-07-21 16:14:13 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:47
+2019-07-21 16:14:13 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:47 recebida com sucesso
+2019-07-21 16:14:13 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:48
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:48 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:49
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:49 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:50
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:50 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:51
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:51 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:52
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:52 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:53
+2019-07-21 16:14:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:53 recebida com sucesso
+2019-07-21 16:14:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:54
+2019-07-21 16:14:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:54 recebida com sucesso
+2019-07-21 16:14:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:55
+2019-07-21 16:14:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:55 recebida com sucesso
+2019-07-21 16:14:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:56
+2019-07-21 16:14:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:56 recebida com sucesso
+2019-07-21 16:14:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:57
+2019-07-21 16:14:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:57 recebida com sucesso
+2019-07-21 16:14:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:58
+2019-07-21 16:14:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:58 recebida com sucesso
+2019-07-21 16:14:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:59
+2019-07-21 16:14:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:59 recebida com sucesso
+2019-07-21 16:14:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:60
+2019-07-21 16:14:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:60 recebida com sucesso
+2019-07-21 16:14:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:61
+2019-07-21 16:14:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:61 recebida com sucesso
+2019-07-21 16:14:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:62
+2019-07-21 16:14:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:62 recebida com sucesso
+2019-07-21 16:14:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:63
+2019-07-21 16:14:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:63 recebida com sucesso
+2019-07-21 16:14:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:64
+2019-07-21 16:14:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:64 recebida com sucesso
+2019-07-21 16:14:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:65
+2019-07-21 16:14:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:65 recebida com sucesso
+2019-07-21 16:14:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:66
+2019-07-21 16:14:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:66 recebida com sucesso
+2019-07-21 16:14:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:67
+2019-07-21 16:14:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:67 recebida com sucesso
+2019-07-21 16:14:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:68
+2019-07-21 16:14:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:68 recebida com sucesso
+2019-07-21 16:14:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:69
+2019-07-21 16:14:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:69 recebida com sucesso
+2019-07-21 16:14:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:70
+2019-07-21 16:14:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:70 recebida com sucesso
+2019-07-21 16:14:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:71
+2019-07-21 16:14:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:71 recebida com sucesso
+2019-07-21 16:14:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:72
+2019-07-21 16:14:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:72 recebida com sucesso
+2019-07-21 16:14:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:73
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:73 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:74
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:74 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:75
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:75 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:76
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:76 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:77
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:77 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:78
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:78 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:79
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:79 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:80
+2019-07-21 16:14:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:80 recebida com sucesso
+2019-07-21 16:14:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:81
+2019-07-21 16:14:20 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:81 recebida com sucesso
+2019-07-21 16:14:20 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:82
+2019-07-21 16:14:20 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:82 recebida com sucesso
+2019-07-21 16:14:20 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:83
+2019-07-21 16:14:20 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:83 recebida com sucesso
+2019-07-21 16:14:20 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:84
+2019-07-21 16:14:20 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:84 recebida com sucesso
+2019-07-21 16:14:20 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:85
+2019-07-21 16:14:20 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:85 recebida com sucesso
+2019-07-21 16:14:20 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:86
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:86 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:87
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:87 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:88
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:88 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:89
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:89 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:90
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:90 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:91
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:91 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:92
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:92 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:93
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:93 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:94
+2019-07-21 16:14:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:94 recebida com sucesso
+2019-07-21 16:14:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:95
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:95 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:96
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:96 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:97
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:97 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:98
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:98 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:99
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:99 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:100
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:100 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:101
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:101 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:102
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:102 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:103
+2019-07-21 16:14:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:103 recebida com sucesso
+2019-07-21 16:14:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:104
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:104 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:105
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:105 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:106
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:106 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:107
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:107 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:108
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:108 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:109
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:109 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:110
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:110 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:111
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:111 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:112
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:112 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:113
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:113 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:114
+2019-07-21 16:14:23 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:114 recebida com sucesso
+2019-07-21 16:14:23 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:115
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:115 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:116
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:116 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:117
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:117 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:118
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:118 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:119
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:119 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:120
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:120 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:121
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:121 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:122
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:122 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:123
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:123 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:124
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:124 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:125
+2019-07-21 16:14:24 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:125 recebida com sucesso
+2019-07-21 16:14:24 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:126
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:126 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:127
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:127 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:128
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:128 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:129
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:129 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:130
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:130 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:131
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:131 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:132
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:132 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:133
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:133 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:134
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:134 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:135
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:135 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:136
+2019-07-21 16:14:25 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:136 recebida com sucesso
+2019-07-21 16:14:25 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:137
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:137 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:138
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:138 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:139
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:139 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:140
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:140 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:141
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:141 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:142
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:142 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:143
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:143 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:144
+2019-07-21 16:14:26 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:144 recebida com sucesso
+2019-07-21 16:14:26 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:145
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:145 recebida com sucesso
+2019-07-21 16:14:27 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:146
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:146 recebida com sucesso
+2019-07-21 16:14:27 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:147
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:147 recebida com sucesso
+2019-07-21 16:14:27 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:148
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:148 recebida com sucesso
+2019-07-21 16:14:27 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:149
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:149 recebida com sucesso
+2019-07-21 16:14:27 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:150
+2019-07-21 16:14:27 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:150 recebida com sucesso
+2019-07-21 16:14:30 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:151
+2019-07-21 16:14:30 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:151 recebida com sucesso
+2019-07-21 16:14:50 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:152
+2019-07-21 16:14:50 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:152 recebida com sucesso
+2019-07-21 16:14:50 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:153
+2019-07-21 16:14:50 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:153 recebida com sucesso
+2019-07-21 16:14:50 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:154
+2019-07-21 16:14:50 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:154 recebida com sucesso
+2019-07-21 16:14:50 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:155
+2019-07-21 16:14:51 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:155 recebida com sucesso
+2019-07-21 16:14:51 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:156
+2019-07-21 16:14:51 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:156 recebida com sucesso
+2019-07-21 16:14:51 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:157
+2019-07-21 16:14:51 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:157 recebida com sucesso
+2019-07-21 16:14:51 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:158
+2019-07-21 16:14:51 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:158 recebida com sucesso
+2019-07-21 16:14:51 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:159
+2019-07-21 16:14:51 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:159 recebida com sucesso
+2019-07-21 16:14:51 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:160
+2019-07-21 16:14:52 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:160 recebida com sucesso
+2019-07-21 16:14:52 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:161
+2019-07-21 16:14:52 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:161 recebida com sucesso
+2019-07-21 16:14:52 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:162
+2019-07-21 16:14:52 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:162 recebida com sucesso
+2019-07-21 16:14:52 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:163
+2019-07-21 16:14:52 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:163 recebida com sucesso
+2019-07-21 16:14:52 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:164
+2019-07-21 16:14:52 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:164 recebida com sucesso
+2019-07-21 16:14:52 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:165
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:165 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:166
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:166 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:167
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:167 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:168
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:168 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:169
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:169 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:170
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:170 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:171
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:171 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:172
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:172 recebida com sucesso
+2019-07-21 16:14:53 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:173
+2019-07-21 16:14:53 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:173 recebida com sucesso
+2019-07-21 16:15:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:174
+2019-07-21 16:15:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:174 recebida com sucesso
+2019-07-21 16:15:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:175
+2019-07-21 16:15:14 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:175 recebida com sucesso
+2019-07-21 16:15:14 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:176
+2019-07-21 16:15:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:176 recebida com sucesso
+2019-07-21 16:15:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:177
+2019-07-21 16:15:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:177 recebida com sucesso
+2019-07-21 16:15:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:178
+2019-07-21 16:15:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:178 recebida com sucesso
+2019-07-21 16:15:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:179
+2019-07-21 16:15:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:179 recebida com sucesso
+2019-07-21 16:15:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:180
+2019-07-21 16:15:15 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:180 recebida com sucesso
+2019-07-21 16:15:15 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:181
+2019-07-21 16:15:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:181 recebida com sucesso
+2019-07-21 16:15:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:182
+2019-07-21 16:15:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:182 recebida com sucesso
+2019-07-21 16:15:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:183
+2019-07-21 16:15:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:183 recebida com sucesso
+2019-07-21 16:15:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:184
+2019-07-21 16:15:16 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:184 recebida com sucesso
+2019-07-21 16:15:16 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:185
+2019-07-21 16:15:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:185 recebida com sucesso
+2019-07-21 16:15:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:186
+2019-07-21 16:15:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:186 recebida com sucesso
+2019-07-21 16:15:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:187
+2019-07-21 16:15:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:187 recebida com sucesso
+2019-07-21 16:15:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:188
+2019-07-21 16:15:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:188 recebida com sucesso
+2019-07-21 16:15:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:189
+2019-07-21 16:15:17 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:189 recebida com sucesso
+2019-07-21 16:15:17 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:190
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:190 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:191
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:191 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:192
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:192 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:193
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:193 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:194
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:194 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:195
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:195 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:196
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:196 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:197
+2019-07-21 16:15:18 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:197 recebida com sucesso
+2019-07-21 16:15:18 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:198
+2019-07-21 16:15:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:198 recebida com sucesso
+2019-07-21 16:15:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:199
+2019-07-21 16:15:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:199 recebida com sucesso
+2019-07-21 16:15:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:200
+2019-07-21 16:15:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:200 recebida com sucesso
+2019-07-21 16:15:19 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:201
+2019-07-21 16:15:19 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:201 recebida com sucesso
+2019-07-21 16:15:28 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:202
+2019-07-21 16:15:28 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:202 recebida com sucesso
+2019-07-21 16:15:28 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:203
+2019-07-21 16:15:28 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:203 recebida com sucesso
+2019-07-21 16:15:38 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:204
+2019-07-21 16:15:39 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:204 recebida com sucesso
+2019-07-21 16:15:39 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:205
+2019-07-21 16:15:39 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:205 recebida com sucesso
+2019-07-21 16:15:39 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:206
+2019-07-21 16:15:39 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:206 recebida com sucesso
+2019-07-21 16:15:39 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:207
+2019-07-21 16:15:39 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:207 recebida com sucesso
+2019-07-21 16:15:39 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:208
+2019-07-21 16:15:39 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:208 recebida com sucesso
+2019-07-21 16:16:10 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:209
+2019-07-21 16:16:10 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:209 recebida com sucesso
+2019-07-21 16:16:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:210
+2019-07-21 16:16:21 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:210 recebida com sucesso
+2019-07-21 16:16:21 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:211
+2019-07-21 16:16:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:211 recebida com sucesso
+2019-07-21 16:16:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:212
+2019-07-21 16:16:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:212 recebida com sucesso
+2019-07-21 16:16:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:213
+2019-07-21 16:16:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:213 recebida com sucesso
+2019-07-21 16:16:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:214
+2019-07-21 16:16:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:214 recebida com sucesso
+2019-07-21 16:16:22 - Processando mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:215
+2019-07-21 16:16:22 - Mensagem com ID ID:ajax-41899-1563736443954-1:1:1:1:215 recebida com sucesso
+2019-07-21 16:20:25 - Starting App on ajax with PID 5751 (/home/samuel/workspaces/github/clubelivro/boletos/target/classes started by samuel in /home/samuel/workspaces/github/clubelivro/boletos)
+2019-07-21 16:20:25 - No active profile set, falling back to default profiles: default
+2019-07-21 16:20:27 - HikariPool-1 - Starting...
+2019-07-21 16:20:27 - HikariPool-1 - Start completed.
+2019-07-21 16:20:29 - Started App in 3.832 seconds (JVM running for 4.243)
+2019-07-21 16:21:35 - HikariPool-1 - Shutdown initiated...
+2019-07-21 16:21:35 - HikariPool-1 - Shutdown completed.
+2019-07-21 16:24:23 - Starting App on ajax with PID 6189 (/home/samuel/workspaces/github/clubelivro/boletos/target/classes started by samuel in /home/samuel/workspaces/github/clubelivro/boletos)
+2019-07-21 16:24:23 - No active profile set, falling back to default profiles: default
+2019-07-21 16:24:24 - HikariPool-1 - Starting...
+2019-07-21 16:24:25 - HikariPool-1 - Start completed.
+2019-07-21 16:24:26 - Unable to start LiveReload server
+2019-07-21 16:24:26 - Started App in 3.687 seconds (JVM running for 4.114)
+2019-07-21 16:26:47 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:1 recebida com sucesso
+2019-07-21 16:26:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:2 recebida com sucesso
+2019-07-21 16:26:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:3 recebida com sucesso
+2019-07-21 16:26:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:4 recebida com sucesso
+2019-07-21 16:26:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:5 recebida com sucesso
+2019-07-21 16:26:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:6 recebida com sucesso
+2019-07-21 16:26:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:7 recebida com sucesso
+2019-07-21 16:26:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:8 recebida com sucesso
+2019-07-21 16:26:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:9 recebida com sucesso
+2019-07-21 16:26:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:10 recebida com sucesso
+2019-07-21 16:26:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:11 recebida com sucesso
+2019-07-21 16:26:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:12 recebida com sucesso
+2019-07-21 16:26:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:13 recebida com sucesso
+2019-07-21 16:26:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:14 recebida com sucesso
+2019-07-21 16:26:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:15 recebida com sucesso
+2019-07-21 16:26:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:16 recebida com sucesso
+2019-07-21 16:26:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:17 recebida com sucesso
+2019-07-21 16:26:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:18 recebida com sucesso
+2019-07-21 16:26:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:19 recebida com sucesso
+2019-07-21 16:26:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:20 recebida com sucesso
+2019-07-21 16:26:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:21 recebida com sucesso
+2019-07-21 16:26:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:22 recebida com sucesso
+2019-07-21 16:26:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:23 recebida com sucesso
+2019-07-21 16:26:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:24 recebida com sucesso
+2019-07-21 16:26:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:25 recebida com sucesso
+2019-07-21 16:26:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:26 recebida com sucesso
+2019-07-21 16:26:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:27 recebida com sucesso
+2019-07-21 16:26:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:28 recebida com sucesso
+2019-07-21 16:26:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:29 recebida com sucesso
+2019-07-21 16:26:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:30 recebida com sucesso
+2019-07-21 16:26:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:31 recebida com sucesso
+2019-07-21 16:26:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:32 recebida com sucesso
+2019-07-21 16:26:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:33 recebida com sucesso
+2019-07-21 16:26:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:34 recebida com sucesso
+2019-07-21 16:26:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:35 recebida com sucesso
+2019-07-21 16:26:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:36 recebida com sucesso
+2019-07-21 16:26:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:37 recebida com sucesso
+2019-07-21 16:26:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:38 recebida com sucesso
+2019-07-21 16:26:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:39 recebida com sucesso
+2019-07-21 16:26:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:40 recebida com sucesso
+2019-07-21 16:26:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:41 recebida com sucesso
+2019-07-21 16:26:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:42 recebida com sucesso
+2019-07-21 16:26:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:43 recebida com sucesso
+2019-07-21 16:26:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:44 recebida com sucesso
+2019-07-21 16:26:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:45 recebida com sucesso
+2019-07-21 16:26:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:46 recebida com sucesso
+2019-07-21 16:26:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:47 recebida com sucesso
+2019-07-21 16:26:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:48 recebida com sucesso
+2019-07-21 16:26:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:49 recebida com sucesso
+2019-07-21 16:27:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:50 recebida com sucesso
+2019-07-21 16:27:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:51 recebida com sucesso
+2019-07-21 16:27:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:52 recebida com sucesso
+2019-07-21 16:27:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:53 recebida com sucesso
+2019-07-21 16:27:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:54 recebida com sucesso
+2019-07-21 16:27:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:55 recebida com sucesso
+2019-07-21 16:27:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:56 recebida com sucesso
+2019-07-21 16:27:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:57 recebida com sucesso
+2019-07-21 16:27:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:58 recebida com sucesso
+2019-07-21 16:27:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:59 recebida com sucesso
+2019-07-21 16:27:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:60 recebida com sucesso
+2019-07-21 16:27:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:61 recebida com sucesso
+2019-07-21 16:27:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:62 recebida com sucesso
+2019-07-21 16:27:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:63 recebida com sucesso
+2019-07-21 16:27:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:64 recebida com sucesso
+2019-07-21 16:27:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:65 recebida com sucesso
+2019-07-21 16:27:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:66 recebida com sucesso
+2019-07-21 16:27:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:67 recebida com sucesso
+2019-07-21 16:27:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:68 recebida com sucesso
+2019-07-21 16:27:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:69 recebida com sucesso
+2019-07-21 16:27:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:70 recebida com sucesso
+2019-07-21 16:27:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:71 recebida com sucesso
+2019-07-21 16:27:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:72 recebida com sucesso
+2019-07-21 16:27:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:73 recebida com sucesso
+2019-07-21 16:27:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:74 recebida com sucesso
+2019-07-21 16:27:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:75 recebida com sucesso
+2019-07-21 16:27:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:76 recebida com sucesso
+2019-07-21 16:27:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:77 recebida com sucesso
+2019-07-21 16:27:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:78 recebida com sucesso
+2019-07-21 16:27:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:79 recebida com sucesso
+2019-07-21 16:27:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:80 recebida com sucesso
+2019-07-21 16:27:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:81 recebida com sucesso
+2019-07-21 16:27:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:82 recebida com sucesso
+2019-07-21 16:27:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:83 recebida com sucesso
+2019-07-21 16:27:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:84 recebida com sucesso
+2019-07-21 16:27:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:85 recebida com sucesso
+2019-07-21 16:27:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:86 recebida com sucesso
+2019-07-21 16:27:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:87 recebida com sucesso
+2019-07-21 16:27:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:88 recebida com sucesso
+2019-07-21 16:27:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:89 recebida com sucesso
+2019-07-21 16:27:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:90 recebida com sucesso
+2019-07-21 16:27:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:91 recebida com sucesso
+2019-07-21 16:27:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:92 recebida com sucesso
+2019-07-21 16:27:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:93 recebida com sucesso
+2019-07-21 16:27:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:94 recebida com sucesso
+2019-07-21 16:27:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:95 recebida com sucesso
+2019-07-21 16:27:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:96 recebida com sucesso
+2019-07-21 16:27:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:97 recebida com sucesso
+2019-07-21 16:27:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:98 recebida com sucesso
+2019-07-21 16:27:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:99 recebida com sucesso
+2019-07-21 16:27:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:100 recebida com sucesso
+2019-07-21 16:27:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:101 recebida com sucesso
+2019-07-21 16:27:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:102 recebida com sucesso
+2019-07-21 16:27:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:103 recebida com sucesso
+2019-07-21 16:27:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:104 recebida com sucesso
+2019-07-21 16:27:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:105 recebida com sucesso
+2019-07-21 16:27:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:106 recebida com sucesso
+2019-07-21 16:27:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:107 recebida com sucesso
+2019-07-21 16:27:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:108 recebida com sucesso
+2019-07-21 16:27:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:109 recebida com sucesso
+2019-07-21 16:27:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:110 recebida com sucesso
+2019-07-21 16:27:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:111 recebida com sucesso
+2019-07-21 16:27:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:112 recebida com sucesso
+2019-07-21 16:27:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:113 recebida com sucesso
+2019-07-21 16:27:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:114 recebida com sucesso
+2019-07-21 16:27:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:115 recebida com sucesso
+2019-07-21 16:27:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:116 recebida com sucesso
+2019-07-21 16:27:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:117 recebida com sucesso
+2019-07-21 16:27:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:118 recebida com sucesso
+2019-07-21 16:27:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:119 recebida com sucesso
+2019-07-21 16:27:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:120 recebida com sucesso
+2019-07-21 16:27:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:121 recebida com sucesso
+2019-07-21 16:27:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:122 recebida com sucesso
+2019-07-21 16:27:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:123 recebida com sucesso
+2019-07-21 16:27:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:124 recebida com sucesso
+2019-07-21 16:27:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:125 recebida com sucesso
+2019-07-21 16:27:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:126 recebida com sucesso
+2019-07-21 16:27:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:127 recebida com sucesso
+2019-07-21 16:27:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:128 recebida com sucesso
+2019-07-21 16:27:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:129 recebida com sucesso
+2019-07-21 16:27:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:130 recebida com sucesso
+2019-07-21 16:27:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:131 recebida com sucesso
+2019-07-21 16:27:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:132 recebida com sucesso
+2019-07-21 16:27:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:133 recebida com sucesso
+2019-07-21 16:27:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:134 recebida com sucesso
+2019-07-21 16:27:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:135 recebida com sucesso
+2019-07-21 16:27:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:136 recebida com sucesso
+2019-07-21 16:27:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:137 recebida com sucesso
+2019-07-21 16:27:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:138 recebida com sucesso
+2019-07-21 16:27:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:139 recebida com sucesso
+2019-07-21 16:27:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:140 recebida com sucesso
+2019-07-21 16:27:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:141 recebida com sucesso
+2019-07-21 16:27:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:142 recebida com sucesso
+2019-07-21 16:27:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:143 recebida com sucesso
+2019-07-21 16:27:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:144 recebida com sucesso
+2019-07-21 16:27:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:145 recebida com sucesso
+2019-07-21 16:27:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:146 recebida com sucesso
+2019-07-21 16:27:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:147 recebida com sucesso
+2019-07-21 16:27:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:148 recebida com sucesso
+2019-07-21 16:27:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:149 recebida com sucesso
+2019-07-21 16:27:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:150 recebida com sucesso
+2019-07-21 16:27:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:151 recebida com sucesso
+2019-07-21 16:27:40 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:152 recebida com sucesso
+2019-07-21 16:27:41 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:153 recebida com sucesso
+2019-07-21 16:27:41 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:154 recebida com sucesso
+2019-07-21 16:27:41 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:155 recebida com sucesso
+2019-07-21 16:27:41 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:156 recebida com sucesso
+2019-07-21 16:27:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:157 recebida com sucesso
+2019-07-21 16:27:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:158 recebida com sucesso
+2019-07-21 16:27:43 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:159 recebida com sucesso
+2019-07-21 16:27:43 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:160 recebida com sucesso
+2019-07-21 16:27:43 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:161 recebida com sucesso
+2019-07-21 16:27:43 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:162 recebida com sucesso
+2019-07-21 16:27:44 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:163 recebida com sucesso
+2019-07-21 16:27:44 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:164 recebida com sucesso
+2019-07-21 16:27:44 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:165 recebida com sucesso
+2019-07-21 16:27:44 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:166 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:167 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:168 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:169 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:170 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:171 recebida com sucesso
+2019-07-21 16:27:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:172 recebida com sucesso
+2019-07-21 16:27:46 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:173 recebida com sucesso
+2019-07-21 16:28:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:174 recebida com sucesso
+2019-07-21 16:28:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:175 recebida com sucesso
+2019-07-21 16:28:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:176 recebida com sucesso
+2019-07-21 16:28:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:177 recebida com sucesso
+2019-07-21 16:28:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:178 recebida com sucesso
+2019-07-21 16:28:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:179 recebida com sucesso
+2019-07-21 16:28:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:180 recebida com sucesso
+2019-07-21 16:28:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:181 recebida com sucesso
+2019-07-21 16:28:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:182 recebida com sucesso
+2019-07-21 16:28:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:183 recebida com sucesso
+2019-07-21 16:28:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:184 recebida com sucesso
+2019-07-21 16:28:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:185 recebida com sucesso
+2019-07-21 16:28:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:186 recebida com sucesso
+2019-07-21 16:28:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:187 recebida com sucesso
+2019-07-21 16:28:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:188 recebida com sucesso
+2019-07-21 16:28:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:189 recebida com sucesso
+2019-07-21 16:28:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:190 recebida com sucesso
+2019-07-21 16:28:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:191 recebida com sucesso
+2019-07-21 16:28:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:192 recebida com sucesso
+2019-07-21 16:28:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:193 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:194 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:195 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:196 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:197 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:198 recebida com sucesso
+2019-07-21 16:28:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:199 recebida com sucesso
+2019-07-21 16:28:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:200 recebida com sucesso
+2019-07-21 16:28:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:201 recebida com sucesso
+2019-07-21 16:28:25 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:202 recebida com sucesso
+2019-07-21 16:28:25 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:203 recebida com sucesso
+2019-07-21 16:28:36 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:204 recebida com sucesso
+2019-07-21 16:28:36 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:205 recebida com sucesso
+2019-07-21 16:28:36 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:206 recebida com sucesso
+2019-07-21 16:28:37 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:207 recebida com sucesso
+2019-07-21 16:28:37 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:208 recebida com sucesso
+2019-07-21 16:29:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:209 recebida com sucesso
+2019-07-21 16:29:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:210 recebida com sucesso
+2019-07-21 16:29:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:211 recebida com sucesso
+2019-07-21 16:29:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:212 recebida com sucesso
+2019-07-21 16:29:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:213 recebida com sucesso
+2019-07-21 16:29:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:214 recebida com sucesso
+2019-07-21 16:29:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:215 recebida com sucesso
+2019-07-21 16:29:41 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:216 recebida com sucesso
+2019-07-21 16:29:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:217 recebida com sucesso
+2019-07-21 16:29:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:218 recebida com sucesso
+2019-07-21 16:29:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:219 recebida com sucesso
+2019-07-21 16:29:42 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:220 recebida com sucesso
+2019-07-21 16:29:43 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:221 recebida com sucesso
+2019-07-21 16:29:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:222 recebida com sucesso
+2019-07-21 16:29:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:223 recebida com sucesso
+2019-07-21 16:29:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:224 recebida com sucesso
+2019-07-21 16:29:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:225 recebida com sucesso
+2019-07-21 16:29:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:226 recebida com sucesso
+2019-07-21 16:29:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:227 recebida com sucesso
+2019-07-21 16:33:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:228 recebida com sucesso
+2019-07-21 16:33:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:229 recebida com sucesso
+2019-07-21 16:33:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:230 recebida com sucesso
+2019-07-21 16:33:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:231 recebida com sucesso
+2019-07-21 16:33:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:232 recebida com sucesso
+2019-07-21 16:33:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:233 recebida com sucesso
+2019-07-21 16:33:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:234 recebida com sucesso
+2019-07-21 16:33:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:235 recebida com sucesso
+2019-07-21 16:33:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:236 recebida com sucesso
+2019-07-21 16:33:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:237 recebida com sucesso
+2019-07-21 16:33:45 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:238 recebida com sucesso
+2019-07-21 16:33:46 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:239 recebida com sucesso
+2019-07-21 16:33:46 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:240 recebida com sucesso
+2019-07-21 16:33:46 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:241 recebida com sucesso
+2019-07-21 16:33:47 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:242 recebida com sucesso
+2019-07-21 16:33:47 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:243 recebida com sucesso
+2019-07-21 16:33:47 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:244 recebida com sucesso
+2019-07-21 16:33:47 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:245 recebida com sucesso
+2019-07-21 16:33:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:246 recebida com sucesso
+2019-07-21 16:33:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:247 recebida com sucesso
+2019-07-21 16:33:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:248 recebida com sucesso
+2019-07-21 16:33:48 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:249 recebida com sucesso
+2019-07-21 16:33:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:250 recebida com sucesso
+2019-07-21 16:33:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:251 recebida com sucesso
+2019-07-21 16:33:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:252 recebida com sucesso
+2019-07-21 16:33:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:253 recebida com sucesso
+2019-07-21 16:33:49 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:254 recebida com sucesso
+2019-07-21 16:33:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:255 recebida com sucesso
+2019-07-21 16:33:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:256 recebida com sucesso
+2019-07-21 16:33:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:257 recebida com sucesso
+2019-07-21 16:33:50 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:258 recebida com sucesso
+2019-07-21 16:33:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:259 recebida com sucesso
+2019-07-21 16:33:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:260 recebida com sucesso
+2019-07-21 16:33:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:261 recebida com sucesso
+2019-07-21 16:33:51 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:262 recebida com sucesso
+2019-07-21 16:33:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:263 recebida com sucesso
+2019-07-21 16:33:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:264 recebida com sucesso
+2019-07-21 16:33:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:265 recebida com sucesso
+2019-07-21 16:33:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:266 recebida com sucesso
+2019-07-21 16:33:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:267 recebida com sucesso
+2019-07-21 16:33:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:268 recebida com sucesso
+2019-07-21 16:33:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:269 recebida com sucesso
+2019-07-21 16:33:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:270 recebida com sucesso
+2019-07-21 16:33:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:271 recebida com sucesso
+2019-07-21 16:33:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:272 recebida com sucesso
+2019-07-21 16:33:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:273 recebida com sucesso
+2019-07-21 16:33:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:274 recebida com sucesso
+2019-07-21 16:33:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:275 recebida com sucesso
+2019-07-21 16:33:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:276 recebida com sucesso
+2019-07-21 16:33:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:277 recebida com sucesso
+2019-07-21 16:33:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:278 recebida com sucesso
+2019-07-21 16:33:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:279 recebida com sucesso
+2019-07-21 16:33:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:280 recebida com sucesso
+2019-07-21 16:33:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:281 recebida com sucesso
+2019-07-21 16:33:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:282 recebida com sucesso
+2019-07-21 16:33:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:283 recebida com sucesso
+2019-07-21 16:33:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:284 recebida com sucesso
+2019-07-21 16:33:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:285 recebida com sucesso
+2019-07-21 16:33:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:286 recebida com sucesso
+2019-07-21 16:33:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:287 recebida com sucesso
+2019-07-21 16:33:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:288 recebida com sucesso
+2019-07-21 16:33:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:289 recebida com sucesso
+2019-07-21 16:33:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:290 recebida com sucesso
+2019-07-21 16:33:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:291 recebida com sucesso
+2019-07-21 16:33:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:292 recebida com sucesso
+2019-07-21 16:33:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:293 recebida com sucesso
+2019-07-21 16:33:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:294 recebida com sucesso
+2019-07-21 16:33:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:295 recebida com sucesso
+2019-07-21 16:33:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:296 recebida com sucesso
+2019-07-21 16:34:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:297 recebida com sucesso
+2019-07-21 16:34:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:298 recebida com sucesso
+2019-07-21 16:34:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:299 recebida com sucesso
+2019-07-21 16:34:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:300 recebida com sucesso
+2019-07-21 16:34:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:301 recebida com sucesso
+2019-07-21 16:34:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:302 recebida com sucesso
+2019-07-21 16:34:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:303 recebida com sucesso
+2019-07-21 16:34:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:304 recebida com sucesso
+2019-07-21 16:34:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:305 recebida com sucesso
+2019-07-21 16:34:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:306 recebida com sucesso
+2019-07-21 16:34:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:307 recebida com sucesso
+2019-07-21 16:34:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:308 recebida com sucesso
+2019-07-21 16:34:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:309 recebida com sucesso
+2019-07-21 16:34:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:310 recebida com sucesso
+2019-07-21 16:34:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:311 recebida com sucesso
+2019-07-21 16:34:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:312 recebida com sucesso
+2019-07-21 16:34:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:313 recebida com sucesso
+2019-07-21 16:34:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:314 recebida com sucesso
+2019-07-21 16:34:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:315 recebida com sucesso
+2019-07-21 16:34:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:316 recebida com sucesso
+2019-07-21 16:34:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:317 recebida com sucesso
+2019-07-21 16:34:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:318 recebida com sucesso
+2019-07-21 16:34:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:319 recebida com sucesso
+2019-07-21 16:34:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:320 recebida com sucesso
+2019-07-21 16:34:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:321 recebida com sucesso
+2019-07-21 16:34:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:322 recebida com sucesso
+2019-07-21 16:34:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:323 recebida com sucesso
+2019-07-21 16:34:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:324 recebida com sucesso
+2019-07-21 16:34:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:325 recebida com sucesso
+2019-07-21 16:34:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:326 recebida com sucesso
+2019-07-21 16:34:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:327 recebida com sucesso
+2019-07-21 16:34:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:328 recebida com sucesso
+2019-07-21 16:34:09 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:329 recebida com sucesso
+2019-07-21 16:34:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:330 recebida com sucesso
+2019-07-21 16:34:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:331 recebida com sucesso
+2019-07-21 16:34:10 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:332 recebida com sucesso
+2019-07-21 16:34:11 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:333 recebida com sucesso
+2019-07-21 16:34:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:334 recebida com sucesso
+2019-07-21 16:34:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:335 recebida com sucesso
+2019-07-21 16:34:12 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:336 recebida com sucesso
+2019-07-21 16:34:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:337 recebida com sucesso
+2019-07-21 16:34:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:338 recebida com sucesso
+2019-07-21 16:34:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:339 recebida com sucesso
+2019-07-21 16:34:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:340 recebida com sucesso
+2019-07-21 16:34:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:341 recebida com sucesso
+2019-07-21 16:34:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:342 recebida com sucesso
+2019-07-21 16:34:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:343 recebida com sucesso
+2019-07-21 16:34:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:344 recebida com sucesso
+2019-07-21 16:34:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:345 recebida com sucesso
+2019-07-21 16:34:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:346 recebida com sucesso
+2019-07-21 16:34:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:347 recebida com sucesso
+2019-07-21 16:34:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:348 recebida com sucesso
+2019-07-21 16:34:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:349 recebida com sucesso
+2019-07-21 16:34:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:350 recebida com sucesso
+2019-07-21 16:34:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:351 recebida com sucesso
+2019-07-21 16:34:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:352 recebida com sucesso
+2019-07-21 16:34:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:353 recebida com sucesso
+2019-07-21 16:34:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:354 recebida com sucesso
+2019-07-21 16:34:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:355 recebida com sucesso
+2019-07-21 16:34:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:356 recebida com sucesso
+2019-07-21 16:34:19 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:357 recebida com sucesso
+2019-07-21 16:34:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:358 recebida com sucesso
+2019-07-21 16:34:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:359 recebida com sucesso
+2019-07-21 16:34:20 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:360 recebida com sucesso
+2019-07-21 16:34:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:361 recebida com sucesso
+2019-07-21 16:34:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:362 recebida com sucesso
+2019-07-21 16:34:21 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:363 recebida com sucesso
+2019-07-21 16:34:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:364 recebida com sucesso
+2019-07-21 16:34:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:365 recebida com sucesso
+2019-07-21 16:34:22 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:366 recebida com sucesso
+2019-07-21 16:34:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:367 recebida com sucesso
+2019-07-21 16:34:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:368 recebida com sucesso
+2019-07-21 16:34:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:369 recebida com sucesso
+2019-07-21 16:34:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:370 recebida com sucesso
+2019-07-21 16:34:23 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:371 recebida com sucesso
+2019-07-21 16:34:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:372 recebida com sucesso
+2019-07-21 16:34:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:373 recebida com sucesso
+2019-07-21 16:34:24 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:374 recebida com sucesso
+2019-07-21 16:34:25 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:375 recebida com sucesso
+2019-07-21 16:34:25 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:376 recebida com sucesso
+2019-07-21 16:34:26 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:377 recebida com sucesso
+2019-07-21 16:34:26 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:378 recebida com sucesso
+2019-07-21 16:34:26 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:379 recebida com sucesso
+2019-07-21 16:34:27 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:380 recebida com sucesso
+2019-07-21 16:34:27 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:381 recebida com sucesso
+2019-07-21 16:34:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:382 recebida com sucesso
+2019-07-21 16:34:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:383 recebida com sucesso
+2019-07-21 16:34:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:384 recebida com sucesso
+2019-07-21 16:34:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:385 recebida com sucesso
+2019-07-21 16:34:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:386 recebida com sucesso
+2019-07-21 16:34:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:387 recebida com sucesso
+2019-07-21 16:34:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:388 recebida com sucesso
+2019-07-21 16:34:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:389 recebida com sucesso
+2019-07-21 16:34:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:390 recebida com sucesso
+2019-07-21 16:34:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:391 recebida com sucesso
+2019-07-21 16:34:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:392 recebida com sucesso
+2019-07-21 16:34:31 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:393 recebida com sucesso
+2019-07-21 16:34:31 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:394 recebida com sucesso
+2019-07-21 16:34:31 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:395 recebida com sucesso
+2019-07-21 16:34:32 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:396 recebida com sucesso
+2019-07-21 16:34:32 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:397 recebida com sucesso
+2019-07-21 16:34:32 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:398 recebida com sucesso
+2019-07-21 16:34:33 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:399 recebida com sucesso
+2019-07-21 16:34:33 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:400 recebida com sucesso
+2019-07-21 16:34:33 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:401 recebida com sucesso
+2019-07-21 16:34:34 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:402 recebida com sucesso
+2019-07-21 16:34:34 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:403 recebida com sucesso
+2019-07-21 16:34:34 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:404 recebida com sucesso
+2019-07-21 16:34:35 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:405 recebida com sucesso
+2019-07-21 16:34:35 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:406 recebida com sucesso
+2019-07-21 16:34:35 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:407 recebida com sucesso
+2019-07-21 16:34:36 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:408 recebida com sucesso
+2019-07-21 16:34:36 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:409 recebida com sucesso
+2019-07-21 16:34:37 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:410 recebida com sucesso
+2019-07-21 16:34:37 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:411 recebida com sucesso
+2019-07-21 16:34:37 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:412 recebida com sucesso
+2019-07-21 16:34:38 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:413 recebida com sucesso
+2019-07-21 16:34:38 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:414 recebida com sucesso
+2019-07-21 16:34:38 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:415 recebida com sucesso
+2019-07-21 16:34:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:416 recebida com sucesso
+2019-07-21 16:34:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:417 recebida com sucesso
+2019-07-21 16:34:52 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:418 recebida com sucesso
+2019-07-21 16:34:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:419 recebida com sucesso
+2019-07-21 16:34:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:420 recebida com sucesso
+2019-07-21 16:34:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:421 recebida com sucesso
+2019-07-21 16:34:53 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:422 recebida com sucesso
+2019-07-21 16:34:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:423 recebida com sucesso
+2019-07-21 16:34:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:424 recebida com sucesso
+2019-07-21 16:34:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:425 recebida com sucesso
+2019-07-21 16:34:54 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:426 recebida com sucesso
+2019-07-21 16:34:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:427 recebida com sucesso
+2019-07-21 16:34:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:428 recebida com sucesso
+2019-07-21 16:34:55 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:429 recebida com sucesso
+2019-07-21 16:34:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:430 recebida com sucesso
+2019-07-21 16:34:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:431 recebida com sucesso
+2019-07-21 16:34:56 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:432 recebida com sucesso
+2019-07-21 16:34:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:433 recebida com sucesso
+2019-07-21 16:34:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:434 recebida com sucesso
+2019-07-21 16:34:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:435 recebida com sucesso
+2019-07-21 16:34:57 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:436 recebida com sucesso
+2019-07-21 16:34:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:437 recebida com sucesso
+2019-07-21 16:34:58 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:438 recebida com sucesso
+2019-07-21 16:34:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:439 recebida com sucesso
+2019-07-21 16:34:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:440 recebida com sucesso
+2019-07-21 16:34:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:441 recebida com sucesso
+2019-07-21 16:34:59 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:442 recebida com sucesso
+2019-07-21 16:35:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:443 recebida com sucesso
+2019-07-21 16:35:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:444 recebida com sucesso
+2019-07-21 16:35:00 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:445 recebida com sucesso
+2019-07-21 16:35:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:446 recebida com sucesso
+2019-07-21 16:35:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:447 recebida com sucesso
+2019-07-21 16:35:01 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:448 recebida com sucesso
+2019-07-21 16:35:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:449 recebida com sucesso
+2019-07-21 16:35:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:450 recebida com sucesso
+2019-07-21 16:35:02 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:451 recebida com sucesso
+2019-07-21 16:35:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:452 recebida com sucesso
+2019-07-21 16:35:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:453 recebida com sucesso
+2019-07-21 16:35:03 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:454 recebida com sucesso
+2019-07-21 16:35:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:455 recebida com sucesso
+2019-07-21 16:35:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:456 recebida com sucesso
+2019-07-21 16:35:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:457 recebida com sucesso
+2019-07-21 16:35:04 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:458 recebida com sucesso
+2019-07-21 16:35:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:459 recebida com sucesso
+2019-07-21 16:35:05 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:460 recebida com sucesso
+2019-07-21 16:35:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:461 recebida com sucesso
+2019-07-21 16:35:06 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:462 recebida com sucesso
+2019-07-21 16:35:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:463 recebida com sucesso
+2019-07-21 16:35:07 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:464 recebida com sucesso
+2019-07-21 16:35:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:465 recebida com sucesso
+2019-07-21 16:35:08 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:466 recebida com sucesso
+2019-07-21 16:35:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:467 recebida com sucesso
+2019-07-21 16:35:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:468 recebida com sucesso
+2019-07-21 16:35:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:469 recebida com sucesso
+2019-07-21 16:35:13 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:470 recebida com sucesso
+2019-07-21 16:35:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:471 recebida com sucesso
+2019-07-21 16:35:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:472 recebida com sucesso
+2019-07-21 16:35:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:473 recebida com sucesso
+2019-07-21 16:35:14 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:474 recebida com sucesso
+2019-07-21 16:35:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:475 recebida com sucesso
+2019-07-21 16:35:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:476 recebida com sucesso
+2019-07-21 16:35:15 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:477 recebida com sucesso
+2019-07-21 16:35:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:478 recebida com sucesso
+2019-07-21 16:35:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:479 recebida com sucesso
+2019-07-21 16:35:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:480 recebida com sucesso
+2019-07-21 16:35:16 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:481 recebida com sucesso
+2019-07-21 16:35:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:482 recebida com sucesso
+2019-07-21 16:35:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:483 recebida com sucesso
+2019-07-21 16:35:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:484 recebida com sucesso
+2019-07-21 16:35:17 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:485 recebida com sucesso
+2019-07-21 16:35:18 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:486 recebida com sucesso
+2019-07-21 16:36:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:487 recebida com sucesso
+2019-07-21 16:38:27 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:488 recebida com sucesso
+2019-07-21 16:38:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:489 recebida com sucesso
+2019-07-21 16:38:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:490 recebida com sucesso
+2019-07-21 16:38:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:491 recebida com sucesso
+2019-07-21 16:38:28 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:492 recebida com sucesso
+2019-07-21 16:38:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:493 recebida com sucesso
+2019-07-21 16:38:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:494 recebida com sucesso
+2019-07-21 16:38:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:495 recebida com sucesso
+2019-07-21 16:38:29 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:496 recebida com sucesso
+2019-07-21 16:38:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:497 recebida com sucesso
+2019-07-21 16:38:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:498 recebida com sucesso
+2019-07-21 16:38:30 - Mensagem com ID ID:ajax-39293-1563737207251-1:1:1:1:499 recebida com sucesso
+2019-07-21 16:40:33 - HikariPool-1 - Shutdown initiated...
+2019-07-21 16:40:33 - HikariPool-1 - Shutdown completed.

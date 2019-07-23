@@ -36,7 +36,7 @@ public class BoletoRemetente {
 	private Gson gson;
 	
 	public BoletoRemetente() {
-		limite = PageRequest.of(0, 300);
+		limite = PageRequest.of(0, 150);
 	}
 	// Espera 10 minutos antes da primeira execução e as demais ocorrerão à cada 15 minutos
 	@Scheduled(initialDelay = 600000, fixedDelay = 900000)

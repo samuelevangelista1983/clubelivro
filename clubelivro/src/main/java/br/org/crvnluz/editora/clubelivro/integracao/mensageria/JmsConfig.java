@@ -1,11 +1,8 @@
 package br.org.crvnluz.editora.clubelivro.integracao.mensageria;
 
-import javax.jms.Connection;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.Session;
 
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.stereotype.Component;
-
-import br.org.crvnluz.editora.clubelivro.integracao.mensageria.boleto.ArquivoRemReceptor;
 
 @Configuration
 @Component
@@ -27,20 +22,12 @@ public class JmsConfig {
 	private String usuario = "admin"; 
 	@Value("${activemq.broker.password}")
 	private String senha = "admin";
-	@Value("${activemq.broker.topic.arquivos.rem}")
-	private String topicoArquivosRem;
+	@Value("${activemq.broker.topic.boletos}")
+	private String topicoBoletos;
 	@Value("${activemq.broker.client.id.prefix}")
 	private String clientIdPrefix;
 	@Autowired
-	private ArquivoRemReceptor arquivoRemReceptor;
-	
-	@Bean 
-	public Connection connection() throws JMSException{
-		ActiveMQConnection connection = (ActiveMQConnection) connectionFactory().createConnection();
-		connection.setClientID(clientIdPrefix);
-		connection.start();
-		return connection;
-	}
+	private BoletoReceptor boletoReceptor;
 	
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory(){
@@ -54,16 +41,16 @@ public class JmsConfig {
 	}
 	
 	@Bean
-	public DefaultMessageListenerContainer getArquivosRemessaListener() {
+	public DefaultMessageListenerContainer getBoletosListener() {
 		DefaultMessageListenerContainer dml = new DefaultMessageListenerContainer();
 		dml.setConnectionFactory(connectionFactory());
 		dml.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
 		dml.setSessionTransacted(true);
-		Destination destino = new ActiveMQTopic(topicoArquivosRem);
+		Destination destino = new ActiveMQTopic(topicoBoletos);
 		dml.setDestination(destino);
-		dml.setDurableSubscriptionName(topicoArquivosRem);
-		dml.setClientId(clientIdPrefix.concat(".").concat(topicoArquivosRem));
-		dml.setMessageListener(arquivoRemReceptor);
+		dml.setDurableSubscriptionName(topicoBoletos);
+		dml.setClientId(clientIdPrefix.concat(".").concat(topicoBoletos));
+		dml.setMessageListener(boletoReceptor);
 		dml.start();
 		return dml;
 	}

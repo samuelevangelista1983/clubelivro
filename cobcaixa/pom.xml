@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.org.caravanadeluz</groupId>
 	<artifactId>cobcaixa</artifactId>
-	<version>1.0</version>
 	<description>Programa de importação das informações dos boletos processados pelo programa CobCaixa</description>
 	<name>CobCaixa ETL</name>
 	
@@ -62,4 +61,5 @@
 		</plugins>
 	</build>
 	
+	<version>1.0</version>
 </project>

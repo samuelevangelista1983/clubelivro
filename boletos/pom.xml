@@ -5,7 +5,7 @@
 	
 	<groupId>br.org.caravanadeluz</groupId>
 	<artifactId>boletos</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>Boletos</name>
 	<description>Programa gerenciador de boletos emitidos pela Fraternidade Espírita Caravana de Luz</description>
 
@@ -36,12 +36,8 @@
 			<artifactId>spring-boot-starter-activemq</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jms</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

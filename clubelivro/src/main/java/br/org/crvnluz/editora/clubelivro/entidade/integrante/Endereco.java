@@ -3,7 +3,6 @@ package br.org.crvnluz.editora.clubelivro.entidade.integrante;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,13 +16,13 @@ import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
 @Entity
 public class Endereco implements Enderecavel, Serializable, Cloneable {
 	
-	private static final long serialVersionUID = -7129082118222182662L;
+	private static final long serialVersionUID = -2035685489734474389L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_integrante", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_integrante")
 	private Integrante integrante;
 	private int tipo; // 0 - residencial; 1 - comercial
 	private boolean cobranca;
@@ -69,7 +68,6 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
-		result = prime * result + ((integrante == null) ? 0 : integrante.hashCode());
 		result = prime * result + ((logradouro == null) ? 0 : logradouro.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
 		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
@@ -118,13 +116,6 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 		} else if (!complemento.equals(other.complemento)) {
 			return false;
 		}
-		if (integrante == null) {
-			if (other.integrante != null) {
-				return false;
-			}
-		} else if (!integrante.equals(other.integrante)) {
-			return false;
-		}
 		if (logradouro == null) {
 			if (other.logradouro != null) {
 				return false;
@@ -162,9 +153,8 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 	@Override
 	public String toString() {
 		return String.format(
-				"Endereco [id=%s, integrante=%s, tipo=%s, cobranca=%s, entrega=%s, cep=%s, logradouro=%s, numero=%s, complemento=%s, bairro=%s, cidade=%s, uf=%s, observacao=%s]",
-				id, integrante, tipo, cobranca, entrega, cep, logradouro, numero, complemento, bairro, cidade, uf,
-				observacao);
+				"Endereco [id=%s, tipo=%s, cobranca=%s, entrega=%s, cep=%s, logradouro=%s, numero=%s, complemento=%s, bairro=%s, cidade=%s, uf=%s, observacao=%s]",
+				id, tipo, cobranca, entrega, cep, logradouro, numero, complemento, bairro, cidade, uf, observacao);
 	}
 	
 	public static void validar(Endereco endereco) throws ValidacaoException {
@@ -203,8 +193,6 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 		if (StringUtil.stringNulaOuVazia(endereco.getUf())) {
 			throw new ValidacaoException("A UF do endereço do integrante do Clube do Livro deve ser informada");
 		}
-		// TODO remover
-		//endereco.setCep(cep);
 	}
 	
 	public Long getId() {
@@ -270,14 +258,6 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 		this.observacao = observacao;
 	}
 
-	public Integrante getIntegrante() {
-		return integrante;
-	}
-
-	public void setIntegrante(Integrante integrante) {
-		this.integrante = integrante;
-	}
-
 	public int getTipo() {
 		return tipo;
 	}
@@ -309,6 +289,14 @@ public class Endereco implements Enderecavel, Serializable, Cloneable {
 
 	public void setEntrega(boolean entrega) {
 		this.entrega = entrega;
+	}
+
+	public Integrante getIntegrante() {
+		return integrante;
+	}
+
+	public void setIntegrante(Integrante integrante) {
+		this.integrante = integrante;
 	}
 
 }

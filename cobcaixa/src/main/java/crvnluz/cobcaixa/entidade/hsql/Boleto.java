@@ -75,6 +75,10 @@ public class Boleto implements Serializable {
 		} else if ("06".equals(codigoRetorno)) {
 			boleto.setSituacao(1);
 			
+			if (boleto.pgto == null) {
+				boleto.pgto = boletoCobCaixa.getDataOcorrencia();
+			}
+			
 		} else if ("09".equals(codigoRetorno)) {
 			boleto.setSituacao(3);
 			

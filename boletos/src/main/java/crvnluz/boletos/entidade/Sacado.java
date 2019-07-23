@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 @Entity
 public class Sacado implements Serializable {
 
-	private static final long serialVersionUID = 8421756970708951264L;
+	private static final long serialVersionUID = -8409247449475674640L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

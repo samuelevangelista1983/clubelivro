@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +19,8 @@ import org.springframework.util.StringUtils;
 
 @Entity
 public class Boleto implements Serializable {
-
-	private static final long serialVersionUID = -1012790211044022866L;
+	
+	private static final long serialVersionUID = 8659629572703154688L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +41,10 @@ public class Boleto implements Serializable {
 	private BigDecimal valorTarifa;
 	private BigDecimal valorCreditado;
 	private Integer situacao; // 0 - emitido, 1 - baixado, 2 - baixado manualmente, 3 - cancelado, 4 - cancelado manualmente, 5 - desconhecido, 6 - erro processamento
+	@Column(name = "msg_recibo_sacado")
+	private String mensagemReciboSacado;
+	@Column(name = "msg_ficha_compensacao")
+	private String mensagemFichaCompensacao;
 	
 	public Boleto() {}
 	
@@ -55,128 +60,44 @@ public class Boleto implements Serializable {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Boleto)) {
-			return false;
-		}
-		Boleto other = (Boleto) obj;
-		if (efetivacaoCredito == null) {
-			if (other.efetivacaoCredito != null) {
-				return false;
+		boolean equals = false;
+		
+		if (obj != null) {
+			if (this != obj) {
+				if (obj instanceof Boleto) {
+					Boleto other = (Boleto) obj;
+					
+					if (numeroBanco == null && other.numeroBanco == null) {
+						equals = true;
+						
+					} else {
+						equals = numeroBanco.equals(other.numeroBanco);
+					}
+				}
+				
+			} else {
+				equals = true;
 			}
-		} else if (!efetivacaoCredito.equals(other.efetivacaoCredito)) {
-			return false;
 		}
-		if (emissao == null) {
-			if (other.emissao != null) {
-				return false;
-			}
-		} else if (!emissao.equals(other.emissao)) {
-			return false;
-		}
-		if (numeroBanco == null) {
-			if (other.numeroBanco != null) {
-				return false;
-			}
-		} else if (!numeroBanco.equals(other.numeroBanco)) {
-			return false;
-		}
-		if (numeroBeneficiario == null) {
-			if (other.numeroBeneficiario != null) {
-				return false;
-			}
-		} else if (!numeroBeneficiario.equals(other.numeroBeneficiario)) {
-			return false;
-		}
-		if (pgto == null) {
-			if (other.pgto != null) {
-				return false;
-			}
-		} else if (!pgto.equals(other.pgto)) {
-			return false;
-		}
-		if (sacado == null) {
-			if (other.sacado != null) {
-				return false;
-			}
-		} else if (!sacado.equals(other.sacado)) {
-			return false;
-		}
-		if (situacao == null) {
-			if (other.situacao != null) {
-				return false;
-			}
-		} else if (!situacao.equals(other.situacao)) {
-			return false;
-		}
-		if (valorCreditado == null) {
-			if (other.valorCreditado != null) {
-				return false;
-			}
-		} else if (!valorCreditado.equals(other.valorCreditado)) {
-			return false;
-		}
-		if (valorNominal == null) {
-			if (other.valorNominal != null) {
-				return false;
-			}
-		} else if (!valorNominal.equals(other.valorNominal)) {
-			return false;
-		}
-		if (valorPago == null) {
-			if (other.valorPago != null) {
-				return false;
-			}
-		} else if (!valorPago.equals(other.valorPago)) {
-			return false;
-		}
-		if (valorTarifa == null) {
-			if (other.valorTarifa != null) {
-				return false;
-			}
-		} else if (!valorTarifa.equals(other.valorTarifa)) {
-			return false;
-		}
-		if (vcto == null) {
-			if (other.vcto != null) {
-				return false;
-			}
-		} else if (!vcto.equals(other.vcto)) {
-			return false;
-		}
-		return true;
+		
+		return equals;
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((efetivacaoCredito == null) ? 0 : efetivacaoCredito.hashCode());
-		result = prime * result + ((emissao == null) ? 0 : emissao.hashCode());
 		result = prime * result + ((numeroBanco == null) ? 0 : numeroBanco.hashCode());
-		result = prime * result + ((numeroBeneficiario == null) ? 0 : numeroBeneficiario.hashCode());
-		result = prime * result + ((pgto == null) ? 0 : pgto.hashCode());
-		result = prime * result + ((sacado == null) ? 0 : sacado.hashCode());
-		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
-		result = prime * result + ((valorCreditado == null) ? 0 : valorCreditado.hashCode());
-		result = prime * result + ((valorNominal == null) ? 0 : valorNominal.hashCode());
-		result = prime * result + ((valorPago == null) ? 0 : valorPago.hashCode());
-		result = prime * result + ((valorTarifa == null) ? 0 : valorTarifa.hashCode());
-		result = prime * result + ((vcto == null) ? 0 : vcto.hashCode());
 		return result;
 	}
 	
 	@Override
 	public String toString() {
 		return String.format(
-				"Boleto [id=%s, versao=%s, sacado=%s, numeroBanco=%s, numeroBeneficiario=%s, emissao=%s, vcto=%s, valorNominal=%s, pgto=%s, efetivacaoCredito=%s, valorPago=%s, valorTarifa=%s, valorCreditado=%s, situacao=%s]",
+				"Boleto [id=%s, versao=%s, sacado=%s, numeroBanco=%s, numeroBeneficiario=%s, emissao=%s, vcto=%s, valorNominal=%s, pgto=%s, efetivacaoCredito=%s, valorPago=%s, valorTarifa=%s, valorCreditado=%s, situacao=%s, mensagemReciboSacado=%s, mensagemFichaCompensacao=%s]",
 				id, versao, sacado, numeroBanco, numeroBeneficiario, emissao, vcto, valorNominal, pgto,
-				efetivacaoCredito, valorPago, valorTarifa, valorCreditado, situacao);
+				efetivacaoCredito, valorPago, valorTarifa, valorCreditado, situacao, mensagemReciboSacado,
+				mensagemFichaCompensacao);
 	}
 
 	public static void validar(Boleto boleto) {
@@ -335,7 +256,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setEmissao(String emissaoStr) {
-		emissao = LocalDate.parse(emissaoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		emissao = LocalDate.parse(emissaoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 	
 	public LocalDate getVcto() {
@@ -347,7 +268,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setVcto(String vctoStr) {
-		vcto = LocalDate.parse(vctoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		vcto = LocalDate.parse(vctoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 	
 	public BigDecimal getValorNominal() {
@@ -371,7 +292,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setPgto(String pgtoStr) {
-		pgto = LocalDate.parse(pgtoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		pgto = LocalDate.parse(pgtoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 	
 	public LocalDate getEfetivacaoCredito() {
@@ -384,7 +305,7 @@ public class Boleto implements Serializable {
 
 	public void setEfetivacaoCredito(String efetivacaoCreditoStr) {
 		try {
-			efetivacaoCredito = LocalDate.parse(efetivacaoCreditoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+			efetivacaoCredito = LocalDate.parse(efetivacaoCreditoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		} catch (DateTimeParseException ex) {
 			
 		}
@@ -432,6 +353,22 @@ public class Boleto implements Serializable {
 
 	public void setSituacao(Integer situacao) {
 		this.situacao = situacao;
+	}
+
+	public String getMensagemReciboSacado() {
+		return mensagemReciboSacado;
+	}
+
+	public void setMensagemReciboSacado(String mensagemReciboSacado) {
+		this.mensagemReciboSacado = mensagemReciboSacado;
+	}
+
+	public String getMensagemFichaCompensacao() {
+		return mensagemFichaCompensacao;
+	}
+
+	public void setMensagemFichaCompensacao(String mensagemFichaCompensacao) {
+		this.mensagemFichaCompensacao = mensagemFichaCompensacao;
 	}
 
 }

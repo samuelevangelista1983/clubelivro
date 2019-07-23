@@ -7,8 +7,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -16,10 +14,12 @@ import org.springframework.stereotype.Component;
 import crvnluz.cobcaixa.entidade.access.BoletoCobCaixa;
 import crvnluz.cobcaixa.entidade.hsql.Boleto;
 import crvnluz.cobcaixa.entidade.hsql.BoletoPendente;
+import crvnluz.cobcaixa.entidade.hsql.DiaProcessado;
 import crvnluz.cobcaixa.entidade.hsql.Sacado;
 import crvnluz.cobcaixa.repositorio.access.BoletoCobCaixaRepositorio;
 import crvnluz.cobcaixa.repositorio.hsql.BoletoPendenteRepositorio;
 import crvnluz.cobcaixa.repositorio.hsql.BoletoRepositorio;
+import crvnluz.cobcaixa.repositorio.hsql.DiaProcessadoRepositorio;
 import crvnluz.cobcaixa.repositorio.hsql.SacadoRepositorio;
 
 @EnableScheduling
@@ -34,22 +34,45 @@ public class BoletoCobCaixaExtrator {
 	private BoletoRepositorio boletoRepositorio;
 	@Autowired
 	private BoletoPendenteRepositorio boletoPendenteRepositorio;
-	private Pageable limite;
+	@Autowired
+	private DiaProcessadoRepositorio diaProcessadoRepositorio;
+	private LocalDate dataBoletosLiquidados;
+	private LocalDate dataBoletosEmitidos;
+	private LocalDate dataBoletosCancelados;
 	@Autowired
 	private SacadoRepositorio sacadoRepositorio;
 	
 	public BoletoCobCaixaExtrator() {
-		limite = PageRequest.of(0, 300);
+		
+	}
+	
+	private void atualizarData(LocalDate data, Integer situacao) {
+		DiaProcessado diaProcessado = diaProcessadoRepositorio.findByStatus(situacao);
+		
+		if (diaProcessado != null) {
+			diaProcessado.setData(data);
+			
+		} else {
+			diaProcessado = new DiaProcessado();
+			diaProcessado.setStatus(situacao);
+			diaProcessado.setData(data);
+		}
+		
+		diaProcessadoRepositorio.save(diaProcessado);
 	}
 	
 	private LocalDate calcularDataInicial(Integer situacao) {
-		LocalDate dataInicial = boletoRepositorio.getDataUltimoBoleto(situacao);
+		DiaProcessado diaProcessado = diaProcessadoRepositorio.findByStatus(situacao);
+		LocalDate data = null;
 		
-		if (dataInicial == null) {
-			dataInicial = LocalDate.of(2015, 1, 1);
+		if (diaProcessado != null && diaProcessado.getData() != null) {
+			data = diaProcessado.getData().plusDays(1);
+			
+		} else {
+			data = LocalDate.of(2015, 1, 1);
 		}
 		
-		return dataInicial;
+		return data;
 	}
 	
 	private void salvar(BoletoCobCaixa boletoCobCaixa) {
@@ -71,44 +94,64 @@ public class BoletoCobCaixaExtrator {
 		boletoPendenteRepositorio.save(pendente);
 	}
 	
-	// Espera 5 minutos antes da primeira execução e as demais ocorrerão à cada 15 minutos
-	@Scheduled(initialDelay = 300000, fixedDelay = 900000)
+	// Espera 1 minuto antes da primeira execução e as demais ocorrerão à cada 15 minutos
+	@Scheduled(initialDelay = 60000, fixedDelay = 900000)
 	//@Scheduled(fixedDelay = 10000)
 	public void extrair() {
 		logger.info("Processo de extração de boletos do programa CobCaixa iniciado");
-		List<BoletoCobCaixa> boletosLiquidados = cobcaixaRepositorio.getBoletosLiquidados(calcularDataInicial(1), limite);
+		dataBoletosLiquidados = calcularDataInicial(1);
 		
-		if (!boletosLiquidados.isEmpty()) {
-			logger.info(String.format("Foram encontrados %s boletos liquidados", boletosLiquidados.size()));
-			boletosLiquidados.stream().forEach(b -> salvar(b));
-			logger.info("Os boletos liquidados foram salvos com sucesso");
+		if (!dataBoletosLiquidados.isAfter(LocalDate.now())) {
+			List<BoletoCobCaixa> boletosLiquidados = cobcaixaRepositorio.getBoletosLiquidados(dataBoletosLiquidados);
 			
-		} else {
-			logger.info("Não foram encontrados boletos liquidados");
+			if (!boletosLiquidados.isEmpty()) {
+				logger.info(String.format("Foram encontrados %s boletos liquidados na data %s", boletosLiquidados.size(), dataBoletosLiquidados));
+				boletosLiquidados.stream().forEach(b -> salvar(b));
+				logger.info("Os boletos liquidados foram salvos com sucesso");
+				
+			} else {
+				logger.info(String.format("Não foram encontrados boletos liquidados na data %s", dataBoletosLiquidados));
+			}
+			
+			atualizarData(dataBoletosEmitidos, 0);
 		}
 		
-		List<BoletoCobCaixa> boletosEmitidos = cobcaixaRepositorio.getBoletosEmitidos(calcularDataInicial(0), limite);
+		dataBoletosEmitidos = calcularDataInicial(0);
 		
-		if (!boletosEmitidos.isEmpty()) {
-			logger.info(String.format("Foram encontrados %s boletos emitidos", boletosEmitidos.size()));
-			boletosEmitidos.stream().forEach(b -> salvar(b));
-			logger.info("Os boletos emitidos foram salvos com sucesso");
+		
+		if (!dataBoletosEmitidos.isAfter(LocalDate.now())) {
+			List<BoletoCobCaixa> boletosEmitidos = cobcaixaRepositorio.getBoletosEmitidos(dataBoletosEmitidos);
 			
-		} else {
-			logger.info("Não foram encontrados boletos emitidos");
+			if (!boletosEmitidos.isEmpty()) {
+				logger.info(String.format("Foram encontrados %s boletos emitidos na data %s", boletosEmitidos.size(), dataBoletosEmitidos));
+				boletosEmitidos.stream().forEach(b -> salvar(b));
+				logger.info("Os boletos emitidos foram salvos com sucesso");
+				
+			} else {
+				logger.info(String.format("Não foram encontrados boletos emitidos na data %s", dataBoletosEmitidos));
+			}
+			
+			atualizarData(dataBoletosLiquidados, 1);
 		}
 		
-		List<BoletoCobCaixa> boletosCancelados = cobcaixaRepositorio.getBoletosCancelados(calcularDataInicial(3), limite);
+		dataBoletosCancelados = calcularDataInicial(3);
 		
-		if (!boletosCancelados.isEmpty()) {
-			logger.info(String.format("Foram encontrados %s boletos cancelados", boletosCancelados.size()));
-			boletosCancelados.stream().forEach(b -> salvar(b));
-			logger.info("Os boletos cancelados foram salvos com sucesso");
+		if (!dataBoletosCancelados.isAfter(LocalDate.now())) {
+			List<BoletoCobCaixa> boletosCancelados = cobcaixaRepositorio.getBoletosCancelados(dataBoletosCancelados);
 			
-		} else {
-			logger.info("Não foram encontrados boletos cancelados");
+			if (!boletosCancelados.isEmpty()) {
+				logger.info(String.format("Foram encontrados %s boletos cancelados na data %s", boletosCancelados.size(), dataBoletosCancelados));
+				boletosCancelados.stream().forEach(b -> salvar(b));
+				logger.info("Os boletos cancelados foram salvos com sucesso");
+				
+			} else {
+				logger.info(String.format("Não foram encontrados boletos cancelados na data %s", dataBoletosCancelados));
+			}
+			
+			atualizarData(dataBoletosCancelados, 3);
 		}
 		
+		diaProcessadoRepositorio.flush();
 		boletoRepositorio.flush();
 		boletoPendenteRepositorio.flush();
 		logger.info("Processo de extração de boletos do programa CobCaixa finalizado");

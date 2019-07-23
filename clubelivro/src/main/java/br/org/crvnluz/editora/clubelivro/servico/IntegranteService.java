@@ -1,5 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.servico;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -8,14 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
 import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
 import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
-import br.org.crvnluz.editora.clubelivro.integracao.mensageria.CadastroPessoaIntegrador;
+import br.org.crvnluz.editora.clubelivro.integracao.job.CadastroPessoaIntegrador;
 import br.org.crvnluz.editora.clubelivro.repositorio.integrante.ContatoRepositorio;
 import br.org.crvnluz.editora.clubelivro.repositorio.integrante.EnderecoRepositorio;
 import br.org.crvnluz.editora.clubelivro.repositorio.integrante.IntegranteRepositorio;
 
-@Component
+
 public class IntegranteService {
 	
 	private final Logger logger = LoggerFactory.getLogger(IntegranteService.class);
@@ -29,14 +33,26 @@ public class IntegranteService {
 	@Autowired
 	private CadastroPessoaIntegrador cadastroPessoa;
 	
+	public void atualizar(Integrante integrante) {
+		try {
+			cadastroPessoa.atualizarCadastroPessoa(integrante);
+			
+		} catch (Throwable t) {
+			logger.error("Ocorreu um erro ao atualizar o integrante no cadastro de pessoas", t);
+		}
+	}
+	/*
 	@Transactional
 	public void salvar(Integrante integrante) {
 		try {
 			Integrante.validar(integrante);
-			repositorio.save(integrante);
-			contatoRepositorio.save(integrante.getContatos());
-			enderecoRepositorio.save(integrante.getEnderecos());
-			cadastroPessoa.atualizarCadastroPessoa(integrante);
+			Integrante integranteSalvo = repositorio.save(integrante);
+			List<Contato> contatos = integrante.getContatos();
+			contatos.stream().forEach(c -> c.setIntegrante(integranteSalvo));
+			contatoRepositorio.save(contatos);
+			List<Endereco> enderecos = integrante.getEnderecos();
+			enderecos.stream().forEach(e -> e.setIntegrante(integranteSalvo));
+			enderecoRepositorio.save(enderecos);
 			
 		} catch (ValidacaoException e) {
 			logger.error("Ocorreu um erro ao salvar integrante", e);
@@ -62,5 +78,5 @@ public class IntegranteService {
 		
 		return integrante;
 	}
-	
+	*/
 }

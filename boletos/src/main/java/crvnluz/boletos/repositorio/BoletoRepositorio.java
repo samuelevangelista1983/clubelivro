@@ -6,6 +6,6 @@ import crvnluz.boletos.entidade.Boleto;
 
 public interface BoletoRepositorio extends JpaRepository<Boleto, Long> {
 
-	public Boleto findByNumeroBeneficiario(String numeroBeneficiario);
+	public Boleto findByNumeroBanco(String numeroBanco);
 	
 }
