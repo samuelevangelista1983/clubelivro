@@ -114,6 +114,132 @@ public class Integrante implements Serializable, Cloneable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
+		result = prime * result + ((cadastro == null) ? 0 : cadastro.hashCode());
+		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
+		result = prime * result + ((contatos == null) ? 0 : contatos.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((desativacao == null) ? 0 : desativacao.hashCode());
+		result = prime * result + ((diaVctoPreferencial == null) ? 0 : diaVctoPreferencial.hashCode());
+		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
+		result = prime * result + ((formaEntrega == null) ? 0 : formaEntrega.hashCode());
+		result = prime * result + ((formaPgtoPref == null) ? 0 : formaPgtoPref.hashCode());
+		result = prime * result + ((frequencia == null) ? 0 : frequencia.hashCode());
+		result = prime * result + ((nascimento == null) ? 0 : nascimento.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Integrante)) {
+			return false;
+		}
+		Integrante other = (Integrante) obj;
+		if (ativo == null) {
+			if (other.ativo != null) {
+				return false;
+			}
+		} else if (!ativo.equals(other.ativo)) {
+			return false;
+		}
+		if (cadastro == null) {
+			if (other.cadastro != null) {
+				return false;
+			}
+		} else if (!cadastro.equals(other.cadastro)) {
+			return false;
+		}
+		if (categoria == null) {
+			if (other.categoria != null) {
+				return false;
+			}
+		} else if (!categoria.equals(other.categoria)) {
+			return false;
+		}
+		if (contatos == null) {
+			if (other.contatos != null) {
+				return false;
+			}
+		} else if (!contatos.equals(other.contatos)) {
+			return false;
+		}
+		if (cpf == null) {
+			if (other.cpf != null) {
+				return false;
+			}
+		} else if (!cpf.equals(other.cpf)) {
+			return false;
+		}
+		if (desativacao == null) {
+			if (other.desativacao != null) {
+				return false;
+			}
+		} else if (!desativacao.equals(other.desativacao)) {
+			return false;
+		}
+		if (diaVctoPreferencial == null) {
+			if (other.diaVctoPreferencial != null) {
+				return false;
+			}
+		} else if (!diaVctoPreferencial.equals(other.diaVctoPreferencial)) {
+			return false;
+		}
+		if (enderecos == null) {
+			if (other.enderecos != null) {
+				return false;
+			}
+		} else if (!enderecos.equals(other.enderecos)) {
+			return false;
+		}
+		if (formaEntrega == null) {
+			if (other.formaEntrega != null) {
+				return false;
+			}
+		} else if (!formaEntrega.equals(other.formaEntrega)) {
+			return false;
+		}
+		if (formaPgtoPref == null) {
+			if (other.formaPgtoPref != null) {
+				return false;
+			}
+		} else if (!formaPgtoPref.equals(other.formaPgtoPref)) {
+			return false;
+		}
+		if (frequencia == null) {
+			if (other.frequencia != null) {
+				return false;
+			}
+		} else if (!frequencia.equals(other.frequencia)) {
+			return false;
+		}
+		if (nascimento == null) {
+			if (other.nascimento != null) {
+				return false;
+			}
+		} else if (!nascimento.equals(other.nascimento)) {
+			return false;
+		}
+		if (nome == null) {
+			if (other.nome != null) {
+				return false;
+			}
+		} else if (!nome.equals(other.nome)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
 				"Integrante [id=%s, ativo=%s, cadastro=%s, desativacao=%s, nome=%s, cpf=%s, nascimento=%s, contatos=%s, enderecos=%s, categoria=%s, frequencia=%s, formaEntrega=%s, formaPgtoPref=%s, diaVctoPreferencial=%s]",

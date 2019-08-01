@@ -42,10 +42,6 @@ public class BoletoCobCaixaExtrator {
 	@Autowired
 	private SacadoRepositorio sacadoRepositorio;
 	
-	public BoletoCobCaixaExtrator() {
-		
-	}
-	
 	private void atualizarData(LocalDate data, Integer situacao) {
 		DiaProcessado diaProcessado = diaProcessadoRepositorio.findByStatus(situacao);
 		
@@ -94,9 +90,7 @@ public class BoletoCobCaixaExtrator {
 		boletoPendenteRepositorio.save(pendente);
 	}
 	
-	// Espera 1 minuto antes da primeira execução e as demais ocorrerão à cada 15 minutos
-	@Scheduled(initialDelay = 60000, fixedDelay = 900000)
-	//@Scheduled(fixedDelay = 10000)
+	@Scheduled(initialDelayString = "${extrator.initial.delay}", fixedDelayString = "${extrator.fixed.delay}")
 	public void extrair() {
 		logger.info("Processo de extração de boletos do programa CobCaixa iniciado");
 		dataBoletosLiquidados = calcularDataInicial(1);

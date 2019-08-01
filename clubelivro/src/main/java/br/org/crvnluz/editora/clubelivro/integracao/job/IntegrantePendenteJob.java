@@ -28,6 +28,7 @@ import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaEntrega;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaPgto;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Frequencia;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.TipoContato;
+import br.org.crvnluz.editora.clubelivro.entidade.financeiro.Boleto;
 import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
 import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
 import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
@@ -35,6 +36,7 @@ import br.org.crvnluz.editora.clubelivro.integracao.entidade.IntegrantePendente;
 import br.org.crvnluz.editora.clubelivro.integracao.entidade.IntegranteProcessado;
 import br.org.crvnluz.editora.clubelivro.integracao.repositorio.IntegrantePendenteRepositorio;
 import br.org.crvnluz.editora.clubelivro.integracao.repositorio.IntegranteProcesadoRepositorio;
+import br.org.crvnluz.editora.clubelivro.repositorio.financeiro.BoletoRepositorio;
 import br.org.crvnluz.editora.clubelivro.repositorio.integrante.IntegranteRepositorio;
 import br.org.crvnluz.editora.clubelivro.servico.configuracao.CategoriaService;
 import br.org.crvnluz.editora.clubelivro.servico.configuracao.FormaEntregaService;
@@ -56,6 +58,8 @@ public class IntegrantePendenteJob {
 	@Autowired
 	private IntegranteRepositorio repositorio;
 	@Autowired
+	private BoletoRepositorio boletoRepositorio;
+	@Autowired
 	private CategoriaService categoriaService;
 	@Autowired
 	private FormaEntregaService formaEntregaService;
@@ -72,6 +76,27 @@ public class IntegrantePendenteJob {
 	
 	public IntegrantePendenteJob() {
 		limite = PageRequest.of(0, 150);
+	}
+	
+	private Boleto getBoleto(Integrante integrante, String conteudoJson) throws IOException {
+		Boleto boleto = new Boleto();
+		boleto.setIntegrante(integrante);
+		JsonNode json = objectMapper.readTree(conteudoJson);
+		boleto.setEmissao(json.get("emissao").asText());
+		boleto.setNossoNumero(json.get("numeroBeneficiario").asText());
+		boleto.setNumeroBanco(json.get("numeroBanco").asText());
+		boleto.setValor(json.get("valorNominal").decimalValue());
+		boleto.setVcto(json.get("vcto").asText());
+		
+		if (json.has("pgto")) {
+			boleto.setPgto(json.get("pgto").asText());
+		}
+		
+		if (json.has("valorPago")) {
+			boleto.setValorPago(json.get("valorPago").decimalValue());
+		}
+		
+		return boleto;
 	}
 	
 	private Integrante getIntegrante(String conteudoJson) throws IOException {
@@ -130,6 +155,7 @@ public class IntegrantePendenteJob {
 		}
 		
 		Categoria categoria = null;
+		
 		if (json.has("mensagemFichaCompensacao")) {
 			String mensagem = json.get("mensagemFichaCompensacao").asText();
 			
@@ -148,9 +174,6 @@ public class IntegrantePendenteJob {
 			} else {
 				categoria = categoriaService.pesquisarporNome("estudo");
 			}
-			
-		} else {
-			categoria = categoriaService.pesquisarporNome("romance");
 		}
 		
 		integrante.setCategoria(categoria);
@@ -165,9 +188,7 @@ public class IntegrantePendenteJob {
 		frequencia = frequenciaService.pesquisarporNome("mensal");
 	}
 	
-	// Espera 1 minuto ante da primeira execução e as demais ocorrerão à cada 1 minuto
-	@Scheduled(initialDelay = 60000, fixedDelay = 60000)
-	//@Scheduled(fixedDelay = 10000)
+	@Scheduled(initialDelayString = "${integrante.pendente.initial.delay}", fixedDelayString = "${integrante.pendente.fixed.delay}")
 	@Transactional
 	public void execute() {
 		Page<IntegrantePendente> page = pendenteRepositorio.findAll(limite);
@@ -181,52 +202,59 @@ public class IntegrantePendenteJob {
 				Integrante integranteSalvo = repositorio.findByCpf(integrante.getCpf());
 				
 				if (integranteSalvo != null) {
-					integranteSalvo.setNome(integrante.getNome());
-					
-					if (!integranteSalvo.getContatos().isEmpty()) {
-						integrante.getContatos().stream().forEach(c -> {
-							List<Contato> contatos = integranteSalvo.getContatos();
+					if (!integranteSalvo.equals(integrante)) {
+						integranteSalvo.setNome(integrante.getNome());
+						
+						if (!integranteSalvo.getContatos().isEmpty()) {
+							integrante.getContatos().stream().forEach(c -> {
+								List<Contato> contatos = integranteSalvo.getContatos();
+								
+								for (Contato contato: contatos) {
+									if (!contato.equals(c)) {
+										integranteSalvo.adicionarContato(c);
+									}
+								}
+							});
+							
+						} else {
+							List<Contato> contatos = integrante.getContatos();
 							
 							for (Contato contato: contatos) {
-								if (!contato.equals(c)) {
-									integranteSalvo.adicionarContato(c);
-								}
+								integranteSalvo.adicionarContato(contato);
 							}
-						});
-						
-					} else {
-						List<Contato> contatos = integrante.getContatos();
-						
-						for (Contato contato: contatos) {
-							integranteSalvo.adicionarContato(contato);
 						}
-					}
-					
-					if (!integranteSalvo.getEnderecos().isEmpty()) {
-						integrante.getEnderecos().stream().forEach(e -> {
-							List<Endereco> enderecos = integranteSalvo.getEnderecos();
+						
+						if (!integranteSalvo.getEnderecos().isEmpty()) {
+							integrante.getEnderecos().stream().forEach(e -> {
+								List<Endereco> enderecos = integranteSalvo.getEnderecos();
+								
+								for (Endereco endereco: enderecos) {
+									if (!endereco.equals(e)) {
+										integranteSalvo.adicionarEndereco(e);
+									}
+								}
+							});
+							
+						} else {
+							List<Endereco> enderecos = integrante.getEnderecos();
 							
 							for (Endereco endereco: enderecos) {
-								if (!endereco.equals(e)) {
-									integranteSalvo.adicionarEndereco(e);
-								}
+								integranteSalvo.adicionarEndereco(endereco);
 							}
-						});
+						}
+						
+						integrante = repositorio.save(integranteSalvo);
 						
 					} else {
-						List<Endereco> enderecos = integrante.getEnderecos();
-						
-						for (Endereco endereco: enderecos) {
-							integranteSalvo.adicionarEndereco(endereco);
-						}
+						integrante = integranteSalvo;
 					}
-					
-					integrante = repositorio.save(integranteSalvo);
 					
 				} else {
 					integrante = repositorio.save(integrante);
 				}
 				
+				Boleto boleto = getBoleto(integrante, pendente.getJson());
+				boletoRepositorio.save(boleto);
 				IntegranteProcessado processado = new IntegranteProcessado();
 				processado.setProximaTentativa(LocalDateTime.now());
 				processado.setIntegrante(integrante);

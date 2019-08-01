@@ -38,9 +38,8 @@ public class BoletoRemetente {
 	public BoletoRemetente() {
 		limite = PageRequest.of(0, 150);
 	}
-	// Espera 10 minutos antes da primeira execução e as demais ocorrerão à cada 15 minutos
-	@Scheduled(initialDelay = 600000, fixedDelay = 900000)
-	//@Scheduled(fixedDelay = 10000)
+	
+	@Scheduled(initialDelayString = "${remetente.initial.delay}", fixedDelayString = "${remetente.fixed.delay}")
 	public void remeter() {
 		logger.info("Processo de envio de boletos à fila de processamento iniciado");
 		List<BoletoPendente> pendentes = repositorio.getBoletosPendentes(LocalDateTime.now(), limite);

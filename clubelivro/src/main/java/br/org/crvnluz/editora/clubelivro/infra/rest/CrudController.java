@@ -1,16 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.infra.rest;
 
-import java.io.Serializable;
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
-import br.org.crvnluz.editora.clubelivro.infra.persistencia.Persistente;
-
-public abstract class CrudController<T extends Persistente> extends BaseController {
-	
+public abstract class CrudController<T> extends BaseController {
+	/*
 	// MÉTODOS PROTEGIDOS
 	
 	protected abstract void apagar(Long id);
@@ -94,5 +85,5 @@ public abstract class CrudController<T extends Persistente> extends BaseControll
 	protected abstract void validarAtualizacao(T t) throws ValidacaoException;
 	
 	protected abstract void validarInclusao(T t) throws ValidacaoException;
-	
+	*/
 }

@@ -35,9 +35,7 @@ public class CadastroPessoaJob {
 		limite = PageRequest.of(0, 1000);
 	}
 	
-	// Espera 30 minutos antes da primeira execução e as demais ocorrerão à cada 1 hora
-	@Scheduled(initialDelay = 1800000, fixedDelay = 3600000)
-	//@Scheduled(fixedDelay = 10000)
+	@Scheduled(initialDelayString = "${cadastro.pessoa.initial.delay}", fixedDelayString = "${cadastro.pessoa.fixed.delay}")
 	@Transactional
 	public void executar() {
 		List<IntegranteProcessado> processados = processadoRepositorio.getIntegranteProcessados(200, LocalDateTime.now(), limite);

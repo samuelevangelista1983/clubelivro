@@ -102,9 +102,7 @@ public class Processador {
 		return boleto;
 	}
 	
-	// Espera 30 minutos antes da primeira execução e as demais ocorrerão à cada 30 minutos
-	@Scheduled(initialDelay = 1800000, fixedDelay = 1800000)
-	//@Scheduled(fixedDelay = 10000)
+	@Scheduled(initialDelayString = "${processador.initial.delay}", fixedDelayString = "${processador.fixed.delay}")
 	@Transactional
 	public void processar() {
 		Page<BoletoPendente> page = pendenteRepositorio.findAll(limite);
