@@ -1,6 +1,8 @@
 package br.org.crvnluz.editora.clubelivro.controlador.financeiro.inadimplencia;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Inadimplente implements Serializable {
 	
@@ -9,18 +11,24 @@ public class Inadimplente implements Serializable {
 	private String nome;
 	private String categoria;
 	private int qtdEmAtraso;
+	private Double valor;
+	private NumberFormat format;
 	
-	public Inadimplente() {}
+	public Inadimplente() {
+		format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+	}
 
-	public Inadimplente(String nome, String categoria, int qtdEmAtraso) {
+	public Inadimplente(String nome, String categoria, int qtdEmAtraso, Double valor) {
+		this();
 		this.nome = nome;
 		this.categoria = categoria;
 		this.qtdEmAtraso = qtdEmAtraso;
+		this.valor = valor;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Inadimplente [nome=%s, categoria=%s, qtdEmAtraso=%s]", nome, categoria, qtdEmAtraso);
+		return String.format("Inadimplente [nome=%s, categoria=%s, qtdEmAtraso=%s, valor=%s]", nome, categoria, qtdEmAtraso, valor);
 	}
 
 	public String getNome() {
@@ -45,6 +53,18 @@ public class Inadimplente implements Serializable {
 
 	public void setQtdEmAtraso(int qtdEmAtraso) {
 		this.qtdEmAtraso = qtdEmAtraso;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+	
+	public String getValorDevido() {
+		return format.format(valor);
+	}
+	
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	
 }

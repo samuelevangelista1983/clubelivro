@@ -1,7 +1,8 @@
 select
 	integrante.nome as integrante,
 	categoria.nome as categoria,
-	count(*) as qtd_atraso
+	count(*) as qtd_atraso,
+	sum(valor) as valor
 from boleto
 	inner join integrante on integrante.id = id_integrante
 	inner join categoria on categoria.id = integrante.id_categoria

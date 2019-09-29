@@ -67,7 +67,7 @@ public class FinanceiroService {
 		List<Object[]> dados = dao.getInadimplentes(idCategoria);
 		List<Inadimplente> inadimplentes = new ArrayList<>(dados.size());
 		dados.stream().forEach(dado -> {
-			inadimplentes.add(new Inadimplente(dado[0].toString(), dado[1].toString(), Integer.parseInt(dado[2].toString())));
+			inadimplentes.add(new Inadimplente(dado[0].toString(), dado[1].toString(), Integer.parseInt(dado[2].toString()), Double.parseDouble(dado[3].toString())));
 		});
 		return inadimplentes;
 	}

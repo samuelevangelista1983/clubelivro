@@ -6,8 +6,9 @@
 					<thead>
 						<tr>
 							<th>Nome</th>
-							<th class="col-sm-3">Categoria</th>
-							<th class="col-sm-2">N&ordm; pgtos em atraso</th>
+							<th>Categoria</th>
+							<th>N&ordm; pgtos em atraso</th>
+							<th>Valor devido</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -15,6 +16,7 @@
 							<td class="item-grid" th:text="${item.nome}"></td>
 							<td class="item-grid" th:text="${item.categoria}"></td>
 							<td class="item-grid" th:text="${item.qtdEmAtraso}"></td>
+							<td class="item-grid" th:text="${item.valorDevido}"></td>
 						</tr>
 					</tbody>
 				</table>
