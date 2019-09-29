@@ -2,8 +2,10 @@ package br.org.crvnluz.editora.clubelivro.entidade.integrante;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,10 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.springframework.util.StringUtils;
 
 import br.eti.sen.utilitarios.documento.CPF;
+import br.eti.sen.utilitarios.texto.StringUtil;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.Categoria;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaEntrega;
 import br.org.crvnluz.editora.clubelivro.entidade.configuracao.FormaPgto;
@@ -54,12 +58,101 @@ public class Integrante implements Serializable, Cloneable {
 	@JoinColumn(name = "id_forma_pgto", nullable = false)
 	private FormaPgto formaPgtoPref;
 	private Integer diaVctoPreferencial;
+	@Transient
+	private List<Contato> telefonesFixos;
+	@Transient 
+	private List<Contato> telefonesCelulares;
+	@Transient
+	private List<Contato> emails;
 	
 	// CONSTRUTORES PÚBLICOS
 	
 	public Integrante() {
 		contatos = new ArrayList<>();
 		enderecos = new ArrayList<>();
+		emails = new ArrayList<>();
+		telefonesFixos = new ArrayList<>();
+		telefonesCelulares = new ArrayList<>();
+	}
+	
+	// MÉTODOS PRIVADOS
+	
+	private void adicionarEmail(Contato contato) {
+		if (emails == null) {
+			emails = new ArrayList<>();
+		}
+		
+		if (contato.getTipo().getId() == 3l) {
+			if (!emails.contains(contato)) {
+				try {
+					emails.add((Contato) contato.clone());
+					
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void adicionarTelefoneCelular(Contato contato) {
+		if (telefonesCelulares == null) {
+			telefonesCelulares = new ArrayList<>();
+		}
+		
+		if (contato.getTipo().getId() == 2l) {
+			if (!telefonesCelulares.contains(contato)) {
+				try {
+					telefonesCelulares.add((Contato) contato.clone());
+					
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void adicionarTelefoneFixo(Contato contato) {
+		if (telefonesFixos == null) {
+			telefonesFixos = new ArrayList<>();
+		}
+		
+		if (contato.getTipo().getId() == 1l) {
+			if (!telefonesFixos.contains(contato)) {
+				try {
+					telefonesFixos.add((Contato) contato.clone());
+					
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void removerContato(Contato contato) {
+		if (contatos != null) {
+			contatos.remove(contato);
+		}
+	}
+	
+	private void removerEmail(Contato contato) {
+		if (emails != null) {
+			emails.remove(contato);
+		}
+	}
+	
+	private void removerTelefoneCelular(Contato contato) {
+		if (telefonesCelulares != null) {
+			telefonesCelulares.remove(contato);
+		}
+	}
+	
+	private void removerTelefoneFixo(Contato contato) {
+		if (telefonesFixos != null) {
+			telefonesFixos.remove(contato);
+		}
 	}
 	
 	// MÉTODOS PÚBLICOS
@@ -72,6 +165,9 @@ public class Integrante implements Serializable, Cloneable {
 		if (!contatos.contains(contato)) {
 			contatos.add(contato);
 			contato.setIntegrante(this);
+			adicionarEmail(contato);
+			adicionarTelefoneCelular(contato);
+			adicionarTelefoneFixo(contato);
 		}
 	}
 	
@@ -238,7 +334,53 @@ public class Integrante implements Serializable, Cloneable {
 		}
 		return true;
 	}
-
+	
+	public void removerContato(int idx) {
+		if (contatos != null) {
+			if (idx <= contatos.size()) {
+				Contato contato = contatos.remove(idx);
+				removerEmail(contato);
+				removerTelefoneCelular(contato);
+				removerTelefoneFixo(contato);
+			}
+		}
+	}
+	
+	public void removerEmail(int idx) {
+		if (emails != null) {
+			if (idx <= emails.size()) {
+				Contato email = emails.remove(idx);
+				removerContato(email);
+			}
+		}
+	}
+	
+	public void removerEndereco(int idx) {
+		if (enderecos != null) {
+			if (idx <= enderecos.size()) {
+				enderecos.remove(idx);
+			}
+		}
+	}
+	
+	public void removerTelefoneCelular(int idx) {
+		if (telefonesCelulares != null) {
+			if (idx <= telefonesCelulares.size()) {
+				Contato celular = telefonesCelulares.remove(idx);
+				removerContato(celular);
+			}
+		}
+	}
+	
+	public void removerTelefoneFixo(int idx) {
+		if (telefonesFixos != null) {
+			if (idx <= telefonesFixos.size()) {
+				Contato telefoneFixo = telefonesFixos.remove(idx);
+				removerContato(telefoneFixo);
+			}
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return String.format(
@@ -351,10 +493,26 @@ public class Integrante implements Serializable, Cloneable {
 		return cadastro;
 	}
 
+	public String getCadastroStr() {
+		String cadastroStr = null;
+		
+		if (cadastro != null) {
+			cadastroStr = cadastro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR")));
+		}
+		
+		return cadastroStr;
+	}
+	
 	public void setCadastro(LocalDate cadastro) {
 		this.cadastro = cadastro;
 	}
 
+	public void setCadastroStr(String cadastroStr) {
+		if (StringUtil.stringNaoNulaENaoVazia(cadastroStr)) {
+			cadastro = LocalDate.parse(cadastroStr, DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR")));
+		}
+	}
+	
 	public LocalDate getDesativacao() {
 		return desativacao;
 	}
@@ -382,11 +540,27 @@ public class Integrante implements Serializable, Cloneable {
 	public LocalDate getNascimento() {
 		return nascimento;
 	}
-
+	
+	public String getNascimentoStr() {
+		String nascimentoStr = null;
+		
+		if (nascimento != null) {
+			nascimentoStr = nascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR")));
+		}
+		
+		return nascimentoStr;
+	}
+	
 	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 
+	public void setNascimentoStr(String nascimentoStr) {
+		if (StringUtil.stringNaoNulaENaoVazia(nascimentoStr)) {
+			nascimento = LocalDate.parse(nascimentoStr, DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR")));
+		}
+	}
+	
 	public Frequencia getFrequencia() {
 		return frequencia;
 	}
@@ -441,6 +615,30 @@ public class Integrante implements Serializable, Cloneable {
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
+	}
+
+	public List<Contato> getTelefonesFixos() {
+		return telefonesFixos;
+	}
+
+	public void setTelefonesFixos(List<Contato> telefonesFixos) {
+		this.telefonesFixos = telefonesFixos;
+	}
+
+	public List<Contato> getTelefonesCelulares() {
+		return telefonesCelulares;
+	}
+
+	public void setTelefonesCelulares(List<Contato> telefonesCelulares) {
+		this.telefonesCelulares = telefonesCelulares;
+	}
+
+	public List<Contato> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(List<Contato> emails) {
+		this.emails = emails;
 	}
 	
 }

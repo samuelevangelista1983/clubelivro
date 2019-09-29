@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<form th:id="formEnderecos" th:fragment="enderecoForm" th:object="${integrante}">
+			<div th:each="end : ${integrante.enderecos}"> 
+				<div class="form-group row">
+					<div class="col-sm-3">
+						<label>Tipo</label>
+						<select class="form-control" th:field="${integrante.enderecos[__${endStat.index}__].tipo}">
+							<option th:value="-1"></option>
+							<option th:value="0">Residencial</option>
+							<option th:value="1">Comercial</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<label>CEP</label>
+						<input autocomplete="off" class="form-control" maxlength="10" minlength="8" 
+							pattern="[0-9]{2}[\.]?[0-9]{3}[-]?[0-9]{3}" type="text" th:field="${integrante.enderecos[__${endStat.index}__].cep}">
+					</div>
+					<div class="col-sm-2">
+						<label>&nbsp;</label>
+						<button type="button" class="btn btn-primary form-control" th:onclick="|pesquisarEndereco(${endStat.index})|">
+							<span class="icon-search"></span>
+							<span>Pesquisar</span>
+						</button>
+					</div>
+					<div class="col-sm-4"></div>
+					<div class="col-sm">
+						<button type="button" class="btn btn-link btn-lg form-control float-right" style="text-decoration:none"
+							th:onclick="|removerEndereco(${endStat.index})|" 
+							th:if="${#lists.size(integrante.enderecos)} > 1" title="Remover endereço">
+							<span class="icon-trash-o"></span>
+						</button>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm">
+						<label>Logradouro</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.enderecos[__${endStat.index}__].logradouro}">
+					</div>
+					<div class="col-sm-2">
+						<label>Número</label>
+						<input autocomplete="off" class="form-control" maxlength="15" type="text" th:field="${integrante.enderecos[__${endStat.index}__].numero}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-3">
+						<label>Complemento</label>
+						<input autocomplete="off" class="form-control" maxlength="45" type="text" th:field="${integrante.enderecos[__${endStat.index}__].complemento}">
+					</div>
+					<div class="col-sm">
+						<label>Bairro</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.enderecos[__${endStat.index}__].bairro}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm">
+						<label>Município</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.enderecos[__${endStat.index}__].cidade}">
+					</div>
+					<div class="col-sm-2">
+						<label>Estado</label>
+						<select class="form-control" th:field="${integrante.enderecos[__${endStat.index}__].uf}">
+							<option value=""></option>
+							<option th:each="uf : ${ufs}" th:value="${uf}" th:text="${uf}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm">
+						<label>Observação</label>
+						<textarea autocomplete="off" class="form-control" maxlength="255" rows="2" th:field="${integrante.enderecos[__${endStat.index}__].observacao}"></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="form-check form-check-inline col-sm-1">
+						<label class="form-check-label">
+							<input class="form-check-input" type="checkbox" th:field="${integrante.enderecos[__${endStat.index}__].entrega}">Entrega
+						</label>
+					</div>
+					<div class="form-check form-check-inline col-sm-9">
+						<label class="form-check-label">
+							<input class="form-check-input" type="checkbox" th:field="${integrante.enderecos[__${endStat.index}__].cobranca}">Cobrança
+						</label>
+					</div>
+					<div class="col-sm"></div>
+					<div class="col-sm">
+						<button type="button" class="btn btn-link btn-lg form-control float-right" style="text-decoration:none"
+								th:onclick="|adicionarEndereco()|" th:if="${endStat.last}" title="Adicionar endereço">
+							<span class="icon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

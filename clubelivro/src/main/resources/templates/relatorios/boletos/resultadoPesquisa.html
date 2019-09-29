@@ -1,0 +1,47 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<div id="resultadoPesquisa" th:fragment="resultado">
+			<div class="table-responsive" th:unless="${#lists.isEmpty(boletos)}">
+				<table class="table table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>N&ordm; boleto</th>
+							<th>N&ordm; banco</th>
+							<th>Valor</th>
+							<th>Valor pago</th>
+							<th>Vencimento</th>
+							<th>Situação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${boletos}">
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" bootstrap-tooltip data-toggle="tooltip" data-placement="top" th:title="${item.integrante.categoria.nome}" th:text="${item.integrante.nome}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:text="${item.nossoNumero}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:text="${item.numeroBanco}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:text="${item.valorStr}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:text="${item.valorPagoStr}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:text="${item.vctoStr}"></td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 0}">Aberto</td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 1}">Baixado</td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 2}">Baixado manualmente</td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 3}">Cancelado</td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 4}">Cancelado manualmente</td>
+							<td class="item-grid" th:onclick="|detalhar(${item.id})|" th:if="${item.situacao == 5}">Erro processamento</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="alert alert-info alert-dismissable fade show" th:if="${exibirMensagem}">
+				Não foram encontrados boletos que satisfaçam a pesquisa
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="alert alert-danger alert-dismissable fade show" th:if="${erro}" th:text="${erro}"></div>
+		</div>
+	</body>
+</html>

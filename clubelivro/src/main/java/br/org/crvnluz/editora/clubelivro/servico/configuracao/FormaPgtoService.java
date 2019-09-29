@@ -1,5 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.servico.configuracao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -19,5 +21,9 @@ public class FormaPgtoService {
 		}
 		
 		return repositorio.findByNome(nome);
+	}
+	
+	public List<FormaPgto> listarTodas() {
+		return repositorio.findAll();
 	}
 }

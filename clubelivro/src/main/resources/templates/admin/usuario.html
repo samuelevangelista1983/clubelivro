@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Usuário</title>
+		<script th:src="@{/js/admin/usuario.js}"></script>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">Usuário do Clube do Livro</h3>
+			</div>
+			
+			<div id="main">
+				<form id="formUsuario" th:action="@{/usuario/salvar}" method="POST" th:object="${usuario}">
+					<input type="hidden" th:field="*{id}">
+					<div class="form-row">
+						<div class="form-group col-sm">
+							<div>
+								<label for="nome">Nome</label>
+								<input autocomplete="off" type="text" required="required" th:field="*{nome}" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm">
+							<div>
+								<label for="nome">e-mail</label>
+								<input autocomplete="off" type="email" required="required" th:field="*{email}" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm">
+							<div>
+								<label for="nome">Senha</label>
+								<input autocomplete="off" type="password" name="senha" class="form-control"
+									pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,}$">
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-sm">
+							<div>
+								<label for="nome">Confirmar senha</label>
+								<input autocomplete="off" type="password" name="confirmacao" class="form-control"
+									pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,}$">
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-sm">
+							<button type="button" class="btn btn-primary" onclick="salvarUsuario()">
+								<span class="icon-floppy-o"></span>
+								<span>Salvar</span>
+							</button>
+							<button type="reset" class="btn btn-secondary">
+								<span class="icon-eraser"></span>
+								<span>Limpar</span>
+							</button>
+							<button type="button" class="btn btn-secondary" onclick="window.location.href='/index'">
+								<span class="icon-reply"></span>
+								<span>Cancelar</span>
+							</button>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</section>
+	</body>
+</html>

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -178,7 +179,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setEmissao(String emissaoStr) {
-		emissao = LocalDate.parse(emissaoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		emissao = LocalDate.parse(emissaoStr, DateTimeFormatter.ofPattern("ddMMyyyy", new Locale("pt", "BR")));
 	}
 	
 	public LocalDate getVcto() {
@@ -190,7 +191,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setVcto(String vctoStr) {
-		vcto = LocalDate.parse(vctoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		vcto = LocalDate.parse(vctoStr, DateTimeFormatter.ofPattern("ddMMyyyy", new Locale("pt", "BR")));
 	}
 	
 	public BigDecimal getValorNominal() {
@@ -214,7 +215,7 @@ public class Boleto implements Serializable {
 	}
 
 	public void setPgto(String pgtoStr) {
-		pgto = LocalDate.parse(pgtoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+		pgto = LocalDate.parse(pgtoStr, DateTimeFormatter.ofPattern("ddMMyyyy", new Locale("pt", "BR")));
 	}
 	
 	public LocalDate getEfetivacaoCredito() {
@@ -227,7 +228,7 @@ public class Boleto implements Serializable {
 
 	public void setEfetivacaoCredito(String efetivacaoCreditoStr) {
 		try {
-			efetivacaoCredito = LocalDate.parse(efetivacaoCreditoStr, DateTimeFormatter.ofPattern("ddMMyyyy"));
+			efetivacaoCredito = LocalDate.parse(efetivacaoCreditoStr, DateTimeFormatter.ofPattern("ddMMyyyy", new Locale("pt", "BR")));
 		} catch (DateTimeParseException ex) {
 			
 		}

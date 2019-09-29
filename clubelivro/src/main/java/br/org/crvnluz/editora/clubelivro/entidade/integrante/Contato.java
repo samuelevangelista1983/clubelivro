@@ -30,6 +30,7 @@ public class Contato implements Serializable, Cloneable {
 	private TipoContato tipo;
 	private String valor;
 	private String observacao;
+	private boolean whatsapp;
 	
 	// CONSTRUTORES PÚBLICOS
 
@@ -47,6 +48,7 @@ public class Contato implements Serializable, Cloneable {
 		Contato clone = new Contato();
 		clone.id = id;
 		clone.valor = valor;
+		clone.whatsapp = whatsapp;
 		clone.observacao = observacao;
 		clone.tipo = tipo != null ? (TipoContato) tipo.clone() : null;
 		return clone;
@@ -56,9 +58,12 @@ public class Contato implements Serializable, Cloneable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((integrante == null) ? 0 : integrante.hashCode());
 		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
+		result = prime * result + (whatsapp ? 1231 : 1237);
 		return result;
 	}
 
@@ -74,6 +79,20 @@ public class Contato implements Serializable, Cloneable {
 			return false;
 		}
 		Contato other = (Contato) obj;
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (integrante == null) {
+			if (other.integrante != null) {
+				return false;
+			}
+		} else if (!integrante.equals(other.integrante)) {
+			return false;
+		}
 		if (observacao == null) {
 			if (other.observacao != null) {
 				return false;
@@ -93,6 +112,9 @@ public class Contato implements Serializable, Cloneable {
 				return false;
 			}
 		} else if (!valor.equals(other.valor)) {
+			return false;
+		}
+		if (whatsapp != other.whatsapp) {
 			return false;
 		}
 		return true;
@@ -174,6 +196,14 @@ public class Contato implements Serializable, Cloneable {
 
 	public void setIntegrante(Integrante integrante) {
 		this.integrante = integrante;
+	}
+
+	public boolean isWhatsapp() {
+		return whatsapp;
+	}
+
+	public void setWhatsapp(boolean whatsapp) {
+		this.whatsapp = whatsapp;
 	}
 
 }

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Boletos</title>
+		<script th:src="@{/js/boletos/boletos.js}"></script>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">Boletos do Clube do Livro</h3>
+			</div>
+			
+			<div id="main">
+				<form id="filtrar" th:fragment="index">
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input autocomplete="off" type="text" id="nome" class="form-control" placeholder="Digite um nome para pesquisa">
+						</div>
+						<div class="col-sm">
+							<input autocomplete="off" type="text" id="numeroBoleto" class="form-control" placeholder="Digite um número de boleto para pesquisa">
+						</div>
+						<div class="col-sm">
+							<button type="reset" class="btn btn-secondary">
+								<span class="icon-eraser"></span>
+								<span>Limpar</span>
+							</button>
+							<button type="button" onclick="filtrar()" class="btn btn-primary" >
+								<span class="icon-filter"></span>
+								<span>Filtrar</span>
+							</button>
+							<button type="button" class="btn btn-primary"data-toggle="modal" data-target="#buscaAvancada">
+								<span class="icon-filter"></span>
+								<span>Avançado</span>
+							</button>
+						</div>
+					</div>
+				</form>
+				
+				<div class="modal fade" id="buscaAvancada" tabindex="-1" role="dialog" aria-labelledby="buscaAvancadaTitle" aria-hidden="true">
+					<form id="pesquisaAvancada" name="pesquisaAvancada" th:object="${pesquisaAvancada}">
+						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header  dialog">
+									<h5 class="modal-title" id="exampleModalLongTitle">Filtro avançado</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label for="nome">Sacado</label>
+												<input autocomplete="off" type="text" id="sacado" name="sacado" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label>Categoria</label>
+												<select id="idCategoria" name="idCategoria" class="form-control" >
+													<option></option>
+													<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group col-sm">
+											<div>
+												<label for="situacao">Situação</label>
+												<select id="situacao" class="form-control" name="situacao">
+													<option></option>
+													<option th:each="situacao : ${situacoes}" th:value="${situacao.id}" th:text="${situacao.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<fieldset class="borda">
+												<legend class="texto-pequeno">Data de emissão</legend>
+												<div class="form-row">
+													<div class="form-group col-sm">
+														<div>
+															<label for="inicial">Inicial</label>
+															<input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" id="dtEmissaoInicial" name="dtEmissaoInicial"
+																pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+														</div>
+													</div>
+													<div class="form-group col-sm">
+														<div>
+															<label for="final">Final</label>
+															<input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" id="dtEmissaoFinal" name="dtEmissaoFinal"
+																pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+															</div>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+										<div class="form-group col-sm">
+											<fieldset class="borda">
+												<legend class="texto-pequeno">Data de vencimento</legend>
+												<div class="form-row">
+													<div class="form-group col-sm">
+														<div>
+															<label for="inicial">Inicial</label>
+															<input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" id="dtVctoInicial" name="dtVctoInicial"
+																pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+														</div>
+													</div>
+													<div class="form-group col-sm">
+														<div>
+															<label for="final">Final</label>
+															<input autocomplete="off" class="form-control" maxlength="10" minlength="10" type="text" id="dtVctoFinal" name="dtVctoFinal"
+																pattern="^(?:(?:31(\/)(?:0[13578]|1[02]))\1|(?:(?:30)(\/)(?:0[1,3-9]|1[0-2])\2))\d{4}$|^(?:[0-2]\d)(\/)(?:(?:0[1-9])|(?:1[0-2]))\3\d{4}$">
+															</div>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</div>
+									<fieldset class="borda">
+										<legend class="texto-pequeno">Ordenação</legend>
+										<div class="form-row">
+											<div class="form-group col-sm">
+												<div>
+													<label>Ordenação</label>
+													<select id="ordenacao" name="ordenacao" class="form-control" >
+														<option></option>
+														<option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.nome}"></option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group col-sm">
+												<div>
+													<label for="campoOrdenacao">Campo de ordenação</label>
+													<select id="campoOrdenacao" class="form-control" name="campoOrdenacao">
+														<option></option>
+														<option th:each="campo : ${campos}" th:value="${campo.id}" th:text="${campo.nome}"></option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" onclick="limparPesquisaAvancada()" data-dismiss="modal">
+										<span class="icon-reply"></span>
+										<span>Cancelar</span>
+									</button>
+									<button type="button" class="btn btn-primary" onclick="pesquisar()">
+										<span class="icon-filter"></span>
+										<span>Filtrar</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			
+				<div id="resultadoPesquisa"></div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -64,6 +64,10 @@ public class BoletoCobCaixaExtrator {
 		if (diaProcessado != null && diaProcessado.getData() != null) {
 			data = diaProcessado.getData().plusDays(1);
 			
+			if (data.isAfter(LocalDate.now())) {
+				data = LocalDate.now();
+			}
+			
 		} else {
 			data = LocalDate.of(2015, 1, 1);
 		}

@@ -87,6 +87,7 @@ public class IntegrantePendenteJob {
 		boleto.setNumeroBanco(json.get("numeroBanco").asText());
 		boleto.setValor(json.get("valorNominal").decimalValue());
 		boleto.setVcto(json.get("vcto").asText());
+		boleto.setSituacao(json.get("situacao").asInt());
 		
 		if (json.has("pgto")) {
 			boleto.setPgto(json.get("pgto").asText());
@@ -94,6 +95,18 @@ public class IntegrantePendenteJob {
 		
 		if (json.has("valorPago")) {
 			boleto.setValorPago(json.get("valorPago").decimalValue());
+		}
+		
+		if (json.has("valorTarifa")) {
+			boleto.setValorTarifa(json.get("valorTarifa").decimalValue());
+		}
+		
+		if (json.has("valorCreditado")) {
+			boleto.setValorCreditado(json.get("valorCreditado").decimalValue());
+		}
+		
+		if (json.has("efetivacaoCredito")) {
+			boleto.setEfetCredito(json.get("efetivacaoCredito").asText());
 		}
 		
 		return boleto;
@@ -174,6 +187,9 @@ public class IntegrantePendenteJob {
 			} else {
 				categoria = categoriaService.pesquisarporNome("estudo");
 			}
+			
+		} else {
+			categoria = categoriaService.pesquisarporNome("romance");
 		}
 		
 		integrante.setCategoria(categoria);
@@ -209,8 +225,8 @@ public class IntegrantePendenteJob {
 							integrante.getContatos().stream().forEach(c -> {
 								List<Contato> contatos = integranteSalvo.getContatos();
 								
-								for (Contato contato: contatos) {
-									if (!contato.equals(c)) {
+								if (contatos != null) {
+									if (!contatos.contains(c)) {
 										integranteSalvo.adicionarContato(c);
 									}
 								}
@@ -228,8 +244,8 @@ public class IntegrantePendenteJob {
 							integrante.getEnderecos().stream().forEach(e -> {
 								List<Endereco> enderecos = integranteSalvo.getEnderecos();
 								
-								for (Endereco endereco: enderecos) {
-									if (!endereco.equals(e)) {
+								if (enderecos != null) {
+									if (!enderecos.contains(e)) {
 										integranteSalvo.adicionarEndereco(e);
 									}
 								}
@@ -254,6 +270,23 @@ public class IntegrantePendenteJob {
 				}
 				
 				Boleto boleto = getBoleto(integrante, pendente.getJson());
+				Boleto boletoSalvo = boletoRepositorio.findByNumeroBanco(boleto.getNumeroBanco());
+				
+				if (boletoSalvo != null) {
+					boletoSalvo.setEfetCredito(boleto.getEfetCredito());
+					boletoSalvo.setEmissao(boleto.getEmissao());
+					boletoSalvo.setIntegrante(boleto.getIntegrante());
+					boletoSalvo.setNossoNumero(boleto.getNossoNumero());
+					boletoSalvo.setPgto(boleto.getPgto());
+					boletoSalvo.setSituacao(boleto.getSituacao());
+					boletoSalvo.setValor(boleto.getValor());
+					boletoSalvo.setValorCreditado(boleto.getValorCreditado());
+					boletoSalvo.setValorPago(boleto.getValorPago());
+					boletoSalvo.setValorTarifa(boleto.getValorTarifa());
+					boletoSalvo.setVcto(boleto.getVcto());
+					boleto = boletoSalvo;
+				}
+				
 				boletoRepositorio.save(boleto);
 				IntegranteProcessado processado = new IntegranteProcessado();
 				processado.setProximaTentativa(LocalDateTime.now());
@@ -261,6 +294,7 @@ public class IntegrantePendenteJob {
 				processados.add(processado);
 				
 			} catch (Throwable throwable) {
+				System.out.println(pendente.getJson());
 				logger.error("Ocorrer um erro ao tentar salvar os dados de um integrante", throwable);
 			}
 		}

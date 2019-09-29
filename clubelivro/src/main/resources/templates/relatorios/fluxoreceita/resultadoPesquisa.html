@@ -1,0 +1,83 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<div id="resultadoPesquisa" th:fragment="resultado">
+			<script th:inline="javascript">
+			/*<![CDATA[*/
+				google.charts.load('current', {'packages':['corechart', 'line'], 'language': 'pt-br'});
+				google.charts.setOnLoadCallback(desenharGrafico);
+				
+				$(window).on("resize", function (event) {
+					desenharGrafico();
+				});
+				
+				$('#modalGrafico').on('shown.bs.modal', function () {
+					desenharGrafico();
+				});
+				
+				function desenharGrafico() {
+					var options = {
+						title: 'Receitas previstas x Receitas realizadas',
+						pointSize: 5,
+						height: 600,
+						width: 775,
+						vAxis: {
+							format: 'currency'
+						},
+						hAxis: {
+							slantedText: true
+						},
+						series: {
+							0: {color: '#4da6fd'},
+							1: {color: '#06cc06'}
+						}
+					};	
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', '');
+					data.addColumn('number', 'Valor previsto');
+					data.addColumn('number', 'Valor realizdo');
+					
+					data.addRows(/*[[${valores}]]*/);
+					
+					var chart = new google.visualization.LineChart(document.getElementById('grafico'));
+					chart.draw(data, options);
+				}
+			/*]]>*/
+			</script>
+			
+			<button type="button" class="btn btn-primary"data-toggle="modal" data-target="#modalGrafico">
+				<span>Gráfico</span>
+			</button>
+			<br/>
+			<br/>
+			<div class="table-responsive" th:unless="${#lists.isEmpty(fluxoReceita)}">
+				<table class="table table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Ano</th>
+							<th>Mês</th>
+							<th>Valor previsto</th>
+							<th>Valor realizado</th>
+							<th>Diferença</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${fluxoReceita}">
+							<td class="item-grid" th:text="${item.ano}"></td>
+							<td class="item-grid" th:text="${item.mes}"></td>
+							<td class="item-grid" th:text="${item.valorPrevisto}"></td>
+							<td class="item-grid" th:text="${item.valorRealizado}"></td>
+							<td class="item-grid" th:text="${item.diferenca}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="alert alert-info alert-dismissable fade show" th:if="${exibirMensagem}">
+				Não foram encontradas receitas que satisfaçam a pesquisa
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

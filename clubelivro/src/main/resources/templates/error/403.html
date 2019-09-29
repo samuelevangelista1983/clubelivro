@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Acesso Negado</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">HTTP 403 - Acesso negado</h3>
+			</div>
+			<div class="row">
+				<p class="col">Você não possui permissão para acessar o recurso solicitado. Utilize as opções do menu de navegação para acessar as páginas disponíveis.</p>
+			</div>
+		</section>
+	</body>
+</html>

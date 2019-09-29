@@ -1,0 +1,94 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<form th:id="formContatos" th:fragment="contatosForm" th:object="${integrante}">
+			<div th:each="tel : ${integrante.telefonesFixos}">
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-3">
+						<label>Telefone fixo</label>
+						<input autocomplete="off" class="form-control" th:field="${integrante.telefonesFixos[__${telStat.index}__].valor}"
+							maxlength="12" minlength="10" type="text" pattern="[1-9]{2}[\s]?[2-5]{1}[0-9]{3}[-]?[0-9]{4}">
+					</div>
+					<div class="col-sm-1" th:if="${#lists.size(integrante.telefonesFixos)} > 1">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|removerTelefoneFixo(${telStat.index})|" title="Remover telefone fixo">
+							<span class="icon-trash-o"></span>
+						</button>
+					</div>
+				</div>
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-10">
+						<label>Observação</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.telefonesFixos[__${telStat.index}__].observacao}">
+					</div>
+					<div class="col-sm-1" th:if="${telStat.last}">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|adicionarTelefoneFixo()|" title="Adicionar telefone fixo">
+							<span class="icon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<div th:each="cel : ${integrante.telefonesCelulares}">
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-5">
+						<label>Telefone celular</label>
+						<div class="form-check form-check-inline col-sm-3">
+							<label class="form-check-label">
+								&nbsp;&nbsp;
+								<input name="|whatsApp_${celStat.index}|" class="form-check-input" type="checkbox" th:checked="${integrante.telefonesCelulares[__${celStat.index}__].whatsapp}">WhatsApp
+							</label>
+						</div>
+						<input autocomplete="off" class="form-control" th:field="${integrante.telefonesCelulares[__${celStat.index}__].valor}"
+							maxlength="13" minlength="11" type="tel" pattern="[1-9]{2}[\s]?9[0-9]{4}[-]?[0-9]{4}">
+					</div>
+					<div class="col-sm-1" th:if="${#lists.size(integrante.telefonesCelulares)} > 1">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|removerTelefoneCelular(${celStat.index})|" title="Remover telefone celular">
+							<span class="icon-trash-o"></span>
+						</button>
+					</div>
+				</div>
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-10">
+						<label>Observação</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.telefonesCelulares[__${celStat.index}__].observacao}">
+					</div>
+					<div class="col-sm-1" th:if="${celStat.last}">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|adicionarTelefoneCelular()|" title="Adicionar telefone celular">
+							<span class="icon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<div th:each="email : ${integrante.emails}">
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-10">
+						<label>e-mail</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="email" th:field="${integrante.emails[__${emailStat.index}__].valor}">
+					</div>
+					<div class="col-sm-1" th:if="${#lists.size(integrante.emails)} > 1">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|removerEmail(${emailStat.index})|" title="Remover e-mail">
+							<span class="icon-trash-o"></span>
+						</button>
+					</div>
+				</div>
+				<div class="form-group row align-items-end justify-content-between">
+					<div class="col-sm-10">
+						<label>Observação</label>
+						<input autocomplete="off" class="form-control" maxlength="255" type="text" th:field="${integrante.emails[__${emailStat.index}__].observacao}">
+					</div>
+					<div class="col-sm-1" th:if="${emailStat.last}">
+						<button type="button" class="btn btn-link btn-lg form-control" style="text-decoration:none" 
+								th:onclick="|adicionarEmail()|" title="Adicionar e-mail">
+							<span class="icon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

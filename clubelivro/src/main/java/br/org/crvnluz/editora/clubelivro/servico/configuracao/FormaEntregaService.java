@@ -1,5 +1,7 @@
 package br.org.crvnluz.editora.clubelivro.servico.configuracao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -19,5 +21,9 @@ public class FormaEntregaService {
 		}
 		
 		return repositorio.findByNome(nome);
+	}
+	
+	public List<FormaEntrega> listarTodas() {
+		return repositorio.findAll();
 	}
 }

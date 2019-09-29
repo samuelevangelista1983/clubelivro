@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Clube do Livro</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">Bem-vindo ao Clube do Livro</h3>
+			</div>
+			<div class="row">
+				<p class="col">Este é o sistema de controle do Clube do Livro vinculado à Caravana de Luz Editora. Utilize as opções do menu de navegação para acessar as páginas disponíveis.</p>
+			</div>
+			<div class="alert alert-success alert-dismissable fade show" th:if="${param.usuario_alterado}">
+				Dados do usuário alterados com sucesso
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</section>
+	</body>
+</html>

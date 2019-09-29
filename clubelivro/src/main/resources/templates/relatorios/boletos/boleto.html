@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<section id="main">
+			<form th:object="${boleto}">
+				<div class="form-group row">
+					<div class="col-sm-8">
+						<label>Sacado</label>
+						<input class="form-control" disabled type="text" th:field="*{integrante.nome}">
+					</div>
+					<div class="col-sm-4">
+						<label>Data de emissão</label>
+						<input class="form-control" disabled type="text" th:field="*{emissaoStr}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-4">
+						<label>Número do boleto</label>
+						<input class="form-control" disabled type="text" th:field="*{nossoNumero}">
+					</div>
+					<div class="col-sm-4">
+						<label>Número do banco</label>
+						<input class="form-control" disabled type="text" th:field="*{numeroBanco}">
+					</div>
+					<div class="col-sm-4">
+						<label>Valor nominal</label>
+						<input class="form-control" disabled type="text" th:field="*{valorStr}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-4">
+						<label>Data de vencimento</label>
+						<input class="form-control" disabled type="text" th:field="*{vctoStr}">
+					</div>
+					<div class="col-sm-4">
+						<label>Data de pagamento</label>
+						<input class="form-control" disabled type="text" th:field="*{pgtoStr}">
+					</div>
+					<div class="col-sm-4">
+						<label>Valor pago</label>
+						<input class="form-control" disabled type="text" th:field="*{valorPagoStr}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-4">
+						<label>Valor tarifa</label>
+						<input class="form-control" disabled type="text" th:field="*{valorTarifaStr}">
+					</div>
+					<div class="col-sm-4">
+						<label>Valor creditado</label>
+						<input class="form-control" disabled type="text" th:field="*{valorCreditadoStr}">
+					</div>
+					<div class="col-sm-4">
+						<label>Data de efetivação de crédito</label>
+						<input class="form-control" disabled type="text" th:field="*{efetCreditoStr}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm">
+						<button type="button" class="btn btn-secondary" onclick="window.location.href='/relatorios/boletos/index'">
+							<span class="icon-reply"></span>
+							<span>Voltar</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

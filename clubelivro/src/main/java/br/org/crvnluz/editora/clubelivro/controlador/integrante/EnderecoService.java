@@ -1,4 +1,4 @@
-package br.org.crvnluz.editora.clubelivro.servico.integrante;
+package br.org.crvnluz.editora.clubelivro.controlador.integrante;
 
 import java.io.Serializable;
 import java.util.List;

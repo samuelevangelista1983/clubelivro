@@ -13,6 +13,10 @@ public class TipoContatoService {
 	@Autowired
 	private TipoContatoRepositorio repositorio;
 	
+	public TipoContato getById(Long id) {
+		return repositorio.getOne(id);
+	}
+	
 	public TipoContato pesquisarPorNome(String nome) {
 		if (!StringUtils.hasText(nome)) {
 			throw new IllegalArgumentException("O nome informado está nulo ou vazio");

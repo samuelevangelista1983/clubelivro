@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Inadimplentes</title>
+		<script th:src="@{/js/financeiro/inadimplentes/inadimplentes.js}"></script>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">Integrantes inadimplentes do Clube do Livro</h3>
+			</div>
+			
+			<div id="main">
+				<form id="filtrar" th:fragment="index">
+					<div class="form-group row">
+						<label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
+						<div class="col-sm-5">
+							<select id="idCategoria" name="idCategoria" class="form-control" >
+								<option></option>
+								<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+							</select>
+						</div>
+						<div class="col-sm">
+							<button type="reset" class="btn btn-secondary">
+								<span class="icon-eraser"></span>
+								<span>Limpar</span>
+							</button>
+							<button type="button" onclick="pesquisar()" class="btn btn-primary" >
+								<span class="icon-filter"></span>
+								<span>Filtrar</span>
+							</button>
+						</div>
+					</div>
+				</form>
+				
+				<div id="resultadoPesquisa"></div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{fragments/layout}">
+	<head>
+		<meta charset="utf-8">
+		<title>Integrantes</title>
+		<script th:src="@{/js/integrantes/integrantes.js}"></script>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="row">
+				<h3 class="col">Integrantes do Clube do Livro</h3>
+			</div>
+			
+			<div id="main" th:fragment="incluido">
+				<form id="filtrar" th:fragment="index">
+					<div class="form-group row">
+						<div class="col-sm-4">
+							<input autocomplete="off" type="text" id="nome" name="nome" class="form-control" placeholder="Digite um nome para pesquisa">
+						</div>
+						<label for="categoria" class="col-sm-1 col-form-label">Categoria</label>
+						<div>
+							<select id="idCategoria" name="idCategoria" class="form-control" >
+								<option></option>
+								<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+							</select>
+						</div>
+						<div class="col-sm">
+							<button type="reset" class="btn btn-secondary">
+								<span class="icon-eraser"></span>
+								<span>Limpar</span>
+							</button>
+							<button type="button" onclick="filtrar()" class="btn btn-primary" >
+								<span class="icon-filter"></span>
+								<span>Filtrar</span>
+							</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filtroAvancado">
+								<span class="icon-filter"></span>
+								<span>Avançado</span>
+							</button>
+							<button type="button" onclick="incluir()" class="btn btn-primary" >
+								<span class="icon-plus"></span>
+								<span>Incluir</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			
+				<div class="modal fade" id="filtroAvancado" tabindex="-1" role="dialog" aria-labelledby="filtroAvancadoTitle" aria-hidden="true">
+					<form id="pesquisaAvancada" name="pesquisaAvancada" th:object="${pesquisaAvancada}">
+						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header dialog">
+									<h5 class="modal-title" id="exampleModalLongTitle">Filtro avançado</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label>Nome</label>
+												<input autocomplete="off" type="text" id="nome" name="nome" class="form-control" >
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label>CPF</label>
+												<input autocomplete="off" class="form-control" id="cpf" name="cpf" maxlength="14" minlength="11" type="text" 
+													pattern="[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}">
+											</div>
+										</div>
+										<div class="form-group col-sm">
+											<div>
+												<label>Categoria</label>
+												<select id="idCategoria" name="idCategoria" class="form-control" >
+													<option></option>
+													<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label>Freqüência</label>
+												<select id="idFrequencia" name="idFrequencia" class="form-control" >
+													<option></option>
+													<option th:each="frequencia : ${frequencias}" th:value="${frequencia.id}" th:text="${frequencia.nome}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group col-sm">
+											<div>
+												<label>Entrega</label>
+												<select id="idFormaEntrega" name="idFormaEntrega" class="form-control" >
+													<option></option>
+													<option th:each="formaEntrega : ${formasEntrega}" th:value="${formaEntrega.id}" th:text="${formaEntrega.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm">
+											<div>
+												<label>Pagamento</label>
+												<select id="idFormaPgto" name="idFormaPgto" class="form-control" >
+													<option></option>
+													<option th:each="formaPgto : ${formasPgto}" th:value="${formaPgto.id}" th:text="${formaPgto.nome}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group col-sm">
+											<div>
+												<label>Situação</label>
+												<select id="situacao" name="situacao" class="form-control" >
+													<option></option>
+													<option th:each="situacao : ${situacoes}" th:value="${situacao.id}" th:text="${situacao.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-sm-6">
+											<div>
+												<label>Ordenação</label>
+												<select id="ordenacao" name="ordenacao" class="form-control" >
+													<option></option>
+													<option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" onclick="limparPesquisaAvancada()" data-dismiss="modal">
+										<span class="icon-reply"></span>
+										<span>Cancelar</span>
+									</button>
+									<button type="button" onclick="pesquisar()" class="btn btn-primary">
+										<span class="icon-filter"></span>
+										<span>Filtrar</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				<div id="resultadoPesquisa"></div>
+				
+				<div class="alert alert-success alert-dismissable fade show" th:if="${incluido}">
+					Dados do integrante salvos com sucesso
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

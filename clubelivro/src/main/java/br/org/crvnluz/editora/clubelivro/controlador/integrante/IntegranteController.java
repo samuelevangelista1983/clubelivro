@@ -1,473 +1,324 @@
 package br.org.crvnluz.editora.clubelivro.controlador.integrante;
 
-//@RestController
-public class IntegranteController /*extends CrudController<Integrante>*/ {
-	/*
-	@Autowired
-	private IntegranteDAO dao;
-	@Autowired
-	private PessoaDAO pessoaDao;
-	@Autowired
-	private DocumentoDAO documentoDao;
-	@Autowired
-	private ContatoDAO contatoDao;
-	@Autowired
-	private EnderecoDAO enderecoDao;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.eti.sen.endereco.Localizador;
+import br.eti.sen.utilitarios.texto.StringUtil;
+import br.org.crvnluz.editora.clubelivro.controlador.Parametro;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Contato;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Endereco;
+import br.org.crvnluz.editora.clubelivro.entidade.integrante.Integrante;
+import br.org.crvnluz.editora.clubelivro.infra.exception.ValidacaoException;
+import br.org.crvnluz.editora.clubelivro.servico.configuracao.CategoriaService;
+import br.org.crvnluz.editora.clubelivro.servico.configuracao.FormaEntregaService;
+import br.org.crvnluz.editora.clubelivro.servico.configuracao.FormaPgtoService;
+import br.org.crvnluz.editora.clubelivro.servico.configuracao.FrequenciaService;
+import br.org.crvnluz.editora.clubelivro.servico.configuracao.TipoContatoService;
+import br.org.crvnluz.editora.clubelivro.servico.integrante.IntegranteService;
+
+@Controller
+public class IntegranteController  {
 	
-	// MÉTODOS PRIVADOS
+	private final Logger logger = LoggerFactory.getLogger(IntegranteController.class);
 	
-	private Integrante ativarDesativarIntegrante(Long id) throws Exception {
-		Integrante integrante = get(id);
+	@Autowired
+	private IntegranteService service;
+	@Autowired
+	private CategoriaService categoriaService;
+	@Autowired
+	private FormaEntregaService formaEntregaService;
+	@Autowired
+	private FormaPgtoService formaPgtoService;
+	@Autowired
+	private FrequenciaService frequenciaService;
+	@Autowired
+	private TipoContatoService tipoContatoService;
+
+	private Integrante getIntegranteInicial() {
+		Integrante integrante = new Integrante();
+		integrante.setAtivo(true);
+		integrante.setCadastro(LocalDate.now());
+		integrante.adicionarEndereco(new Endereco());
+		Contato telefone = new Contato();
+		telefone.setTipo(tipoContatoService.getById(1l)); // Contato do tipo telefone fixo
+		Contato celular = new Contato();
+		celular.setTipo(tipoContatoService.getById(2l)); // Contato do tipo telefone celular
+		Contato email = new Contato();
+		email.setTipo(tipoContatoService.getById(3l)); // Contato do tipo e-mail
+		integrante.adicionarContato(telefone);
+		integrante.adicionarContato(celular);
+		integrante.adicionarContato(email);
+		return integrante;
+	}
+	
+	private List<String> getUfs() {
+		List<String> ufs = new ArrayList<>();
+		ufs.add("MG");
+		ufs.add("SP");
+		ufs.add("AC");
+		ufs.add("AL");
+		ufs.add("AM");
+		ufs.add("AP");
+		ufs.add("BA");
+		ufs.add("CE");
+		ufs.add("DF");
+		ufs.add("ES");
+		ufs.add("GO");
+		ufs.add("MA");
+		ufs.add("MS");
+		ufs.add("MT");
+		ufs.add("PA");
+		ufs.add("PB");
+		ufs.add("PE");
+		ufs.add("PI");
+		ufs.add("PR");
+		ufs.add("RJ");
+		ufs.add("RN");
+		ufs.add("RO");
+		ufs.add("RR");
+		ufs.add("RS");
+		ufs.add("SC");
+		ufs.add("SE");
+		ufs.add("TO");
+		return ufs;
+	}
+	
+	@GetMapping("/integrantes/adicionar")
+	public ModelAndView adicionar() {
+		ModelAndView model = new ModelAndView("integrantes/cadastro");
+		model.addObject("integrante", getIntegranteInicial());
+		model.addObject("categorias", categoriaService.listarTodas());
+		model.addObject("frequencias", frequenciaService.listarTodas());
+		model.addObject("formasEntrega", formaEntregaService.listarTodas());
+		model.addObject("formasPgto", formaPgtoService.listarTodas());
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/contatos/email/adicionar")
+	public ModelAndView adicionarEmail(Integrante integrante) {
+		Contato email = new Contato();
+		email.setTipo(tipoContatoService.getById(3l)); // Contato do tipo e-mail
+		integrante.adicionarContato(email);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/enderecos/adicionar")
+	public ModelAndView adicionarEndereco(Integrante integrante) {
+		integrante.adicionarEndereco(new Endereco());
+		ModelAndView model = new ModelAndView("integrantes/endereco :: enderecoForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/contatos/telefonecelular/adicionar")
+	public ModelAndView adicionarTelefoneCelular(Integrante integrante) {
+		Contato celular = new Contato();
+		celular.setTipo(tipoContatoService.getById(2l)); // Contato do tipo telefone celular
+		integrante.adicionarContato(celular);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/contatos/telefonefixo/adicionar")
+	public ModelAndView adicionarTelefoneFixo(Integrante integrante) {
+		Contato telefone = new Contato();
+		telefone.setTipo(tipoContatoService.getById(1l)); // Contato do tipo telefone fixo
+		integrante.adicionarContato(telefone);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@GetMapping("/integrantes/ativar_desativar/{id}")
+	public ModelAndView ativarOuDesativar(@PathVariable String id) {
+		Integrante integrante = service.ativarDesativarIntegrante(new Long(id));
+		String viewName = null;
 		
 		if (integrante.getAtivo()) {
-			integrante.setAtivo(false);
-			integrante.setDtDesativacao(LocalDate.now());
+			viewName = String.format("integrantes/resultadoPesquisa :: inativo (id = '%s')", id);
 			
 		} else {
-			integrante.setAtivo(true);
-			integrante.setDtDesativacao(null);
+			viewName = String.format("integrantes/resultadoPesquisa :: ativo (id = '%s')", id);
 		}
 		
-		dao.update(integrante);
-		return integrante;
+		return new ModelAndView(viewName);
 	}
 	
-	private void salvarContatos(Pessoa pessoa) {
-		List<Contato> contatosCadastrados = contatoDao.selectByPessoa(pessoa.getId());
-		List<Contato> contatos = pessoa.getContatos();
-		List<Contato> contatosSalvar = new ArrayList<>();
-		List<Contato> contatosRemover = new ArrayList<>();
+	@GetMapping("/integrantes/cancelar/cadastro")
+	public ModelAndView cancelarCadastro() {
+		ModelAndView model = adicionar();
+		model.setViewName("integrantes/index :: index");
+		return model;
+	}
+	
+	@PostMapping("/integrantes/endereco/consultar/{idx}")
+	public ModelAndView consultarEndereco(Integrante integrante, @PathVariable("idx") int idx) throws Throwable {
+		Endereco endereco = integrante.getEnderecos().get(idx);
 		
-		if (contatosCadastrados.isEmpty()) {
-			contatosSalvar.addAll(contatos);
+		if (StringUtil.stringNaoNulaENaoVazia(endereco.getCep())) {
+			new Localizador().pesquisarEndereco(endereco, endereco.getCep());
 			
 		} else {
-			for (Contato contato: contatos) {
-				if (contato.getId() != null) {
-					for (Contato cadastrado: contatosCadastrados) {
-						if (contato.getId().equals(cadastrado.getId())) {
-							contatosSalvar.add(contato);
-							break;
-						}
-					}
-					
-				} else {
-					contatosSalvar.add(contato);
-				}
-			}
-			
-			for (Contato cadastrado: contatosCadastrados) {
-				boolean remover = true;
-				
-				for (Contato contato: contatosSalvar) {
-					if (contato.getId() != null && contato.getId().equals(cadastrado.getId())) {
-						remover = false;
-						break;
-					}
-				}
-				
-				if (remover) {
-					contatosRemover.add(cadastrado);
-				}
-			}
+			throw new ValidacaoException("É preciso informar um CEP");
 		}
 		
-		for (Contato contato: contatosSalvar) {
-			contato.setIdPessoa(pessoa.getId());
-			
-			if (contato.getId() == null) {
-				contatoDao.save(contato);
-				
-			} else {
-				contatoDao.update(contato);
-			}
-		}
-		
-		for (Contato contato: contatosRemover) {
-			contatoDao.delete(contato.getId());
-		}
+		ModelAndView model = new ModelAndView("integrantes/endereco :: enderecoForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
 	}
 	
-	private void salvarEnderecos(Integrante integrante) {
-		Pessoa pessoa = integrante.getPessoa();
-		List<Endereco> enderecosCadastrados = enderecoDao.selectByPessoa(pessoa.getId());
-		List<Endereco> enderecos = pessoa.getEnderecos();
-		List<Endereco> enderecosSalvar = new ArrayList<>();
-		List<Endereco> enderecosRemover = new ArrayList<>();
-		
-		if (enderecosCadastrados.isEmpty()) {
-			enderecosSalvar.addAll(enderecos);
-			
-		} else {
-			for (Endereco endereco: enderecos) {
-				if (endereco.getId() != null) {
-					for (Endereco cadastrado: enderecosCadastrados) {
-						if (endereco.getId().equals(cadastrado.getId())) {
-							enderecosSalvar.add(endereco);
-							break;
-						}
-					}
-					
-				} else {
-					enderecosSalvar.add(endereco);
-				}
-			}
-			
-			for (Endereco cadastrado: enderecosCadastrados) {
-				boolean remover = true;
-				
-				for (Endereco endereco: enderecosSalvar) {
-					if (endereco.getId() != null && endereco.getId().equals(cadastrado.getId())) {
-						remover = false;
-						break;
-					}
-				}
-				
-				if (remover) {
-					enderecosRemover.add(cadastrado);
-				}
-			}
-		}
-		
-		for (Endereco endereco: enderecosSalvar) {
-			Endereco cobranca = integrante.getEnderecoCobranca();
-			cobranca.setCep(cobranca.getCep().replace(".", "").replace("-", ""));
-			Endereco entrega = integrante.getEnderecoEntrega();
-			entrega.setCep(entrega.getCep().replace(".", "").replace("-", ""));
-			endereco.setIdPessoa(pessoa.getId());
-			
-			if (endereco.getId() == null) {
-				enderecoDao.save(endereco);
-				
-			} else {
-				enderecoDao.update(endereco);
-			}
-			
-			if (endereco.equals(cobranca)) {
-				integrante.setEnderecoCobranca(endereco);
-			}
-			
-			if (endereco.equals(entrega)) {
-				integrante.setEnderecoEntrega(endereco);
-			}
-		}
-		
-		if (integrante.getId() != null) {
-			dao.update(integrante);
-		}
-		
-		for (Endereco endereco: enderecosRemover) {
-			enderecoDao.delete(endereco.getId());
-		}
+	@GetMapping("/integrantes/editar/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		ModelAndView model = new ModelAndView("integrantes/cadastro");
+		model.addObject("integrante", service.getIntegrante(id));
+		model.addObject("categorias", categoriaService.listarTodas());
+		model.addObject("frequencias", frequenciaService.listarTodas());
+		model.addObject("formasEntrega", formaEntregaService.listarTodas());
+		model.addObject("formasPgto", formaPgtoService.listarTodas());
+		model.addObject("ufs", getUfs());
+		return model;
 	}
 	
-	// MÉTODOS PROTEGIDOS
-	
-	@Override
-	protected void apagar(Long id) {
-		throw new UnsupportedOperationException();
+	@GetMapping(value = {"/integrantes", "/integrantes/index"})
+	public ModelAndView iniciar() {
+		ModelAndView model = new ModelAndView("integrantes/index");
+		model.addObject("categorias", categoriaService.listarTodas());
+		model.addObject("frequencias", frequenciaService.listarTodas());
+		model.addObject("formasEntrega", formaEntregaService.listarTodas());
+		model.addObject("formasPgto", formaPgtoService.listarTodas());
+		List<Parametro> situacoes = new ArrayList<>(2);
+		situacoes.add(new Parametro(1l, "Ativo"));
+		situacoes.add(new Parametro(0l, "Inativo"));
+		model.addObject("situacoes", situacoes);
+		List<Parametro> tipos = new ArrayList<>(2);
+		tipos.add(new Parametro(0l, "Ascendente"));
+		tipos.add(new Parametro(1l, "Descendente"));
+		model.addObject("tipos", tipos);
+		return model;
 	}
 	
-	@Override
-	protected Integrante get(Long id) throws Exception {
-		Integrante integrante = dao.selectById(id);
-		Pessoa pessoa = integrante.getPessoa();
-		pessoa.setDocumentos(documentoDao.selectByPessoa(pessoa.getId()));
-		pessoa.setContatos(contatoDao.selectByPessoa(pessoa.getId()));
-		pessoa.setEnderecos(enderecoDao.selectByPessoa(pessoa.getId()));
-		Endereco cobranca = integrante.getEnderecoCobranca();
-		
-		if (cobranca != null && cobranca.getId() != null) {
-			integrante.setEnderecoCobranca(enderecoDao.selectById(cobranca.getId()));
-		}
-		
-		Endereco entrega = integrante.getEnderecoEntrega();
-		
-		if (entrega != null && entrega.getId() != null) {
-			integrante.setEnderecoEntrega(enderecoDao.selectById(entrega.getId()));
-		}
-		
-		return integrante;
-	}
-	
-	@Override
-	protected List<Integrante> listar() throws Exception {
-		return dao.selectAll();
-	}
-	
-	@Override
-	protected Integrante salvar(Integrante integrante) {
-		Pessoa pessoa = integrante.getPessoa();
-		
-		if (pessoa.getId() == null) {
-			pessoa = pessoaDao.save(pessoa);
-			
-		} else {
-			pessoaDao.update(pessoa);
-		}
-		
-		List<Documento> documentos = pessoa.getDocumentos();
-		
-		if (documentos != null && !documentos.isEmpty()) {
-			Documento cpf = documentos.get(0);
-			cpf.setIdPessoa(pessoa.getId());
-			
-			if (cpf.getId() == null) {
-				cpf = documentoDao.save(cpf);
-				
-			} else {
-				documentoDao.update(cpf);
-			}
-			
-			integrante.setDocumento(cpf);
-		}
-		
-		salvarContatos(pessoa);
-		salvarEnderecos(integrante);
-		
-		if (integrante.getId() == null) {
-			integrante = dao.save(integrante);
-			
-		} else {
-			dao.update(integrante);
-		}
-		
-		return integrante;
-	}
-	
-	@Override
-	protected void validarAtualizacao(Integrante integrante) throws ValidacaoException {
-		if (integrante.getId() == null) {
-			throw new ValidacaoException("O integrante informado não possui um id, neste caso deve ser utilizado o método de inclusão");
-		}
-		
-		Integrante.validar(integrante);
-		Pessoa pessoa = integrante.getPessoa();
-		
-		if (pessoaDao.findByNomeAndIdNot(pessoa.getNome(), pessoa.getId()) != null) {
-			StringBuilder msg = new StringBuilder("Já existe um integrante do Clube do Livro cadastrado com o nome ");
-			msg.append(pessoa.getNome());
-			throw new ValidacaoException(msg.toString());
-		}
-		
-		List<Documento> documentos = pessoa.getDocumentos();
-		
-		if (!documentos.isEmpty()) {
-			Documento cpf = documentos.get(0);
-			Integer pessoasCpfExistente = pessoaDao.contarPessoasMesmoCpf(cpf.getValor().replace(".", "").replace("-", ""), pessoa.getId());
-			
-			if (pessoasCpfExistente > 0) {
-				StringBuilder msg = new StringBuilder("Já existe um integrante do Clube do Livro cadastrado com o CPF ");
-				msg.append(cpf.getValor());
-				throw new ValidacaoException(msg.toString());
-			}
-			
-		}
-	}
-	
-	@Override
-	protected void validarInclusao(Integrante integrante) throws ValidacaoException {
-		if (integrante.getId() != null) {
-			throw new ValidacaoException("O integrante informado possui um id, neste caso deve ser utilizado o método de atualização");
-		}
-		
-		Integrante.validar(integrante);
-		Pessoa pessoa = integrante.getPessoa();
-		
-		if (!pessoaDao.findByNome(pessoa.getNome()).isEmpty()) {
-			StringBuilder msg = new StringBuilder("Já existe um integrante do Clube do Livro cadastrado com o nome ");
-			msg.append(pessoa.getNome());
-			throw new ValidacaoException(msg.toString());
-		}
-		
-
-		List<Documento> documentos = pessoa.getDocumentos();
-		
-		if (!documentos.isEmpty()) {
-			Documento cpf = documentos.get(0);
-			
-			if (cpf.getValor() != null && documentoDao.findByValor(cpf.getValor()) != null) {
-				StringBuilder msg = new StringBuilder("Já existe um integrante do Clube do Livro cadastrado com o CPF ");
-				msg.append(cpf.getValor());
-				throw new ValidacaoException(msg.toString());
-			}
-		}
-	}
-	
-	// MÉTODOS PÚBLICOS
-	
-	@PostMapping("/integrantes")
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public ResponseEntity<Serializable> adicionarIntegrante(@RequestBody Integrante integrante) {
-		return criarOuAtualizar(integrante);
-	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@PutMapping("/integrantes/ativar")
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public ResponseEntity<Serializable> ativarIntegrante(@RequestBody Long id) {
-		ResponseEntity response;
-		
-		try {
-			ativarDesativarIntegrante(id);
-			response = new ResponseEntity("Ok", HttpStatus.OK);
-			
-		} catch (Throwable throwable) {
-			response = getInternalServerErrorResponse(throwable);
-		}
-		
-		return response;
-	}
-	
-	@PutMapping("/integrantes")
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public ResponseEntity<Serializable> atualizarIntegrante(@RequestBody String request) {
-		throw new UnsupportedOperationException();
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@PutMapping("/integrantes/desativar")
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public ResponseEntity<Serializable> desativarIntegrante(@RequestBody Long id) {
-		ResponseEntity response;
-		
-		try {
-			ativarDesativarIntegrante(id);
-			response = new ResponseEntity("Ok", HttpStatus.OK);
-			
-		} catch (Throwable throwable) {
-			response = getInternalServerErrorResponse(throwable);
-		}
-		
-		return response;
-	}
-	
-	@GetMapping("/integrantes/{id}")
-	public ResponseEntity<Serializable> getIntegrante(@PathVariable("id") Long id) {
-		return getRecurso(id);
-	}
-	
-	@GetMapping("/integrantes")
-	public ResponseEntity<?> getIntegrantes() {
-		return listarTodos();
-	}
-	*/
-	/*
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostMapping("/integrantes/pesquisa")
-	public ResponseEntity getIntegrantes(@RequestBody String request) {
-		ResponseEntity response;
+	public ModelAndView pesquisar(@RequestParam("nome") String nome, @RequestParam("idCategoria") Long idCategoria) {
+		ModelAndView model = new ModelAndView("integrantes/resultadoPesquisa :: resultado");
+		List<Integrante> integrantes = service.pesquisar(nome, idCategoria);
+		model.addObject("integrantes", integrantes);
 		
-		try {
-			/*
-			 * Categoria:
-			 * 1 - Estuddo
-			 * 2 - Romance
-			 * 3 - Estudo e romance
-			 * 4 - Estudo e romance alternado
-			 *
-			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
-			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
-			Long idCategoria = StringUtil.stringNaoNulaENaoVazia(map.get("categoria").toString()) ? Long.valueOf(map.get("categoria").toString()) : null;
-			List<Integrante> list = new ArrayList<>();
-			
-			if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria != null) {
-				list = dao.pesquisar(nome, idCategoria);
-				
-			} else if (StringUtil.stringNaoNulaENaoVazia(nome) && idCategoria == null) {
-				list = dao.pesquisar(nome);
-				
-			} else if (StringUtil.stringNulaOuVazia(nome) && idCategoria != null) {
-				list = dao.pesquisar(idCategoria);
-			}
-			
-			response = new ResponseEntity(list, HttpStatus.OK);
-			
-		} catch (Throwable throwable) {
-			response = getInternalServerErrorResponse(throwable);
+		if (integrantes.isEmpty()) {
+			model.addObject("exibirMensagem", true);
 		}
 		
-		return response;
+		return model;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostMapping("/integrantes/pesquisa/avancada")
-	public ResponseEntity pesquisar(@RequestBody String request) {
-		ResponseEntity response;
+	public ModelAndView pesquisar(PesquisaAvancada pesquisa) {
+		ModelAndView model = new ModelAndView("integrantes/resultadoPesquisa :: resultado");
 		
 		try {
-			Map<String, Object> map = new ObjectMapper().readValue(request, HashMap.class);
-			String nome = map.get("nome") != null ? map.get("nome").toString() : null;
-			String cpf = map.get("cpf") != null ? map.get("cpf").toString() : null;
+			List<Integrante> integrantes = service.pesquisar(pesquisa.getNome(), pesquisa.getCpf(), pesquisa.getIdCategoria(), 
+					pesquisa.getIdFrequencia(), pesquisa.getIdFormaPgto(), pesquisa.getIdFormaEntrega(), pesquisa.getSituacao(), pesquisa.getOrdenacao());
+			model.addObject("integrantes", integrantes);
 			
-			if (StringUtil.stringNaoNulaENaoVazia(cpf)) {
-				if (!CPF.validar(cpf)) {
-					throw new ValidacaoException("O CPF informado não é válido");
-				}
+			if (integrantes.isEmpty()) {
+				model.addObject("exibirMensagem", true);
 			}
 			
-			/*
-			 * Categoria:
-			 * 1 - Estudo
-			 * 2 - Romance
-			 * 3 - Estudo e romance
-			 * 4 - Estudo e romance alternado
-			 *
-			Long idCategoria = map.get("idCategoria") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idCategoria").toString()) ? Long.valueOf(map.get("idCategoria").toString()) : null;
-			/*
-			 * Freqüência:
-			 * 1 - Mensal
-			 * 2 - Bimestral
-			 *
-			Long idFrequencia = map.get("idFrequencia") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFrequencia").toString()) ? Long.valueOf(map.get("idFrequencia").toString()) : null;
-			/*
-			 * Forma de entrega:
-			 * 1 - Correios
-			 * 2 - Presencial
-			 *
-			Long idFormaEntrega = map.get("idFormaEntrega") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaEntrega").toString()) ? Long.valueOf(map.get("idFormaEntrega").toString()) : null;
-			/*
-			 * Forma de pagamento:
-			 * 1 - Boleto
-			 * 2 - Cartão de débito
-			 * 3 - Cartão de crédito
-			 * 4 - Dinheiro
-			 * 5 - Cheque à vista
-			 *
-			Long idFormaPgto = map.get("idFormaPgto") != null && StringUtil.stringNaoNulaENaoVazia(map.get("idFormaPgto").toString()) ? Long.valueOf(map.get("idFormaPgto").toString()) : null;
-			/*
-			 * Situação:
-			 * 0 - Ativo
-			 * 1 - Inativo
-			 *
-			Long situacao = map.get("situacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("situacao").toString()) ? Long.valueOf(map.get("situacao").toString()) : null;
-			/*
-			 * Tipo de ordenacao:
-			 * 0 - Ascendente
-			 * 1 - Descendente
-			 *
-			Long ordenacao = map.get("tipoOrdenacao") != null && StringUtil.stringNaoNulaENaoVazia(map.get("tipoOrdenacao").toString()) ? Long.valueOf(map.get("tipoOrdenacao").toString()) : 0;
-			List<Integrante> list = new ArrayList<>();
-			
-			if (StringUtil.stringNaoNulaENaoVazia(nome) || StringUtil.stringNaoNulaENaoVazia(cpf) || idCategoria != null 
-					|| idFrequencia != null || idFormaEntrega != null || idFormaPgto != null || situacao != null) {
-				
-				list = dao.pesquisar(nome, cpf, idCategoria, idFrequencia, idFormaEntrega, idFormaPgto, situacao, ordenacao);
-			}
-			
-			response = new ResponseEntity(list, HttpStatus.OK);
-			
-		} catch (Throwable throwable) {
-			response = getInternalServerErrorResponse(throwable);
+		} catch (ValidacaoException e) {
+			logger.error("Houve um erro ao pesquisar por integrantes", e);
+			model.addObject("erro", e.getMessage());
 		}
 		
-		return response;
+		return model;
 	}
 	
-	@DeleteMapping("/integrantes/{id}")
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public ResponseEntity<Serializable> removerIntegrante(@PathVariable("id") Long id) {
-		throw new UnsupportedOperationException();
+	@PostMapping("/integrantes/contatos/email/remover/{idx}")
+	public ModelAndView removerEmail(Integrante integrante, @PathVariable("idx") int idx) {
+		integrante.removerEmail(idx);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
 	}
-	*/
+	
+	@PostMapping("/integrantes/enderecos/remover/{idx}")
+	public ModelAndView removerEndereco(Integrante integrante, @PathVariable("idx") int idx) {
+		integrante.removerEndereco(idx);
+		ModelAndView model = new ModelAndView("integrantes/endereco :: enderecoForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/contatos/telefonecelular/remover/{idx}")
+	public ModelAndView removerTelefoneCelular(Integrante integrante, @PathVariable("idx") int idx) {
+		integrante.removerTelefoneCelular(idx);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/contatos/telefonefixo/remover/{idx}")
+	public ModelAndView removerTelefoneFixo(Integrante integrante, @PathVariable("idx") int idx) {
+		integrante.removerTelefoneFixo(idx);
+		ModelAndView model = new ModelAndView("integrantes/contatos :: contatosForm");
+		model.addObject("integrante", integrante);
+		model.addObject("ufs", getUfs());
+		return model;
+	}
+	
+	@PostMapping("/integrantes/salvar")
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public ModelAndView salvar(@Valid Integrante integrante, BindingResult bindingResult) throws Throwable {
+		ModelAndView model = null;
+		
+		if (!bindingResult.hasErrors()) {
+			service.salvar(integrante);
+			model = iniciar();
+			model.setViewName("integrantes/index :: incluido");
+			model.addObject("incluido", true);
+			
+		} else {
+			FieldError fieldError = bindingResult.getFieldError();
+			String field = fieldError.getField();
+			
+			if (field.equalsIgnoreCase("cadastroStr")) {
+				throw new ValidacaoException("A data de cadastro do integrante do Clube do Livro não é válida");
+			}
+			
+			if (field.equalsIgnoreCase("nascimentoStr")) {
+				throw new ValidacaoException("A data de nascimento do integrante do Clube do Livro não é válida");
+			}
+		}
+		
+		return model;
+	}
+	
 }
